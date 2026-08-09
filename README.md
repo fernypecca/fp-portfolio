@@ -24,10 +24,40 @@ Add a new key there to give a new project its own illustration.
 ## Design system
 
 - **Type** — San Francisco on Apple platforms via `-apple-system`, [Onest](https://fonts.google.com/specimen/Onest) everywhere else.
-- **Colour** — neutral greys (`#ffffff` / `#f5f5f7` / `#1d1d1f` / `#6e6e73`) with a single blue accent (`#0071e3`, links `#0066cc`).
+- **Colour** — neutral greys (`#ffffff` / `#f5f5f7` / `#1d1d1f` / `#6e6e73`) with a single Pacific Blue accent (`#2A6F8A`, accent text `#215A72`), taken from Apple's hardware finish palette rather than their web link blue.
 - **Radii** — 8 / 14 / 20 / 28px plus pill.
 
-All text/background pairs are at or above WCAG AA (4.5:1).
+Status chips differentiate by fill weight, not by hue, so the page stays
+single-accent: *Live tool* is a solid accent fill, *Internal tool* a grey fill,
+*Concept experiment* an outlined chip.
+
+All text/background pairs are at or above WCAG AA (4.5:1) — lowest is 5.07:1.
+
+## SEO
+
+`index.html` carries a canonical URL, Open Graph / Twitter cards, and a JSON-LD
+`@graph` (`Person` + `WebSite` + `ProfilePage`). The `Person` node with its
+`sameAs` links to LinkedIn and GitHub is what carries ranking for name queries.
+
+`og.png` (1200×630) is generated from `og.svg`:
+
+```bash
+qlmanage -t -s 1200 -o . og.svg && mv og.svg.png og.png && sips -c 630 1200 og.png --out og.png
+```
+
+`robots.txt` and `sitemap.xml` sit at the root.
+
+### Changing the domain
+
+Every absolute URL lives in three files. Swap them in one command, then redeploy:
+
+```bash
+sed -i '' 's|https://fp-portfolio-nine.vercel.app|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
+```
+
+Then point the domain at Vercel (`vercel domains add YOURDOMAIN.com`), verify the
+property in Google Search Console, submit the sitemap, and add the domain to the
+Website field of the LinkedIn and GitHub profiles.
 
 ## Accessibility
 
