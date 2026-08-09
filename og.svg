@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#ffffff"/>
+  <g transform="translate(0,285)">
+  <rect x="0" y="0" width="1200" height="8" fill="#2A6F8A"/>
+
+  <!-- monogram -->
+  <rect x="80" y="76" width="56" height="56" rx="14" fill="#1d1d1f"/>
+  <text x="108" y="113" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
+        font-size="22" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">FP</text>
+  <text x="154" y="112" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
+        font-size="24" font-weight="600" fill="#1d1d1f" letter-spacing="-0.4">Fernando Peccatiello</text>
+
+  <!-- eyebrow -->
+  <text x="80" y="238" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
+        font-size="24" font-weight="600" fill="#215A72" letter-spacing="-0.2">Growth marketing × AI × product thinking</text>
+
+  <!-- headline -->
+  <text x="80" y="330" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
+        font-size="76" font-weight="600" fill="#1d1d1f" letter-spacing="-2.6">I turn growth bottlenecks</text>
+  <text x="80" y="416" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
+        font-size="76" font-weight="600" fill="#1d1d1f" letter-spacing="-2.6">into useful tools.</text>
+
+  <!-- rule -->
+  <rect x="80" y="486" width="1040" height="1" fill="#d2d2d7"/>
+
+  <!-- footer marks -->
+  <g font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif" font-size="22" fill="#6e6e73" letter-spacing="-0.2">
+    <path d="M82 542l9 9 17-19" stroke="#2A6F8A" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="551">6 tools shipped</text>
+    <path d="M348 542l9 9 17-19" stroke="#2A6F8A" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="386" y="551">AI-powered workflows</text>
+    <path d="M700 542l9 9 17-19" stroke="#2A6F8A" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="738" y="551">Growth &amp; conversion systems</text>
+  </g>
+  </g>
+</svg>

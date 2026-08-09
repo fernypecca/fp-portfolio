@@ -7,9 +7,87 @@
 <meta name="description" content="I turn growth bottlenecks into useful tools. Focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions." />
 <meta name="color-scheme" content="light" />
 <meta name="theme-color" content="#ffffff" />
+<meta name="author" content="Fernando Peccatiello" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CANONICAL DOMAIN — every absolute URL below and in the JSON-LD block
+     must match the domain the site actually serves from. When the custom
+     domain goes live, run this once from the project folder:
+
+       sed -i '' 's|https://fp-portfolio-nine.vercel.app|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
+
+     Then redeploy. Nothing else needs changing.
+     ═══════════════════════════════════════════════════════════════════ -->
+<link rel="canonical" href="https://fp-portfolio-nine.vercel.app/" />
+
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://fp-portfolio-nine.vercel.app/" />
+<meta property="og:site_name" content="Fernando Peccatiello" />
+<meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Fernando Peccatiello — I turn growth bottlenecks into useful tools" />
 <meta property="og:description" content="Focused AI-powered tools and experiments for conversion, marketing operations, and better decisions." />
-<meta property="og:type" content="website" />
+<meta property="og:image" content="https://fp-portfolio-nine.vercel.app/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Fernando Peccatiello — I turn growth bottlenecks into useful tools" />
+<meta property="profile:first_name" content="Fernando" />
+<meta property="profile:last_name" content="Peccatiello" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fernando Peccatiello — I turn growth bottlenecks into useful tools" />
+<meta name="twitter:description" content="Focused AI-powered tools and experiments for conversion, marketing operations, and better decisions." />
+<meta name="twitter:image" content="https://fp-portfolio-nine.vercel.app/og.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://fp-portfolio-nine.vercel.app/#person",
+      "name": "Fernando Peccatiello",
+      "givenName": "Fernando",
+      "familyName": "Peccatiello",
+      "url": "https://fp-portfolio-nine.vercel.app/",
+      "image": "https://fp-portfolio-nine.vercel.app/og.png",
+      "jobTitle": "Growth Marketer and AI Product Builder",
+      "description": "Growth marketer working at the intersection of conversion, product thinking, and AI. Builds focused tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.",
+      "knowsAbout": [
+        "Growth marketing",
+        "Conversion rate optimization",
+        "AI workflows and rapid prototyping",
+        "Lead magnet design",
+        "Marketing operations",
+        "Product thinking",
+        "Multi-market execution"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/fernandopeccatiello/",
+        "https://github.com/fernypecca"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://fp-portfolio-nine.vercel.app/#website",
+      "url": "https://fp-portfolio-nine.vercel.app/",
+      "name": "Fernando Peccatiello",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://fp-portfolio-nine.vercel.app/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://fp-portfolio-nine.vercel.app/#webpage",
+      "url": "https://fp-portfolio-nine.vercel.app/",
+      "name": "Fernando Peccatiello — Growth marketing × AI × product thinking",
+      "isPartOf": { "@id": "https://fp-portfolio-nine.vercel.app/#website" },
+      "about": { "@id": "https://fp-portfolio-nine.vercel.app/#person" },
+      "primaryImageOfPage": "https://fp-portfolio-nine.vercel.app/og.png"
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
@@ -147,7 +225,8 @@ const PROJECTS = [
 /* =========================================================================
    Design tokens
    Type: San Francisco where available (Apple platforms), Onest elsewhere.
-   Colour: neutral system with a single blue accent.
+   Colour: neutral system with a single Pacific Blue accent, taken from
+   Apple's hardware finish palette rather than their web link blue.
    ========================================================================= */
 :root{
   --bg:        #ffffff;
@@ -160,10 +239,10 @@ const PROJECTS = [
   --gray-2:    #86868b;
   --line:      #d2d2d7;
   --line-soft: #e5e5ea;
-  --blue:      #0071e3;
-  --blue-ink:  #0066cc;
-  --blue-wash: #f0f7ff;
-  --green:     #146c3a;
+  --accent:       #2A6F8A;   /* Pacific Blue — fills, strokes, buttons */
+  --accent-ink:   #215A72;   /* darker, for accent text on white */
+  --accent-hover: #33809E;
+  --accent-wash:  #eef4f7;
 
   --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
@@ -248,13 +327,13 @@ a{ color:inherit; }
   font-size:.9375rem;
   font-weight:600;
   letter-spacing:-.008em;
-  color:var(--blue-ink);
+  color:var(--accent-ink);
 }
 
 /* ---------- Focus ---------- */
 :focus{ outline:none; }
 :focus-visible{
-  outline:3px solid rgba(0,113,227,.5);
+  outline:3px solid rgba(42,111,138,.6);
   outline-offset:3px;
   border-radius:6px;
 }
@@ -306,7 +385,7 @@ a{ color:inherit; }
   font-size:.6875rem; font-weight:600; letter-spacing:.01em;
   transition:background .25s var(--ease);
 }
-.brand:hover .brand__mark{ background:var(--blue); }
+.brand:hover .brand__mark{ background:var(--accent); }
 .brand__name span{ color:var(--gray); font-weight:400; }
 
 .nav{ display:flex; align-items:center; gap:clamp(1rem,2.4vw,1.9rem); }
@@ -317,7 +396,7 @@ a{ color:inherit; }
   transition:opacity .2s var(--ease), color .2s var(--ease);
 }
 .nav a:hover{ opacity:1; }
-.nav a[aria-current="true"]{ color:var(--blue-ink); opacity:1; font-weight:500; }
+.nav a[aria-current="true"]{ color:var(--accent-ink); opacity:1; font-weight:500; }
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -325,11 +404,11 @@ a{ color:inherit; }
   font-family:inherit; font-size:1rem; font-weight:500; letter-spacing:-.01em;
   padding:.72rem 1.35rem;
   border:0; border-radius:var(--pill);
-  background:var(--blue); color:#fff;
+  background:var(--accent); color:#fff;
   text-decoration:none; cursor:pointer;
   transition:background .22s var(--ease), transform .22s var(--ease), box-shadow .22s var(--ease);
 }
-.btn:hover{ background:#0077ED; }
+.btn:hover{ background:var(--accent-hover); }
 .btn:active{ transform:scale(.975); }
 
 .btn--secondary{ background:var(--fill); color:var(--ink); }
@@ -339,7 +418,7 @@ a{ color:inherit; }
 
 .linkarrow{
   display:inline-flex; align-items:center; gap:.15rem;
-  color:var(--blue-ink); text-decoration:none;
+  color:var(--accent-ink); text-decoration:none;
   font-size:1.0625rem; letter-spacing:-.012em;
   transition:color .2s var(--ease);
 }
@@ -394,7 +473,7 @@ a{ color:inherit; }
   .markers li{ border-bottom:0; padding-block:0; }
   .markers li + li{ border-left:1px solid var(--line-soft); }
 }
-.markers .tick{ color:var(--blue); flex:none; }
+.markers .tick{ color:var(--accent); flex:none; }
 
 /* ---------- Section head ---------- */
 .sechead{ margin-bottom:clamp(2rem,4vw,3rem); max-width:44rem; }
@@ -467,9 +546,9 @@ a{ color:inherit; }
   background:var(--fill); color:var(--ink-2);
 }
 .status .dot{ width:.375rem; height:.375rem; border-radius:50%; background:currentColor; flex:none; }
-.status[data-status="Live tool"]{ background:#e8f6ee; color:var(--green); }
+.status[data-status="Live tool"]{ background:var(--accent); color:#fff; }
 .status[data-status="Internal tool"]{ background:var(--fill); color:var(--ink-2); }
-.status[data-status="Concept experiment"]{ background:var(--blue-wash); color:var(--blue-ink); }
+.status[data-status="Concept experiment"]{ background:var(--surface); color:var(--gray); box-shadow:inset 0 0 0 1px var(--line); }
 
 .card__body{ display:flex; flex-direction:column; gap:1.25rem; flex:1; }
 
@@ -488,8 +567,8 @@ a{ color:inherit; }
 }
 .card h3 button::after{ content:""; position:absolute; inset:0; border-radius:var(--r-xl); }
 .card h3 button:focus-visible{ outline:none; }
-.card h3 button:focus-visible::after{ outline:3px solid rgba(0,113,227,.5); outline-offset:2px; }
-.card:hover h3 button{ color:var(--blue-ink); }
+.card h3 button:focus-visible::after{ outline:3px solid rgba(42,111,138,.6); outline-offset:2px; }
+.card:hover h3 button{ color:var(--accent-ink); }
 
 .card__desc{ color:var(--gray); font-size:.9375rem; line-height:1.5; letter-spacing:-.01em; }
 
@@ -512,7 +591,7 @@ a{ color:inherit; }
 .openlink{
   position:relative; z-index:2;
   display:inline-flex; align-items:center; gap:.2rem;
-  font-size:.9375rem; text-decoration:none; color:var(--blue-ink);
+  font-size:.9375rem; text-decoration:none; color:var(--accent-ink);
   transition:opacity .2s var(--ease);
 }
 .openlink:hover{ text-decoration:underline; text-underline-offset:3px; }
@@ -539,7 +618,7 @@ a{ color:inherit; }
 .principle__n{
   display:grid; place-items:center;
   width:2rem; height:2rem; border-radius:50%;
-  background:var(--surface); color:var(--blue-ink);
+  background:var(--surface); color:var(--accent-ink);
   font-size:.8125rem; font-weight:600;
   margin-bottom:1.25rem;
   box-shadow:0 1px 2px rgba(0,0,0,.06);
@@ -569,7 +648,7 @@ a{ color:inherit; }
   font-size:1rem; letter-spacing:-.014em;
 }
 .skills li:first-child{ border-top:1px solid var(--line-soft); }
-.skills .tick{ color:var(--blue); flex:none; }
+.skills .tick{ color:var(--accent); flex:none; }
 
 /* ---------- Footer ---------- */
 .footer{ background:var(--bg-alt); padding-block:clamp(3rem,6vw,4.5rem) clamp(1.75rem,3vw,2.5rem); }
@@ -589,7 +668,7 @@ a{ color:inherit; }
 .footer__links{ display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; }
 .footer__links a{
   display:inline-flex; align-items:center; gap:.2rem;
-  font-size:.9375rem; text-decoration:none; color:var(--blue-ink);
+  font-size:.9375rem; text-decoration:none; color:var(--accent-ink);
 }
 .footer__links a:hover{ text-decoration:underline; text-underline-offset:3px; }
 .footer__legal{ font-size:.75rem; color:var(--gray); }
@@ -671,11 +750,11 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 .pv .fill-ink{ fill:var(--ink); }
 .pv .fill-card{ fill:var(--surface); }
 .pv .fill-soft{ fill:var(--fill); }
-.pv .acc{ stroke:var(--blue); stroke-width:2; fill:none; }
-.pv .fill-acc{ fill:var(--blue); }
+.pv .acc{ stroke:var(--accent); stroke-width:2; fill:none; }
+.pv .fill-acc{ fill:var(--accent); }
 .pv text{ font-family:var(--sans); fill:var(--gray); letter-spacing:-.004em; font-weight:500; }
 .pv .code{ font-family:var(--mono); font-weight:400; }
-.pv .t-acc{ fill:var(--blue-ink); }
+.pv .t-acc{ fill:var(--accent-ink); }
 .pv .t-ink{ fill:var(--ink); }
 .pv .anim{ transition:transform .5s var(--ease); }
 .card:hover .pv .g1{ transform:translateY(-3px); }
@@ -946,7 +1025,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <g clip-path="url(#bgclip)">
         <rect x="26" y="30" width="176" height="118" class="fill-card"/>
         <circle cx="78" cy="128" r="62" class="fill-soft"/>
-        <circle cx="156" cy="60" r="48" fill="var(--blue)" opacity=".14"/>
+        <circle cx="156" cy="60" r="48" fill="var(--accent)" opacity=".14"/>
         <circle cx="156" cy="60" r="48" class="acc" opacity=".5" stroke-width="1.5"/>
         <path d="M26 118 118 30h44L46 148H26z" class="fill-ink" opacity=".05"/>
       </g>
@@ -993,7 +1072,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <text x="${x + 11}" y="${y + 19}" font-size="10" class="${isPending ? 't-acc' : 't-ink'}" font-weight="600">${m}</text>
         ${isPending
           ? `<circle cx="${x + 43}" cy="${y + 15}" r="5" class="acc" stroke-width="1.5"/>`
-          : `<path d="M${x + 38} ${y + 15} l3.5 3.5 6-7" stroke="var(--blue)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`}
+          : `<path d="M${x + 38} ${y + 15} l3.5 3.5 6-7" stroke="var(--accent)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`}
         <rect x="${x + 11}" y="${y + 27}" width="${isPending ? 20 : 36}" height="5" rx="2.5" class="fill-soft"/>
       </g>`;
     });
