@@ -12,22 +12,25 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      CANONICAL DOMAIN — every absolute URL below and in the JSON-LD block
-     must match the domain the site actually serves from. When the custom
-     domain goes live, run this once from the project folder:
+     must match the domain the site actually serves from. It's
+     www.fernandopeccatiello.com: Vercel has the apex (fernandopeccatiello.com)
+     308-redirecting to www, so www is the one that actually returns 200 and
+     is what canonical/og/JSON-LD should point at.
 
-       sed -i '' 's|https://fp-portfolio-nine.vercel.app|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
+     To repoint this to a different domain later, run once from the project
+     folder, then redeploy — nothing else needs changing:
 
-     Then redeploy. Nothing else needs changing.
+       sed -i '' 's|https://www.fernandopeccatiello.com|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
      ═══════════════════════════════════════════════════════════════════ -->
-<link rel="canonical" href="https://fp-portfolio-nine.vercel.app/" />
+<link rel="canonical" href="https://www.fernandopeccatiello.com/" />
 
 <meta property="og:type" content="profile" />
-<meta property="og:url" content="https://fp-portfolio-nine.vercel.app/" />
+<meta property="og:url" content="https://www.fernandopeccatiello.com/" />
 <meta property="og:site_name" content="Fernando Peccatiello" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Fernando Peccatiello — I turn growth bottlenecks into useful tools" />
 <meta property="og:description" content="Focused AI-powered tools and experiments for conversion, marketing operations, and better decisions." />
-<meta property="og:image" content="https://fp-portfolio-nine.vercel.app/og.png" />
+<meta property="og:image" content="https://www.fernandopeccatiello.com/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Fernando Peccatiello — I turn growth bottlenecks into useful tools" />
@@ -37,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Fernando Peccatiello — I turn growth bottlenecks into useful tools" />
 <meta name="twitter:description" content="Focused AI-powered tools and experiments for conversion, marketing operations, and better decisions." />
-<meta name="twitter:image" content="https://fp-portfolio-nine.vercel.app/og.png" />
+<meta name="twitter:image" content="https://www.fernandopeccatiello.com/og.png" />
 
 <script type="application/ld+json">
 {
@@ -45,12 +48,12 @@
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://fp-portfolio-nine.vercel.app/#person",
+      "@id": "https://www.fernandopeccatiello.com/#person",
       "name": "Fernando Peccatiello",
       "givenName": "Fernando",
       "familyName": "Peccatiello",
-      "url": "https://fp-portfolio-nine.vercel.app/",
-      "image": "https://fp-portfolio-nine.vercel.app/og.png",
+      "url": "https://www.fernandopeccatiello.com/",
+      "image": "https://www.fernandopeccatiello.com/og.png",
       "jobTitle": "Growth Marketer and AI Product Builder",
       "description": "Growth marketer working at the intersection of conversion, product thinking, and AI. Builds focused tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.",
       "knowsAbout": [
@@ -69,20 +72,20 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://fp-portfolio-nine.vercel.app/#website",
-      "url": "https://fp-portfolio-nine.vercel.app/",
+      "@id": "https://www.fernandopeccatiello.com/#website",
+      "url": "https://www.fernandopeccatiello.com/",
       "name": "Fernando Peccatiello",
       "inLanguage": "en",
-      "publisher": { "@id": "https://fp-portfolio-nine.vercel.app/#person" }
+      "publisher": { "@id": "https://www.fernandopeccatiello.com/#person" }
     },
     {
       "@type": "ProfilePage",
-      "@id": "https://fp-portfolio-nine.vercel.app/#webpage",
-      "url": "https://fp-portfolio-nine.vercel.app/",
+      "@id": "https://www.fernandopeccatiello.com/#webpage",
+      "url": "https://www.fernandopeccatiello.com/",
       "name": "Fernando Peccatiello — Growth Marketing × AI × Product Thinking",
-      "isPartOf": { "@id": "https://fp-portfolio-nine.vercel.app/#website" },
-      "about": { "@id": "https://fp-portfolio-nine.vercel.app/#person" },
-      "primaryImageOfPage": "https://fp-portfolio-nine.vercel.app/og.png"
+      "isPartOf": { "@id": "https://www.fernandopeccatiello.com/#website" },
+      "about": { "@id": "https://www.fernandopeccatiello.com/#person" },
+      "primaryImageOfPage": "https://www.fernandopeccatiello.com/og.png"
     }
   ]
 }

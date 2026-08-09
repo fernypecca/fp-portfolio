@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fp-portfolio-nine.vercel.app/sitemap.xml
+Sitemap: https://www.fernandopeccatiello.com/sitemap.xml

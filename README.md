@@ -47,12 +47,17 @@ qlmanage -t -s 1200 -o . og.svg && mv og.svg.png og.png && sips -c 630 1200 og.p
 
 `robots.txt` and `sitemap.xml` sit at the root.
 
-### Changing the domain
+### Domain
 
-Every absolute URL lives in three files. Swap them in one command, then redeploy:
+Live at `www.fernandopeccatiello.com` — Vercel 308-redirects the apex there,
+so www is the canonical URL used in `index.html`, `sitemap.xml`, and
+`robots.txt`.
+
+To repoint to a different domain, every absolute URL lives in those three
+files. Swap them in one command, then redeploy:
 
 ```bash
-sed -i '' 's|https://fp-portfolio-nine.vercel.app|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
+sed -i '' 's|https://www.fernandopeccatiello.com|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
 ```
 
 Then point the domain at Vercel (`vercel domains add YOURDOMAIN.com`), verify the
