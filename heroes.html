@@ -68,8 +68,11 @@ a:hover .chev{transform:translateX(3px)}
   background-size:100% 5.5rem;
   -webkit-mask-image:linear-gradient(#000,transparent 78%);
   mask-image:linear-gradient(#000,transparent 78%)}
-.hA__in{position:relative;display:grid;gap:clamp(2.5rem,5vw,4rem);align-items:end}
-@media(min-width:62rem){.hA__in{grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:clamp(3rem,6vw,5.5rem)}}
+/* Headline spans full width so it can actually be huge; the supporting
+   column and the index sit underneath it. */
+.hA__in{position:relative;display:grid;gap:clamp(2.25rem,4.5vw,3.5rem);align-items:start;
+  margin-top:clamp(2rem,4vw,3rem)}
+@media(min-width:62rem){.hA__in{grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:clamp(3rem,6vw,5.5rem)}}
 
 .hA__eyebrow{display:inline-flex;align-items:center;gap:.55rem;
   font-size:.875rem;font-weight:500;color:var(--accent-lift);margin-bottom:1.5rem}
@@ -78,7 +81,7 @@ a:hover .chev{transform:translateX(3px)}
 .hA h1{font-size:clamp(2.875rem,1.4rem + 6.2vw,5.75rem);letter-spacing:-.038em;line-height:.98}
 .hA h1 .br{display:block}
 .hA h1 .lift{color:var(--accent-lift)}
-.hA__sub{margin-top:clamp(1.25rem,2.4vw,1.75rem);max-width:44ch;
+.hA__sub{max-width:44ch;
   font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.45;color:var(--night-2)}
 .hA__cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:clamp(1.75rem,3.5vw,2.5rem)}
 
@@ -196,10 +199,11 @@ a:hover .chev{transform:translateX(3px)}
 <div class="tag"><b>Opción A — Blackout</b><span>Oscuro, tipografía enorme, el trabajo listado como índice.</span><em>la más Hormozi</em></div>
 <section class="hA">
   <div class="shell">
+    <p class="hA__eyebrow">Growth marketing × AI × product thinking</p>
+    <h1><span class="br">I turn growth bottlenecks</span><span class="br">into <span class="lift">useful tools.</span></span></h1>
+
     <div class="hA__in">
       <div>
-        <p class="hA__eyebrow">Growth marketing × AI × product thinking</p>
-        <h1><span class="br">I turn growth</span><span class="br">bottlenecks into</span><span class="br lift">useful tools.</span></h1>
         <p class="hA__sub">I build focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.</p>
         <div class="hA__cta">
           <a class="btn btn--light" href="#">Explore the tools</a>
