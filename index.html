@@ -94,7 +94,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-size='15' font-weight='600' fill='%23fff' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Cpath d='M6 25V7h11M6 15.5h7.5' stroke='%23fff' stroke-width='2.5' stroke-linecap='square'/%3E%3Cpath d='M18.5 25V7c4.3 0 7 1.9 7 5.6S22.8 18 18.5 18' stroke='%23fff' stroke-width='2.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
 <script>
 /* ==========================================================================
@@ -103,7 +103,6 @@
 
 const SITE = {
   name:        'Fernando Peccatiello',
-  monogram:    'FP',
   role:        'Growth Marketing × AI × Product Thinking',
   email:       'fernypecca@gmail.com',
   linkedin:    'https://www.linkedin.com/in/fernandopeccatiello/',
@@ -396,10 +395,10 @@ a{ color:inherit; }
 .brand__mark{
   display:grid; place-items:center;
   width:1.75rem; height:1.75rem; border-radius:var(--r-sm);
-  background:var(--ink); color:#fff;
-  font-size:.6875rem; font-weight:600; letter-spacing:.01em;
+  background:var(--ink); flex:none;
   transition:background .25s var(--ease);
 }
+.brand__mark svg{ width:60%; height:60%; }
 .brand:hover .brand__mark{ background:var(--accent); }
 .brand__name span{ color:var(--gray); font-weight:400; }
 
@@ -903,7 +902,9 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 <header class="header" id="header">
   <div class="shell header__inner">
     <a class="brand" href="#top" aria-label="Fernando Peccatiello — back to top">
-      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#fff" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#fff" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg>
+      </span>
       <span class="brand__name">Fernando <span>Peccatiello</span></span>
     </a>
     <nav class="nav" id="nav" aria-label="Primary">
@@ -1229,7 +1230,6 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
      Static content from SITE
   ----------------------------------------------------------------*/
   document.title = SITE.name + ' — ' + SITE.role;
-  $('.brand__mark').textContent = SITE.monogram;
   $('#hero-eyebrow').textContent = SITE.role;
   $('#hero-title').textContent = SITE.headline;
   $('#hero-sub').textContent = SITE.subheadline;

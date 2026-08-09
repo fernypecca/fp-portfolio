@@ -5,8 +5,10 @@
 
   <!-- monogram -->
   <rect x="80" y="76" width="56" height="56" rx="14" fill="#1d1d1f"/>
-  <text x="108" y="113" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
-        font-size="22" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">FP</text>
+  <g transform="translate(80,76) scale(1.75)">
+    <path d="M6 25V7h11M6 15.5h7.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M18.5 25V7c4.3 0 7 1.9 7 5.6S22.8 18 18.5 18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round"/>
+  </g>
   <text x="154" y="112" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
         font-size="24" font-weight="600" fill="#1d1d1f" letter-spacing="-0.4">Fernando Peccatiello</text>
 
