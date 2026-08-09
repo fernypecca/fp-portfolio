@@ -256,8 +256,8 @@ const PROJECTS = [
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --maxw: 1100px;
   --ease: cubic-bezier(.28,.11,.32,1);
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.04);
-  --shadow-md: 0 2px 6px rgba(0,0,0,.05), 0 12px 32px rgba(0,0,0,.08);
+  --shadow-sm: 0 0 0 1px rgba(0,0,0,.055), 0 1px 2px rgba(0,0,0,.03), 0 4px 12px rgba(0,0,0,.04);
+  --shadow-md: 0 0 0 1px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.05), 0 12px 32px rgba(0,0,0,.08);
   --shadow-lg: 0 8px 24px rgba(0,0,0,.08), 0 32px 64px rgba(0,0,0,.14);
 }
 
@@ -426,54 +426,69 @@ a{ color:inherit; }
 .linkarrow .chev{ transition:transform .25s var(--ease); }
 .linkarrow:hover .chev{ transform:translateX(3px); }
 
-/* ---------- Hero ---------- */
-.hero{ position:relative; overflow:hidden; }
-.hero__inner{
-  padding-block:clamp(3.5rem, 7vw, 6.5rem) clamp(2.5rem, 5vw, 4rem);
-  text-align:center;
+/* ---------- Hero (left copy, tool cards as the hero image) ---------- */
+.hero{ position:relative; overflow:hidden; background:var(--bg-alt); }
+.hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); }
+.hero__grid{ display:grid; gap:clamp(2.5rem,5vw,3.5rem); align-items:center; }
+@media (min-width:62rem){
+  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(2.5rem,5vw,4rem); }
 }
-.hero__eyebrow{ margin-bottom:1.1rem; }
-.hero h1{ margin-inline:auto; max-width:15ch; }
-.hero__sub{
-  margin:clamp(1.25rem,2.6vw,1.75rem) auto 0;
-  max-width:60ch;
-}
+.hero__eyebrow{ margin-bottom:1rem; }
+.hero h1{ max-width:15ch; }
+.hero__sub{ margin-top:1.25rem; max-width:46ch; }
 .hero__actions{
-  display:flex; flex-wrap:wrap; gap:.75rem 1.5rem;
-  justify-content:center; align-items:center;
-  margin-top:clamp(1.75rem,3.5vw,2.5rem);
+  display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; align-items:center;
+  margin-top:clamp(1.5rem,3vw,1.75rem);
+}
+
+.markers{
+  list-style:none; margin:2rem 0 0; padding:1.25rem 0 0;
+  border-top:1px solid var(--line);
+  display:grid; gap:.6rem;
+}
+.markers li{ display:flex; gap:.55rem; align-items:center; font-size:.9375rem; color:var(--ink-2); }
+.markers .tick{ color:var(--accent); flex:none; }
+
+/* Stacked tool cards — the real interfaces, fanned */
+.hero__stack{ position:relative; height:clamp(19rem,42vw,25rem); }
+.hcard{
+  position:absolute; margin:0;
+  background:var(--surface); border-radius:18px; padding:.85rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.06), 0 18px 46px rgba(0,0,0,.13);
+  width:min(78%,20rem);
+  transition:transform .5s var(--ease);
+}
+.hcard__v{ border-radius:11px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
+.hcard figcaption{
+  display:flex; align-items:center; gap:.5rem;
+  padding:.55rem .3rem .1rem; font-size:.75rem; color:var(--gray);
+}
+.hcard figcaption b{ font-size:.8125rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+.hcard .pill{
+  margin-left:auto; font-size:.625rem; padding:.16rem .5rem;
+  border-radius:var(--pill); background:var(--accent); color:#fff; white-space:nowrap;
+}
+.hcard .pill--gray{ background:var(--fill); color:var(--ink-2); }
+.hcard--1{ top:0;   left:0;   transform:rotate(-4deg);   z-index:3; }
+.hcard--2{ top:26%; left:16%; transform:rotate(2.5deg);  z-index:2; }
+.hcard--3{ top:52%; left:4%;  transform:rotate(-1.5deg); z-index:1; }
+.hero__stack:hover .hcard--1{ transform:rotate(-6deg) translate(-10px,-8px); }
+.hero__stack:hover .hcard--2{ transform:rotate(3.5deg) translate(12px,0); }
+.hero__stack:hover .hcard--3{ transform:rotate(-2.5deg) translate(-6px,10px); }
+@media (max-width:61.99rem){
+  .hero__stack{ height:clamp(17rem,64vw,22rem); }
+  .hcard{ width:min(72%,17rem); }
 }
 
 .hero__intro{
-  margin:clamp(3rem,6vw,4.5rem) auto 0;
-  max-width:44rem;
-  background:var(--bg-alt);
+  margin:clamp(2.5rem,5vw,4rem) 0 0;
+  max-width:46rem;
+  background:var(--surface);
   border-radius:var(--r-xl);
   padding:clamp(1.5rem,3.2vw,2.25rem);
-  text-align:left;
 }
 .hero__intro p{ color:var(--ink-2); letter-spacing:-.014em; }
-.hero__intro .eyebrow{ display:block; margin-bottom:.6rem; color:var(--gray-2); font-size:.8125rem; }
-
-.markers{
-  list-style:none; margin:clamp(2.5rem,5vw,3.5rem) 0 0; padding:0;
-  display:grid; gap:0;
-  border-top:1px solid var(--line-soft);
-}
-@media (min-width:48rem){
-  .markers{ grid-template-columns:repeat(3,1fr); border-top:0; }
-}
-.markers li{
-  padding:1.15rem .5rem;
-  border-bottom:1px solid var(--line-soft);
-  display:flex; align-items:center; justify-content:center; gap:.6rem;
-  font-size:1.0625rem; font-weight:500; letter-spacing:-.016em;
-}
-@media (min-width:48rem){
-  .markers li{ border-bottom:0; padding-block:0; }
-  .markers li + li{ border-left:1px solid var(--line-soft); }
-}
-.markers .tick{ color:var(--accent); flex:none; }
+.hero__intro .eyebrow{ display:block; margin-bottom:.6rem; color:var(--gray); font-size:.8125rem; }
 
 /* ---------- Section head ---------- */
 .sechead{ margin-bottom:clamp(2rem,4vw,3rem); max-width:44rem; }
@@ -611,7 +626,8 @@ a{ color:inherit; }
 }
 @media (min-width:56rem){ .principles{ grid-template-columns:repeat(3,1fr); } }
 .principle{
-  background:var(--bg-alt);
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
   border-radius:var(--r-xl);
   padding:clamp(1.5rem,2.8vw,2rem);
 }
@@ -637,7 +653,7 @@ a{ color:inherit; }
 }
 .about__meta span{
   font-size:.8125rem; color:var(--gray);
-  background:var(--surface); border-radius:var(--pill); padding:.3rem .75rem;
+  background:var(--bg-alt); border-radius:var(--pill); padding:.3rem .75rem;
 }
 
 .skills{ list-style:none; margin:0; padding:0; }
@@ -768,7 +784,11 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   transition:stroke-dashoffset 1.1s var(--ease) .1s;
 }
 .card[data-seen] .pv .sweep,
+.hcard .pv .sweep,
 .modal__visual .pv .sweep{ stroke-dashoffset:0; }
+.hcard .pv .g1{ transform:translateY(-3px); }
+.hcard .pv .g2{ transform:translateY(-6px); }
+.hcard .pv .g3{ transform:translateY(-9px); }
 .modal__visual .pv .g1{ transform:translateY(-3px); }
 .modal__visual .pv .g2{ transform:translateY(-6px); }
 .modal__visual .pv .g3{ transform:translateY(-9px); }
@@ -784,12 +804,15 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   .reveal{ opacity:1; transform:none; }
   .pv .sweep{ stroke-dashoffset:0; }
   .card:hover{ transform:none; }
+  .hero__stack:hover .hcard--1{ transform:rotate(-4deg); }
+  .hero__stack:hover .hcard--2{ transform:rotate(2.5deg); }
+  .hero__stack:hover .hcard--3{ transform:rotate(-1.5deg); }
 }
 
 /* ---------- Small screens ---------- */
 @media (max-width:47.99rem){
   .nav{ display:none; }
-  .hero__actions .btn{ flex:1 1 12rem; }
+  .hero__actions .btn{ flex:0 1 auto; }
   .count{ margin-left:0; }
 }
 @media (max-width:23.5rem){
@@ -821,29 +844,36 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero__inner">
-      <p class="eyebrow hero__eyebrow" id="hero-eyebrow"></p>
-      <h1 class="t-hero" id="hero-title"></h1>
-      <p class="t-lede hero__sub" id="hero-sub"></p>
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow hero__eyebrow" id="hero-eyebrow"></p>
+          <h1 class="t-hero" id="hero-title"></h1>
+          <p class="t-lede hero__sub" id="hero-sub"></p>
 
-      <div class="hero__actions">
-        <a class="btn" href="#work">Explore the tools</a>
-        <a class="linkarrow" href="#approach">
-          My approach
-          <svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+          <div class="hero__actions">
+            <a class="btn" href="#work">Explore the tools</a>
+            <a class="linkarrow" href="#approach">
+              My approach
+              <svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <ul class="markers" id="markers" aria-label="Capability markers"></ul>
+        </div>
+
+        <!-- Populated from the first three PROJECTS, so it stays in sync -->
+        <div class="hero__stack" id="hero-stack" aria-hidden="true"></div>
       </div>
 
       <div class="hero__intro">
         <span class="eyebrow">Short intro</span>
         <p id="hero-intro"></p>
       </div>
-
-      <ul class="markers" id="markers" aria-label="Capability markers"></ul>
     </div>
   </section>
 
   <!-- ============ WORK ============ -->
-  <section class="section section--alt" id="work" aria-labelledby="work-title">
+  <section class="section" id="work" aria-labelledby="work-title">
     <div class="shell">
       <div class="sechead">
         <span class="eyebrow">Selected work</span>
@@ -861,7 +891,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   </section>
 
   <!-- ============ APPROACH ============ -->
-  <section class="section" id="approach" aria-labelledby="approach-title">
+  <section class="section section--alt" id="approach" aria-labelledby="approach-title">
     <div class="shell">
       <div class="sechead">
         <span class="eyebrow">Method</span>
@@ -872,7 +902,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="section section--alt" id="about" aria-labelledby="about-title">
+  <section class="section" id="about" aria-labelledby="about-title">
     <div class="shell about">
       <div>
         <span class="eyebrow">About</span>
@@ -1102,6 +1132,16 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 
   $('#markers').innerHTML = SITE.markers.map((m) =>
     `<li>${tick}<span>${esc(m)}</span></li>`).join('');
+
+  /* Hero image = the first three tools, fanned. Reorder PROJECTS and this
+     follows automatically. */
+  $('#hero-stack').innerHTML = PROJECTS.slice(0, 3).map((p, i) =>
+    `<figure class="hcard hcard--${i + 1}">
+      <div class="hcard__v">${VISUALS[p.visual] || ''}</div>
+      <figcaption><b>${esc(p.name)}</b>
+        <span class="pill${p.status === 'Live tool' ? '' : ' pill--gray'}">${esc(p.status)}</span>
+      </figcaption>
+    </figure>`).join('');
 
   $('#principles').innerHTML = SITE.approach.map((p, i) =>
     `<li class="principle reveal"><span class="principle__n" aria-hidden="true">${pad(i + 1)}</span>
