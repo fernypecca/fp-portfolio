@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fernando Peccatiello — Growth marketing × AI × product thinking</title>
+<title>Fernando Peccatiello — Growth Marketing × AI × Product Thinking</title>
 <meta name="description" content="I turn growth bottlenecks into useful tools. Focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions." />
 <meta name="color-scheme" content="light" />
 <meta name="theme-color" content="#ffffff" />
@@ -79,7 +79,7 @@
       "@type": "ProfilePage",
       "@id": "https://fp-portfolio-nine.vercel.app/#webpage",
       "url": "https://fp-portfolio-nine.vercel.app/",
-      "name": "Fernando Peccatiello — Growth marketing × AI × product thinking",
+      "name": "Fernando Peccatiello — Growth Marketing × AI × Product Thinking",
       "isPartOf": { "@id": "https://fp-portfolio-nine.vercel.app/#website" },
       "about": { "@id": "https://fp-portfolio-nine.vercel.app/#person" },
       "primaryImageOfPage": "https://fp-portfolio-nine.vercel.app/og.png"
@@ -101,7 +101,7 @@
 const SITE = {
   name:        'Fernando Peccatiello',
   monogram:    'FP',
-  role:        'Growth marketing × AI × product thinking',
+  role:        'Growth Marketing × AI × Product Thinking',
   email:       'fernypecca@gmail.com',
   linkedin:    'https://www.linkedin.com/in/fernandopeccatiello/',
   location:    'Barcelona',
@@ -113,7 +113,7 @@ const SITE = {
   intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
 
   markers: [
-    '6 tools shipped',
+    '7 tools shipped',
     'AI-powered workflows',
     'Growth & conversion systems'
   ],
@@ -155,6 +155,18 @@ const PROJECTS = [
     solution: 'A guided ROI model with CAC, profit per booking, scenario planning, and tailored ad-creation prompts.',
     demonstrates: 'Business modelling, interactive lead magnets, conversion strategy.',
     tags: ['ROI', 'CAC', 'Interactive Tool', 'Lead Magnet']
+  },
+  {
+    name: 'Competitor Gap Analyzer',
+    category: 'AI Lead Magnets',
+    status: 'Live tool',
+    url: 'https://competitor-gap-analyzer.vercel.app/',
+    visual: 'gap',
+    description: 'Turns a wedding-marketplace profile URL into a side-by-side comparison against the vendors currently outranking it, with a gap score and a prioritized fix list.',
+    problem: 'Vendors can see that better-ranked competitors exist, but not which specific gaps — reviews, photos, pricing, awards — are actually costing them bookings.',
+    solution: 'A URL-first tool that benchmarks a profile against the vendors outranking it, scores the gap from 0–100, and returns the free-to-fix gaps first.',
+    demonstrates: 'Competitive analysis, data-backed prioritization, lead magnet design.',
+    tags: ['Competitive Analysis', 'AI', 'Benchmarking', 'Lead Magnet']
   },
   {
     name: 'Storefront Analyzer',
@@ -431,7 +443,7 @@ a{ color:inherit; }
 .hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); }
 .hero__grid{ display:grid; gap:clamp(2.5rem,5vw,3.5rem); align-items:center; }
 @media (min-width:62rem){
-  .hero__grid{ grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(2.5rem,5vw,4rem); }
+  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(2.5rem,5vw,4rem); }
 }
 .hero__eyebrow{ margin-bottom:1rem; }
 /* Capped below --t-hero: the headline now lives in half a column, and at the
@@ -452,15 +464,31 @@ a{ color:inherit; }
 .markers .tick{ color:var(--accent); flex:none; }
 
 /* Stacked tool cards — the real interfaces, fanned.
-   The value below is only a pre-JS fallback: card height depends on how the
-   captions wrap, which CSS can't know, so fanStack() measures and sets the
-   real offsets and container height. */
-.hero__stack{ position:relative; height:clamp(24rem, 34vw + 14rem, 30rem); }
+   Card width and left offsets are fixed rem, not %: they used to be
+   percentages of the column, so widening the column (to balance the grid)
+   silently widened the empty space past the fan instead of closing it.
+   Fixed rem + a width-matched container centers the fan exactly, regardless
+   of how wide its grid column is.
+   Height is only a pre-JS fallback: card height depends on how the captions
+   wrap, which CSS can't know, so fanStack() measures and sets the real
+   vertical offsets and container height. */
+.hero__stack{ position:relative; width:min(100%,22.75rem); margin-inline:auto; height:clamp(24rem, 34vw + 14rem, 30rem); }
+/* Below 62rem the fan is centered under the stacked text (rule above). At
+   62rem+ it should mirror the text column instead — text sits flush at its
+   column's start edge, so a fan narrower than its own column, if centered,
+   leaves matching slack on both sides, which reads as extra empty space on
+   the right since the text side has none. Flush to the column's end edge
+   fixes that. This has to come AFTER the base rule above: same selector,
+   same specificity, so source order decides, and the base rule already sits
+   below the old location of this override, silently winning every time. */
+@media (min-width:62rem){
+  .hero__stack{ margin-left:auto; margin-right:0; }
+}
 .hcard{
   position:absolute; margin:0;
   background:var(--surface); border-radius:18px; padding:.85rem;
   box-shadow:0 2px 8px rgba(0,0,0,.06), 0 18px 46px rgba(0,0,0,.13);
-  width:min(78%,20rem);
+  width:20rem;
   transition:transform .5s var(--ease);
 }
 .hcard__v{ border-radius:11px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
@@ -474,14 +502,21 @@ a{ color:inherit; }
   border-radius:var(--pill); background:var(--accent); color:#fff; white-space:nowrap;
 }
 .hcard .pill--gray{ background:var(--fill); color:var(--ink-2); }
-.hcard--1{ top:0;   left:0;   transform:rotate(-4deg);   z-index:3; }
-.hcard--2{ top:44%; left:16%; transform:rotate(2.5deg);  z-index:2; }
-.hcard--3{ top:88%; left:4%;  transform:rotate(-1.5deg); z-index:1; }
+/* Offsets span exactly 0–22.75rem — the same as .hero__stack's width — so
+   the fan fills its container edge to edge with no leftover gap on either
+   side. */
+.hcard--1{ top:0;   left:0;      transform:rotate(-4deg);   z-index:3; }
+.hcard--2{ top:44%; left:2.75rem; transform:rotate(2.5deg);  z-index:2; }
+.hcard--3{ top:88%; left:1rem;   transform:rotate(-1.5deg); z-index:1; }
 .hero__stack:hover .hcard--1{ transform:rotate(-6deg) translate(-10px,-8px); }
 .hero__stack:hover .hcard--2{ transform:rotate(3.5deg) translate(12px,0); }
 .hero__stack:hover .hcard--3{ transform:rotate(-2.5deg) translate(-6px,10px); }
 @media (max-width:61.99rem){
-  .hcard{ width:min(72%,17rem); }
+  /* Union scaled down to match: 16 + 2.2 = 18.2rem. */
+  .hero__stack{ width:min(100%,18.2rem); }
+  .hcard{ width:16rem; }
+  .hcard--2{ left:2.2rem; }
+  .hcard--3{ left:.8rem; }
 }
 
 .hero__intro{
@@ -649,7 +684,13 @@ a{ color:inherit; }
 /* ---------- About ---------- */
 .about{ display:grid; gap:clamp(2rem,4vw,3.5rem); }
 @media (min-width:60rem){
-  .about{ grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:clamp(2.5rem,6vw,5rem); }
+  /* The left column runs 3 lines of h2 + body + chips; the right is a short
+     h3 + list. Top-aligned, the short column read as floating, disconnected
+     from the tall one — centering them as a pair balances it. */
+  .about{
+    grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:clamp(2.5rem,6vw,5rem);
+    align-items:center;
+  }
 }
 .about__body{ margin-top:1.4rem; max-width:52ch; }
 .about__meta{
@@ -1020,6 +1061,36 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <path class="ln" d="M176 138h88M176 146h36" stroke="var(--line)"/>
       </g>
       <text x="150" y="176" font-size="9">Prioritised conversion fixes</text>
+    </svg>`,
+
+    /* Benchmark bar chart with a dashed target line — deliberately not a
+       ring: the ring + rows layout already belongs to "analyzer" below, and
+       the two tools shouldn't read as the same illustration. */
+    gap: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract benchmark: three ranked bars climbing toward a dashed target line, with a gap-score badge">
+      <rect x="20" y="20" width="60" height="60" rx="15" class="fill-card" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="50" y="54" font-size="21" font-weight="600" class="t-ink" text-anchor="middle">38</text>
+      <text x="50" y="70" font-size="7" text-anchor="middle">Gap score</text>
+
+      <text x="108" y="30" font-size="8.5">vs. Premium vendors outranking you</text>
+      <path class="ln" d="M108 46h188" stroke-dasharray="3 4" stroke="var(--line)"/>
+
+      <g class="anim g1">
+        <rect x="118" y="106" width="40" height="46" rx="8" class="fill-soft"/>
+        <rect x="118" y="106" width="40" height="46" rx="8" class="fill-acc"/>
+        <text x="138" y="166" font-size="8" class="t-acc" font-weight="600" text-anchor="middle">You</text>
+      </g>
+      <g class="anim g2">
+        <rect x="180" y="82" width="40" height="70" rx="8" class="fill-soft"/>
+        <rect x="180" y="82" width="40" height="70" rx="8" fill="var(--line)"/>
+        <text x="200" y="166" font-size="8" text-anchor="middle">Premium avg</text>
+      </g>
+      <g class="anim g3">
+        <rect x="242" y="46" width="40" height="106" rx="8" class="fill-soft"/>
+        <rect x="242" y="46" width="40" height="106" rx="8" class="fill-ink" opacity=".78"/>
+        <text x="262" y="166" font-size="8" text-anchor="middle">#1 in zone</text>
+      </g>
+
+      <text x="24" y="188" font-size="9">Reviews · Photos · Pricing · Awards</text>
     </svg>`,
 
     /* Multi-market QA board */
