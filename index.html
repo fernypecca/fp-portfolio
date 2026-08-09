@@ -410,6 +410,33 @@ a{ color:inherit; }
 .nav a:hover{ opacity:1; }
 .nav a[aria-current="true"]{ color:var(--accent-ink); opacity:1; font-weight:500; }
 
+/* Hamburger + panel: hidden by default, shown only under the .nav
+   breakpoint (see small-screens section) so desktop never sees them. */
+.menu-btn{
+  display:none;
+  width:2.25rem; height:2.25rem; flex:none;
+  align-items:center; justify-content:center;
+  background:transparent; border:0; border-radius:var(--r-sm);
+  color:var(--ink); cursor:pointer;
+  transition:background .2s var(--ease);
+}
+.menu-btn:hover{ background:var(--fill); }
+.menu-btn__bars{ transition:d .2s var(--ease); }
+
+.mobile-nav{
+  display:none;
+  flex-direction:column;
+  padding:.25rem var(--gutter) 1rem;
+  border-top:1px solid var(--line-soft);
+}
+.mobile-nav a{
+  font-size:1rem; font-weight:500; text-decoration:none; color:var(--ink);
+  padding:.85rem 0; border-bottom:1px solid var(--line-soft);
+}
+.mobile-nav a:last-child{ border-bottom:0; }
+.mobile-nav a[aria-current="true"]{ color:var(--accent-ink); }
+.mobile-nav[data-open="true"]{ display:flex; }
+
 /* ---------- Buttons ---------- */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.35rem;
@@ -857,6 +884,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 /* ---------- Small screens ---------- */
 @media (max-width:47.99rem){
   .nav{ display:none; }
+  .menu-btn{ display:flex; }
   .hero__actions .btn{ flex:0 1 auto; }
   .count{ margin-left:0; }
 }
@@ -881,7 +909,17 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <a href="#about">About</a>
     </nav>
     <a class="btn btn--sm" id="header-cta" href="#"></a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <path class="menu-btn__bars" d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Primary" hidden>
+    <a href="#work">Work</a>
+    <a href="#approach">Approach</a>
+    <a href="#about">About</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -1379,7 +1417,24 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  const navLinks = $$('#nav a');
+  /* Mobile menu: below the .nav breakpoint there was previously no way to
+     reach Approach/About without scrolling — the desktop nav just vanished. */
+  const menuBtn = $('#menu-btn');
+  const mobileNav = $('#mobile-nav');
+  const setMenu = (open) => {
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mobileNav.hidden = !open;
+    mobileNav.setAttribute('data-open', String(open));
+    menuBtn.querySelector('.menu-btn__bars').setAttribute('d',
+      open ? 'M3 3l12 12M15 3L3 15' : 'M2 5h14M2 9h14M2 13h14');
+  };
+  menuBtn.addEventListener('click', () => setMenu(mobileNav.hidden));
+  $$('#mobile-nav a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mobileNav.hidden) setMenu(false); });
+  window.matchMedia('(min-width:48rem)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
+  const navLinks = $$('#nav a, #mobile-nav a');
   if ('IntersectionObserver' in window) {
     const spy = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
