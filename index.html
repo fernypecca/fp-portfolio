@@ -431,10 +431,12 @@ a{ color:inherit; }
 .hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); }
 .hero__grid{ display:grid; gap:clamp(2.5rem,5vw,3.5rem); align-items:center; }
 @media (min-width:62rem){
-  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(2.5rem,5vw,4rem); }
+  .hero__grid{ grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(2.5rem,5vw,4rem); }
 }
 .hero__eyebrow{ margin-bottom:1rem; }
-.hero h1{ max-width:15ch; }
+/* Capped below --t-hero: the headline now lives in half a column, and at the
+   full size it broke into four lines with "tools." stranded on its own. */
+.hero h1{ max-width:16ch; font-size:clamp(2.5rem, 1.2rem + 4.2vw, 3.5rem); }
 .hero__sub{ margin-top:1.25rem; max-width:46ch; }
 .hero__actions{
   display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; align-items:center;
