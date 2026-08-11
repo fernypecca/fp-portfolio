@@ -115,7 +115,7 @@ const SITE = {
   intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
 
   markers: [
-    '7 tools shipped',
+    '8 tools shipped',
     'AI-powered workflows',
     'Growth & conversion systems'
   ],
@@ -169,6 +169,18 @@ const PROJECTS = [
     solution: 'A URL-first tool that benchmarks a profile against the vendors outranking it, scores the gap from 0–100, and returns the free-to-fix gaps first.',
     demonstrates: 'Competitive analysis, data-backed prioritization, lead magnet design.',
     tags: ['Competitive Analysis', 'AI', 'Benchmarking', 'Lead Magnet']
+  },
+  {
+    name: 'Wedding Earnings Estimator',
+    category: 'Conversion & Revenue',
+    status: 'Live tool',
+    url: 'https://wedding-earnings-estimator.vercel.app/',
+    visual: 'map',
+    description: 'An interactive map of Spain that shows wedding vendors what a business in their category and province could realistically earn per year, benchmarked against national averages.',
+    problem: 'Vendors weighing a new category or region have no quick way to see realistic earnings potential without digging through scattered market data.',
+    solution: 'Pick a category, tap a province, and get an average and top-province estimate in one click — 52 provinces, 6 categories, no signup required to explore.',
+    demonstrates: 'Interactive data visualization, regional benchmarking, lead magnet design.',
+    tags: ['Interactive Map', 'Benchmarking', 'Lead Magnet', 'Data Viz']
   },
   {
     name: 'Storefront Analyzer',
@@ -1133,6 +1145,27 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       </g>
 
       <text x="24" y="188" font-size="9">Reviews · Photos · Pricing · Awards</text>
+    </svg>`,
+
+    /* Highlighted region beside an earnings-estimate callout */
+    map: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract map: a highlighted province beside an earnings estimate callout">
+      <g class="anim g1">
+        <path d="M24 62 L62 38 L100 52 L110 86 L86 116 L48 120 L22 96 Z" class="fill-soft"/>
+        <path d="M62 38 L100 52 L110 86 L86 116 L66 98 L58 74 Z" class="fill-acc" opacity=".85"/>
+        <path class="ln" d="M24 62 L62 38 L100 52 L110 86 L86 116 L48 120 L22 96 Z"/>
+        <path class="ln" d="M58 74 L86 116 M62 38 L58 74 M100 52 L58 74" opacity=".5"/>
+      </g>
+      <g class="anim g2">
+        <rect x="140" y="42" width="152" height="60" rx="10" class="fill-card"/>
+        <text x="152" y="62" font-size="8">Top province</text>
+        <text x="152" y="86" font-size="21" font-weight="600" class="t-ink">&#8364;54,500</text>
+      </g>
+      <g class="anim g3">
+        <rect x="140" y="112" width="44" height="24" rx="12" class="fill-soft"/>
+        <rect x="190" y="112" width="44" height="24" rx="12" class="fill-soft"/>
+        <rect x="240" y="112" width="50" height="24" rx="12" class="fill-acc"/>
+      </g>
+      <text x="24" y="176" font-size="9">52 provinces · 6 categories</text>
     </svg>`,
 
     /* Multi-market QA board */
