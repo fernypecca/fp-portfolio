@@ -94,7 +94,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Cpath d='M6 25V7h11M6 15.5h7.5' stroke='%23fff' stroke-width='2.5' stroke-linecap='square'/%3E%3Cpath d='M18.5 25V7c4.3 0 7 1.9 7 5.6S22.8 18 18.5 18' stroke='%23fff' stroke-width='2.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<!-- Real files at their own URLs, not a data: URI — Google's favicon crawler
+     needs an independently fetchable resource to cache and serve in search
+     results; an inline data: URI has no standalone URL for it to index. -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <script>
 /* ==========================================================================
@@ -817,7 +822,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 }
 .modal__head{
   position:sticky; top:0; z-index:2;
-  display:flex; align-items:center; gap:.6rem; flex-wrap:wrap;
+  display:flex; align-items:center; gap:.6rem;
   padding:.9rem clamp(1.25rem,3vw,2rem);
   background:rgba(255,255,255,.82);
   backdrop-filter:saturate(180%) blur(20px);
@@ -825,11 +830,8 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   border-bottom:1px solid var(--line-soft);
   border-radius:var(--r-xl) var(--r-xl) 0 0;
 }
-/* Pushes itself + the close button to the right, tight together; the
-   primary CTA lives here too so it's reachable without scrolling the
-   modal body, not just after the problem/solution/tags block. */
-#modal-link-top{ margin-left:auto; white-space:nowrap; }
 .modal__close{
+  margin-left:auto;
   width:1.875rem; height:1.875rem; flex:none;
   display:grid; place-items:center;
   background:var(--fill); border:0; border-radius:50%;
@@ -845,6 +847,13 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   border-radius:var(--r-md); background:var(--bg-alt);
   aspect-ratio:16/10; overflow:hidden;
 }
+/* Primary CTA, right under the visual — the first prominent thing after
+   the illustration, not a small button tucked next to the close icon. */
+.modal__cta{
+  display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; align-items:center;
+  margin-bottom:1.75rem;
+}
+.modal__cta .note{ font-size:.8125rem; color:var(--gray); }
 .modal__dl{ margin:0; display:grid; gap:1.25rem; }
 .modal__dl > div{ display:grid; gap:.35rem; }
 .modal__dl dt{ font-size:.8125rem; font-weight:600; color:var(--gray); letter-spacing:-.004em; }
@@ -1047,7 +1056,6 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <div class="modal__panel">
     <div class="modal__head">
       <span class="card__cat" id="modal-cat"></span>
-      <a class="btn btn--sm" id="modal-link-top" href="#" target="_blank" rel="noopener noreferrer">Open tool</a>
       <button class="modal__close" id="modal-close" type="button" aria-label="Close project details">
         <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
@@ -1057,6 +1065,10 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <h2 class="t-h2" id="modal-title" style="font-size:clamp(1.75rem,1.3rem + 1.8vw,2.5rem)"></h2>
       <p class="t-lede" id="modal-desc" style="margin-top:.85rem"></p>
       <div class="modal__visual" id="modal-visual" aria-hidden="true"></div>
+      <div class="modal__cta">
+        <a class="btn" id="modal-link-top" href="#" target="_blank" rel="noopener noreferrer">Open tool</a>
+        <span class="note">Opens in a new tab</span>
+      </div>
       <dl class="modal__dl">
         <div><dt>Problem</dt><dd id="modal-problem"></dd></div>
         <div><dt>Solution</dt><dd id="modal-solution"></dd></div>
