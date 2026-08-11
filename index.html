@@ -115,7 +115,7 @@ const SITE = {
   intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
 
   markers: [
-    '8 tools shipped',
+    '9 tools shipped',
     'AI-powered workflows',
     'Growth & conversion systems'
   ],
@@ -146,6 +146,18 @@ const FILTERS = ['All', 'Conversion & Revenue', 'AI Lead Magnets', 'Internal Too
 
 /* Ordered by significance, not chronology. */
 const PROJECTS = [
+  {
+    name: 'Growth Agent Orchestrator',
+    category: 'AI Lead Magnets',
+    status: 'Live tool',
+    url: 'https://growth-agent-orchestrator.vercel.app/',
+    visual: 'orchestrator',
+    description: 'Turns a brand, its competitors, and a buyer persona into a full GTM package — competitor ad intel, sales battlecards, ad creative, and an outbound sequence — in about 60 seconds.',
+    problem: 'Pulling real competitive intel and matching campaign copy for a launch normally means hours of ad research, news monitoring, battlecard writing, and outbound drafting, done one at a time.',
+    solution: 'Five specialized agents run in parallel: one scrapes real Meta/Google ads and news per competitor, one drafts battlecards, one reviews them and regenerates any that fail the check, one writes ad creative for the brand, one builds the outbound sequence — each streaming in live as it finishes.',
+    demonstrates: 'Multi-agent orchestration, schema-validated outputs with retries, self-review and regeneration, real-time streaming.',
+    tags: ['Agent Orchestration', 'Claude API', 'Streaming', 'Next.js']
+  },
   {
     name: 'The ROI Roadmap',
     category: 'Conversion & Revenue',
@@ -1073,6 +1085,31 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
      Each is a fragment of the interface or model behind the tool.
   ----------------------------------------------------------------*/
   const VISUALS = {
+    /* Five parallel agent nodes converging into one compiled package */
+    orchestrator: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract pipeline: five parallel agent nodes converging into one compiled package">
+      <g class="anim g1">
+        <path class="ln" d="M46 40h212" opacity=".55"/>
+        <circle cx="46" cy="40" r="9" class="fill-soft"/>
+        <circle cx="99" cy="40" r="9" class="fill-soft"/>
+        <circle cx="152" cy="40" r="10" class="fill-acc"/>
+        <circle cx="152" cy="40" r="16" class="acc" stroke-width="1.5" opacity=".35"/>
+        <circle cx="205" cy="40" r="9" class="fill-soft"/>
+        <circle cx="258" cy="40" r="9" class="fill-soft"/>
+      </g>
+      <g class="anim g2">
+        <path class="ln" d="M46 40V92M99 40V92M152 40V92M205 40V92M258 40V92" opacity=".4"/>
+        <path class="ln" d="M46 92 152 92 258 92" opacity=".4"/>
+        <path class="ln" d="M152 92V106" opacity=".4"/>
+      </g>
+      <g class="anim g3">
+        <rect x="82" y="108" width="140" height="62" rx="12" class="fill-card"/>
+        <rect x="98" y="122" width="76" height="7" rx="3.5" class="fill-soft"/>
+        <rect x="98" y="136" width="108" height="7" rx="3.5" class="fill-soft"/>
+        <rect x="98" y="150" width="60" height="7" rx="3.5" class="fill-acc"/>
+      </g>
+      <text x="24" y="188" font-size="9">5 agents · streamed live</text>
+    </svg>`,
+
     /* Break-even model: profit curve crossing a spend baseline */
     roi: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract chart: a profit curve rising above a spend baseline">
       <path class="ln-2" d="M46 34h248M46 74h248M46 114h248M46 154h248"/>
