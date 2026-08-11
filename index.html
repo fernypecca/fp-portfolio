@@ -817,7 +817,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 }
 .modal__head{
   position:sticky; top:0; z-index:2;
-  display:flex; align-items:center; gap:.6rem;
+  display:flex; align-items:center; gap:.6rem; flex-wrap:wrap;
   padding:.9rem clamp(1.25rem,3vw,2rem);
   background:rgba(255,255,255,.82);
   backdrop-filter:saturate(180%) blur(20px);
@@ -825,8 +825,11 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   border-bottom:1px solid var(--line-soft);
   border-radius:var(--r-xl) var(--r-xl) 0 0;
 }
+/* Pushes itself + the close button to the right, tight together; the
+   primary CTA lives here too so it's reachable without scrolling the
+   modal body, not just after the problem/solution/tags block. */
+#modal-link-top{ margin-left:auto; white-space:nowrap; }
 .modal__close{
-  margin-left:auto;
   width:1.875rem; height:1.875rem; flex:none;
   display:grid; place-items:center;
   background:var(--fill); border:0; border-radius:50%;
@@ -1044,6 +1047,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <div class="modal__panel">
     <div class="modal__head">
       <span class="card__cat" id="modal-cat"></span>
+      <a class="btn btn--sm" id="modal-link-top" href="#" target="_blank" rel="noopener noreferrer">Open tool</a>
       <button class="modal__close" id="modal-close" type="button" aria-label="Close project details">
         <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
@@ -1463,9 +1467,10 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
     $('#modal-solution').textContent = p.solution;
     $('#modal-demo').textContent = p.demonstrates;
     $('#modal-tags').innerHTML = p.tags.map((t) => `<li>${esc(t)}</li>`).join('');
-    const link = $('#modal-link');
-    link.href = p.url;
-    link.setAttribute('aria-label', 'Open ' + p.name + ' in a new tab');
+    $$('#modal-link, #modal-link-top').forEach((link) => {
+      link.href = p.url;
+      link.setAttribute('aria-label', 'Open ' + p.name + ' in a new tab');
+    });
 
     $('.modal__panel', modal).scrollTop = 0;
     if (typeof modal.showModal === 'function') modal.showModal();
