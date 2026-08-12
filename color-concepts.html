@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Color concepts v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0b0b0d; --panel:#151517; --line:rgba(255,255,255,.09);
+  --ink:#f5f5f7; --gray:#9a9aa0;
+  --sans:-apple-system,BlinkMacSystemFont,'Onest','Helvetica Neue',sans-serif;
+  --pill:980px; --ease:cubic-bezier(.28,.11,.32,1);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+  font-size:17px;line-height:1.47;letter-spacing:-.012em;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.022em}
+p{margin:0}
+
+.tag{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.85);backdrop-filter:blur(20px) saturate(180%);
+  padding:.85rem 2rem;border-bottom:1px solid var(--line)}
+.tag b{font-size:.9375rem}
+.tag span{font-size:.8125rem;color:var(--gray);margin-left:.6rem}
+
+.wrap{max-width:1080px;margin-inline:auto;padding:3rem 2rem 6rem}
+.intro{color:var(--gray);max-width:62ch;margin-bottom:3rem;font-size:1.0625rem}
+.intro b{color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:1.5rem}
+
+.card{
+  position:relative;
+  background:var(--panel);
+  border-radius:28px;
+  border:1px solid var(--line);
+  padding:1.75rem;
+  overflow:hidden;
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 24px 60px -20px rgba(0,0,0,.6);
+}
+.card.current{border-color:color-mix(in srgb, var(--acc) 55%, transparent)}
+.glow{
+  position:absolute; inset:-40% -40% auto auto; width:70%; aspect-ratio:1;
+  background:radial-gradient(circle, var(--acc) 0%, transparent 70%);
+  opacity:.5; filter:blur(40px); pointer-events:none;
+}
+.glow2{
+  position:absolute; inset:auto auto -50% -30%; width:60%; aspect-ratio:1;
+  background:radial-gradient(circle, var(--acc) 0%, transparent 70%);
+  opacity:.25; filter:blur(50px); pointer-events:none;
+}
+
+.label{position:relative;display:flex;align-items:center;gap:.85rem;margin-bottom:1.5rem}
+.swatch{
+  width:2.5rem;height:2.5rem;border-radius:12px;flex:none;
+  background:linear-gradient(155deg, color-mix(in srgb, var(--acc) 100%, white 22%) 0%, var(--acc) 45%, color-mix(in srgb, var(--acc) 100%, black 18%) 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset, 0 8px 20px -6px var(--acc);
+}
+.label h3{font-size:1.125rem}
+.label .src{font-size:.8125rem;color:var(--gray);margin-top:.1rem}
+.pill{margin-left:auto;font-size:.6875rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--bg);background:var(--ink);padding:.32rem .7rem;border-radius:999px}
+
+.demo{
+  position:relative;
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--line);
+  border-radius:18px;padding:1.75rem;
+  backdrop-filter:blur(6px);
+}
+.eyebrow{font-size:.9375rem;font-weight:600;color:var(--acc-lift);margin-bottom:.6rem}
+.headline{font-size:clamp(1.375rem,1.1rem + 1.2vw,1.75rem);font-weight:600;letter-spacing:-.026em;
+  line-height:1.08;max-width:19ch;margin-bottom:1.4rem;color:#fff}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.35rem;font:inherit;font-size:.9375rem;font-weight:500;
+  padding:.65rem 1.3rem;border:0;border-radius:var(--pill);color:#fff;text-decoration:none;cursor:pointer;
+  background:linear-gradient(155deg, color-mix(in srgb, var(--acc) 100%, white 18%), var(--acc) 55%);
+  box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 10px 24px -8px var(--acc);
+}
+.link{color:var(--acc-lift);text-decoration:none;font-size:.9375rem;font-weight:500}
+.link:hover{text-decoration:underline}
+.chip{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:500;color:#fff;
+  padding:.26rem .65rem;border-radius:999px;
+  background:linear-gradient(155deg, color-mix(in srgb, var(--acc) 100%, white 18%), var(--acc));
+  box-shadow:0 4px 12px -4px var(--acc);
+}
+.chip .dot{width:.375rem;height:.375rem;border-radius:50%;background:currentColor}
+.check{display:flex;align-items:center;gap:.5rem;font-size:.9375rem;margin-top:1.1rem;color:var(--gray)}
+.check svg{color:var(--acc-lift);flex:none}
+</style>
+</head>
+<body>
+
+<div class="tag"><b>Color concepts v2</b><span>Colores de sistema iOS/macOS — el picker de acento real de Apple, no acabados de hardware</span></div>
+
+<div class="wrap">
+  <p class="intro">Más vivos que la ronda anterior — estos son los colores de acento que Apple usa dentro de sus propias apps (Recordatorios, Calendario, Mensajes), no el tono apagado de una carcasa. Con glow, glass y profundidad real para que se sientan, no solo se vean.</p>
+
+  <div class="grid" id="cards"></div>
+</div>
+
+<script>
+const OPTIONS = [
+  { name:'System Blue', src:'iOS/macOS — acento por defecto', acc:'#0A84FF', lift:'#5AC8FF' },
+  { name:'System Indigo', src:'iOS/macOS', acc:'#5E5CE6', lift:'#9E9CFF' },
+  { name:'System Purple', src:'iOS/macOS', acc:'#BF5AF2', lift:'#DA9CFF' },
+  { name:'System Pink', src:'iOS/macOS', acc:'#FF375F', lift:'#FF7A96' },
+  { name:'System Orange', src:'iOS/macOS', acc:'#FF9F0A', lift:'#FFC059' },
+  { name:'System Green', src:'iOS/macOS', acc:'#30D158', lift:'#6EE68A' },
+  { name:'System Teal', src:'iOS/macOS', acc:'#40C8E0', lift:'#7BDCEE' }
+];
+
+const tick = `<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const chev = `<svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+document.getElementById('cards').innerHTML = OPTIONS.map((o) => `
+  <div class="card" style="--acc:${o.acc}">
+    <div class="glow"></div>
+    <div class="glow2"></div>
+    <div class="label">
+      <div class="swatch"></div>
+      <div>
+        <h3>${o.name}</h3>
+        <div class="src">${o.src}</div>
+      </div>
+    </div>
+    <div class="demo" style="--acc:${o.acc};--acc-lift:${o.lift}">
+      <p class="eyebrow">Growth Marketing × AI × Product Thinking</p>
+      <h2 class="headline">I turn growth bottlenecks into useful tools.</h2>
+      <div class="row">
+        <a class="btn" href="#">Explore the tools</a>
+        <a class="link" href="#">My approach ${chev}</a>
+        <span class="chip"><span class="dot"></span>Live tool</span>
+      </div>
+      <div class="check">${tick}<span>7 tools shipped</span></div>
+    </div>
+  </div>
+`).join('');
+</script>
+</body>
+</html>

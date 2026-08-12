@@ -282,10 +282,15 @@ const PROJECTS = [
   --gray-2:    #86868b;
   --line:      #d2d2d7;
   --line-soft: #e5e5ea;
-  --accent:       #2A6F8A;   /* Pacific Blue — fills, strokes, buttons */
-  --accent-ink:   #215A72;   /* darker, for accent text on white */
-  --accent-hover: #33809E;
-  --accent-wash:  #eef4f7;
+  /* System Blue — iOS/macOS's own accent color. The vivid #0A84FF he picked
+     only hits ~3.6:1 white-on-it / text-on-white, short of AA's 4.5:1 — so
+     it's the --accent-hover "reveal" instead of the resting fill. Resting
+     --accent is darkened just enough for AA (5.3:1), --accent-ink further
+     still for direct text-on-white use (6.9:1). */
+  --accent:       #0068D6;
+  --accent-ink:   #0058B0;
+  --accent-hover: #0A84FF;   /* the vivid System Blue itself, on hover */
+  --accent-wash:  #eaf3ff;
 
   --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
@@ -476,9 +481,10 @@ a{ color:inherit; }
   border:0; border-radius:var(--pill);
   background:var(--accent); color:#fff;
   text-decoration:none; cursor:pointer;
+  box-shadow:0 4px 14px -6px rgba(10,132,255,.35);
   transition:background .22s var(--ease), transform .22s var(--ease), box-shadow .22s var(--ease);
 }
-.btn:hover{ background:var(--accent-hover); }
+.btn:hover{ background:var(--accent-hover); box-shadow:0 6px 18px -6px rgba(10,132,255,.45); }
 .btn:active{ transform:scale(.975); }
 
 .btn--secondary{ background:var(--fill); color:var(--ink); }
