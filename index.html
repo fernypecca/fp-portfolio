@@ -108,14 +108,24 @@
 
 const SITE = {
   name:        'Fernando Peccatiello',
+  /* role drives <title> and the JSON-LD name — kept in sync with the static
+     meta tags in <head>. heroEyebrow is the on-page positioning line and is
+     deliberately separate, so rewording the hero never silently changes an
+     already-indexed page title. */
   role:        'Growth Marketing × AI × Product Thinking',
+  heroEyebrow: 'Growth marketing for B2B and marketplaces',
   email:       'fernypecca@gmail.com',
   linkedin:    'https://www.linkedin.com/in/fernando-peccatiello/',
-  location:    'Barcelona',
+  location:    '[FILL: city]',
+  availability:'Open to senior growth and growth engineering roles — Europe or US remote',
   ctaLabel:    'Get in touch',
   emailSubject:'Hello Fernando',
 
-  headline:    'I turn growth bottlenecks into useful tools.',
+  /* The brief's first-choice H1 ("I build the tools that fix the growth
+     problem, not the deck that describes it.") ran to 5 lines in this column
+     at 56px, leaving "problem, not" hanging — so this is its sanctioned
+     alternative. Swap back if the hero column ever gets wider. */
+  headline:    'Seven years in growth. Nine tools shipped.',
   subheadline: 'I build focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.',
   intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
 
@@ -143,13 +153,41 @@ const SITE = {
     'Multi-market execution'
   ],
 
-  footerLine: 'Built with curiosity, systems thinking, and a bias toward useful things.',
-  copyright:  '© ' + new Date().getFullYear() + ' Fernando Peccatiello. All experiments are personal projects.'
+  /* Most recent first. Every number is a [FILL:] placeholder by design —
+     nothing here is generated. Add or remove roles freely; the section
+     renders whatever is in this array. */
+  experience: [
+    {
+      company:  '[FILL: company name, or a neutral descriptor such as “Two-sided marketplace — ES subsidiary of a US group”]',
+      title:    '[FILL: title]',
+      period:   '[FILL: start] – [FILL: end]',
+      location: '[FILL: city], Spain',
+      bullets: [
+        '[FILL: outcome with a relative number — e.g. “Grew supply-side signups by N% in 12 months”]',
+        '[FILL: scope — budget tier, team size, markets owned (ES, IT, FR, UK, PT, BR, MX, IN), channels: paid, SEO, lifecycle, landing pages]',
+        '[FILL: one thing you built or systematised — e.g. the multi-market campaign QA workflow behind Landing QA Tool]'
+      ]
+    },
+    {
+      company:  '[FILL: company name or descriptor]',
+      title:    '[FILL: title]',
+      period:   '[FILL: start] – [FILL: end]',
+      location: '[FILL: city, country]',
+      bullets: [
+        '[FILL: outcome with a relative number]',
+        '[FILL: scope — channels owned, markets, team]',
+        '[FILL: one thing you built or systematised]'
+      ]
+    }
+  ],
+
+  copyright:  '© ' + new Date().getFullYear() + ' Fernando Peccatiello'
 };
 
 const FILTERS = ['All', 'Conversion & Revenue', 'AI Lead Magnets', 'Internal Tools'];
 
-/* Ordered by significance, not chronology. */
+/* Ordered for a general B2B reader: the vertical-neutral tools lead, so the
+   default "All" view does not open on sector-specific work. */
 const PROJECTS = [
   {
     name: 'Growth Agent Orchestrator',
@@ -160,8 +198,32 @@ const PROJECTS = [
     description: 'Turns a brand, its competitors, and a buyer persona into a full GTM package — competitor ad intel, sales battlecards, ad creative, and an outbound sequence — in about 60 seconds.',
     problem: 'Pulling real competitive intel and matching campaign copy for a launch normally means hours of ad research, news monitoring, battlecard writing, and outbound drafting, done one at a time.',
     solution: 'Five specialized agents run in parallel: one scrapes real Meta/Google ads and news per competitor, one drafts battlecards, one reviews them and regenerates any that fail the check, one writes ad creative for the brand, one builds the outbound sequence — each streaming in live as it finishes.',
-    demonstrates: 'Multi-agent orchestration, schema-validated outputs with retries, self-review and regeneration, real-time streaming.',
+    impact: 'Compresses competitor research and launch copy from [FILL: time, e.g. two days] to [FILL: time, e.g. under a minute] per launch.',
     tags: ['Agent Orchestration', 'Claude API', 'Streaming', 'Next.js']
+  },
+  {
+    name: 'Landing QA Tool',
+    category: 'Internal Tools',
+    status: 'Built for production use',
+    url: 'https://landing-qa-tool.vercel.app/',
+    visual: 'qa',
+    description: 'A multi-market QA workspace for checking campaign landing pages and form experiences across international markets.',
+    problem: 'Launching similar campaigns across several markets creates repetitive, error-prone QA work.',
+    solution: 'A single workspace that generates market URLs from a campaign slug and tracks landing and form checks by country.',
+    impact: 'Cuts pre-launch landing QA from [FILL: time] to [FILL: time] across [FILL: N] markets.',
+    tags: ['QA', 'Localization', 'Campaign Ops', 'Automation']
+  },
+  {
+    name: 'Product Kit Generator',
+    category: 'AI Lead Magnets',
+    status: 'Prototype',
+    url: 'https://photoroom-kit-generator.vercel.app/',
+    visual: 'kit',
+    description: 'A product-URL-to-content concept that generates channel-ready image directions, SEO copy, and social assets.',
+    problem: 'Merchants need multiple product creative formats, but creating them channel by channel is slow.',
+    solution: 'A URL-first lead magnet concept that packages image, copy, and channel needs into one guided output.',
+    impact: 'Replaces [FILL: time] of per-channel asset briefing with a single pass over one product URL.',
+    tags: ['Generative AI', 'E-commerce', 'SEO', 'Lead Magnet']
   },
   {
     name: 'The ROI Roadmap',
@@ -169,10 +231,10 @@ const PROJECTS = [
     status: 'Live tool',
     url: 'https://roi-roadmap.vercel.app/',
     visual: 'roi',
-    description: 'An interactive calculator that helps wedding vendors understand acquisition cost, booking economics, and growth levers.',
+    description: 'Acquisition cost, booking economics, and growth levers for local service providers on a two-sided marketplace. Built for wedding vendors.',
     problem: 'Vendors often see spend and bookings separately, without a clear view of profitability.',
     solution: 'A guided ROI model with CAC, profit per booking, scenario planning, and tailored ad-creation prompts.',
-    demonstrates: 'Business modelling, interactive lead magnets, conversion strategy.',
+    impact: 'Turns a manual spend-versus-bookings reconciliation into a guided model, cutting time to a profitability answer from [FILL: time] to [FILL: time].',
     tags: ['ROI', 'CAC', 'Interactive Tool', 'Lead Magnet']
   },
   {
@@ -181,10 +243,10 @@ const PROJECTS = [
     status: 'Live tool',
     url: 'https://competitor-gap-analyzer.vercel.app/',
     visual: 'gap',
-    description: 'Turns a wedding-marketplace profile URL into a side-by-side comparison against the vendors currently outranking it, with a gap score and a prioritized fix list.',
-    problem: 'Vendors can see that better-ranked competitors exist, but not which specific gaps — reviews, photos, pricing, awards — are actually costing them bookings.',
-    solution: 'A URL-first tool that benchmarks a profile against the vendors outranking it, scores the gap from 0–100, and returns the free-to-fix gaps first.',
-    demonstrates: 'Competitive analysis, data-backed prioritization, lead magnet design.',
+    description: 'Turns a directory or marketplace listing URL into a side-by-side comparison against the profiles currently outranking it — a 0–100 gap score, an estimated cost of staying invisible, and a prioritised action plan where every fix is free to implement. Competitor identities are stripped before anything reaches the model.',
+    problem: 'A listing owner can see that better-ranked competitors exist, but not which specific gaps — reviews, photos, pricing, credentials — are actually costing them enquiries.',
+    solution: 'A URL-first tool that benchmarks a listing against the profiles outranking it, scores the gap from 0–100, and returns the free-to-fix gaps first.',
+    impact: 'Turns “we are being outranked” into a ranked fix list in [FILL: time]. Every fix it returns is free to implement.',
     tags: ['Competitive Analysis', 'AI', 'Benchmarking', 'Lead Magnet']
   },
   {
@@ -193,70 +255,46 @@ const PROJECTS = [
     status: 'Live tool',
     url: 'https://wedding-earnings-estimator.vercel.app/',
     visual: 'map',
-    description: 'An interactive map of Spain that shows wedding vendors what a business in their category and province could realistically earn per year, benchmarked against national averages.',
-    problem: 'Vendors weighing a new category or region have no quick way to see realistic earnings potential without digging through scattered market data.',
-    solution: 'Pick a category, tap a province, and get an average and top-province estimate in one click — 52 provinces, 6 categories, no signup required to explore.',
-    demonstrates: 'Interactive data visualization, regional benchmarking, lead magnet design.',
+    description: 'An interactive map that shows local service providers what a business in their category and region could realistically earn per year, benchmarked against national averages. Built for wedding vendors across Spain.',
+    problem: 'Providers weighing a new category or region have no quick way to see realistic earnings potential without digging through scattered market data.',
+    solution: 'Pick a category, tap a region, and get an average and top-region estimate in one click — 52 provinces, 6 categories, no signup required to explore.',
+    impact: 'Replaces [FILL: time] of scattered market research with a category-and-region benchmark in one click.',
     tags: ['Interactive Map', 'Benchmarking', 'Lead Magnet', 'Data Viz']
   },
   {
     name: 'Storefront Analyzer',
     category: 'AI Lead Magnets',
-    status: 'Concept experiment',
+    status: 'Prototype',
     url: 'https://storefront-analyzer.vercel.app/',
     visual: 'analyzer',
-    description: 'A profile-analysis concept that turns a marketplace URL into a prioritized conversion-improvement plan.',
-    problem: 'Marketplace vendors may not know why their profile underperforms versus competitors.',
+    description: 'A profile-analysis concept that turns a marketplace listing URL into a prioritized conversion-improvement plan.',
+    problem: 'Listing owners may not know why their profile underperforms versus competitors.',
     solution: 'A simple URL-first experience designed to surface a profile score, key friction points, and a recommended first fix.',
-    demonstrates: 'Problem framing, marketplace UX, conversion diagnosis.',
+    impact: 'Surfaces the single biggest conversion gap on a listing in [FILL: time], in place of a full manual audit.',
     tags: ['Marketplace', 'CRO', 'UX', 'AI Concept']
-  },
-  {
-    name: 'Landing QA Tool',
-    category: 'Internal Tools',
-    status: 'Internal tool',
-    url: 'https://landing-qa-tool.vercel.app/',
-    visual: 'qa',
-    description: 'A multi-market QA workspace for checking campaign landing pages and form experiences across international markets.',
-    problem: 'Launching similar campaigns across several markets creates repetitive, error-prone QA work.',
-    solution: 'A single workspace that generates market URLs from a campaign slug and tracks landing and form checks by country.',
-    demonstrates: 'International operations, QA thinking, workflow design.',
-    tags: ['QA', 'Localization', 'Campaign Ops', 'Automation']
-  },
-  {
-    name: 'Product Kit Generator',
-    category: 'AI Lead Magnets',
-    status: 'Concept experiment',
-    url: 'https://photoroom-kit-generator.vercel.app/',
-    visual: 'kit',
-    description: 'A product-URL-to-content concept that generates channel-ready image directions, SEO copy, and social assets.',
-    problem: 'Merchants need multiple product creative formats, but creating them channel by channel is slow.',
-    solution: 'A URL-first lead magnet concept that packages image, copy, and channel needs into one guided output.',
-    demonstrates: 'AI product concepts, lead generation, value packaging.',
-    tags: ['Generative AI', 'E-commerce', 'SEO', 'Lead Magnet']
   },
   {
     name: 'Background Generator',
     category: 'Internal Tools',
-    status: 'Internal tool',
+    status: 'Built for production use',
     url: 'https://bodasnet-bg-generator.vercel.app/',
     visual: 'background',
     description: 'A repeatable background generator for campaign modules, with dimensions, visual styles, seeds, variants, and brand controls.',
     problem: 'Teams needed campaign backgrounds that fit exact module sizes without recreating visual assets from scratch.',
     solution: 'A lightweight design utility with reproducible seeds, presets, custom colours, downloadable SVGs, and favourites.',
-    demonstrates: 'Design systems, internal tooling, creative efficiency.',
+    impact: 'Removes [FILL: time] per campaign of rebuilding background assets to exact module sizes.',
     tags: ['Design Systems', 'SVG', 'Creative Ops', 'Automation']
   },
   {
     name: 'Popup HTML Generator',
     category: 'Internal Tools',
-    status: 'Internal tool',
+    status: 'Built for production use',
     url: 'https://claude.ai/public/artifacts/bee4a566-6b42-4c74-bb7d-abc83bbd8d49',
     visual: 'popup',
     description: 'Turns campaign copy, CTAs, styling choices, and UTM parameters into deployment-ready popup HTML.',
     problem: 'Creating campaign popups repeatedly required manual formatting, inconsistent markup, and UTM checks.',
     solution: 'A small generator that converts copy inputs into reusable HTML blocks and validates desktop and mobile UTM structures.',
-    demonstrates: 'Growth operations, reusable systems, campaign QA.',
+    impact: 'Cuts popup build time from [FILL: time] to [FILL: time] per campaign, with UTM structure validated before launch.',
     tags: ['HTML generation', 'Growth Ops', 'UTMs', 'Conversion']
   }
 ];
@@ -665,8 +703,8 @@ a{ color:inherit; }
 }
 .status .dot{ width:.375rem; height:.375rem; border-radius:50%; background:currentColor; flex:none; }
 .status[data-status="Live tool"]{ background:var(--accent); color:#fff; }
-.status[data-status="Internal tool"]{ background:var(--fill); color:var(--ink-2); }
-.status[data-status="Concept experiment"]{ background:var(--surface); color:var(--gray); box-shadow:inset 0 0 0 1px var(--line); }
+.status[data-status="Built for production use"]{ background:var(--fill); color:var(--ink-2); }
+.status[data-status="Prototype"]{ background:var(--surface); color:var(--gray); box-shadow:inset 0 0 0 1px var(--line); }
 
 .card__body{ display:flex; flex-direction:column; gap:1.25rem; flex:1; }
 
@@ -758,11 +796,17 @@ a{ color:inherit; }
 }
 .about__body{ margin-top:1.4rem; max-width:52ch; }
 .about__meta{
-  margin-top:1.75rem; display:flex; flex-wrap:wrap; gap:.5rem;
+  list-style:none; margin:1.75rem 0 0; padding:1.25rem 0 0;
+  border-top:1px solid var(--line);
+  display:grid; gap:.5rem;
 }
-.about__meta span{
-  font-size:.8125rem; color:var(--gray);
-  background:var(--bg-alt); border-radius:var(--pill); padding:.3rem .75rem;
+.about__meta li{
+  position:relative; padding-left:1rem;
+  font-size:.875rem; color:var(--ink-2); letter-spacing:-.008em;
+}
+.about__meta li::before{
+  content:""; position:absolute; left:0; top:.55em;
+  width:.375rem; height:.375rem; border-radius:50%; background:var(--accent);
 }
 
 .skills{ list-style:none; margin:0; padding:0; }
@@ -775,15 +819,39 @@ a{ color:inherit; }
 .skills li:first-child{ border-top:1px solid var(--line-soft); }
 .skills .tick{ color:var(--accent); flex:none; }
 
+/* ---------- Experience ---------- */
+.roles{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.role{ padding:clamp(1.5rem,3vw,2rem) 0; border-bottom:1px solid var(--line); }
+.role__head{ display:grid; gap:.35rem; }
+@media (min-width:52rem){
+  .role__head{
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:baseline; gap:1.5rem;
+  }
+}
+.role__title{
+  font-size:clamp(1.125rem,1rem + .5vw,1.375rem);
+  font-weight:600; letter-spacing:-.02em; line-height:1.2;
+}
+.role__title .at{ color:var(--gray); font-weight:400; }
+.role__meta{
+  font-size:.875rem; color:var(--gray); letter-spacing:-.006em;
+  white-space:nowrap;
+}
+@media (max-width:51.99rem){ .role__meta{ white-space:normal; } }
+.role__bullets{ list-style:none; margin:1rem 0 0; padding:0; display:grid; gap:.55rem; }
+.role__bullets li{
+  position:relative; padding-left:1.15rem;
+  font-size:.9375rem; line-height:1.55; color:var(--ink-2); letter-spacing:-.01em;
+}
+.role__bullets li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:.3125rem; height:.3125rem; border-radius:50%; background:var(--accent);
+}
+
 /* ---------- Footer ---------- */
 .footer{ background:var(--bg-alt); padding-block:clamp(3rem,6vw,4.5rem) clamp(1.75rem,3vw,2.5rem); }
-.footer__line{
-  font-size:clamp(1.375rem,1.05rem + 1.6vw,2rem);
-  font-weight:600; letter-spacing:-.024em; line-height:1.15;
-  max-width:24ch;
-}
 .footer__grid{
-  margin-top:clamp(2rem,4vw,3rem);
   padding-top:1.5rem; border-top:1px solid var(--line);
   display:grid; gap:1rem;
 }
@@ -952,6 +1020,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
     <nav class="nav" id="nav" aria-label="Primary">
       <a href="#work">Work</a>
       <a href="#approach">Approach</a>
+      <a href="#experience">Experience</a>
       <a href="#about">About</a>
     </nav>
     <a class="btn btn--sm" id="header-cta" href="#"></a>
@@ -964,6 +1033,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <nav class="mobile-nav" id="mobile-nav" aria-label="Primary" hidden>
     <a href="#work">Work</a>
     <a href="#approach">Approach</a>
+    <a href="#experience">Experience</a>
     <a href="#about">About</a>
   </nav>
 </header>
@@ -1007,7 +1077,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <div class="sechead">
         <span class="eyebrow">Selected work</span>
         <h2 class="t-h2" id="work-title">Tools built around real growth problems</h2>
-        <p class="t-lede">Each one started as a bottleneck in a real workflow. Select any project to read the problem, the solution, and what it demonstrates.</p>
+        <p class="t-lede">Each one started as a bottleneck in a real workflow. Select any project to read the problem, the solution, and the impact.</p>
       </div>
 
       <div class="filterbar">
@@ -1030,14 +1100,25 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
     </div>
   </section>
 
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="shell">
+      <div class="sechead">
+        <span class="eyebrow">Experience</span>
+        <h2 class="t-h2" id="experience-title">Where I have done this</h2>
+      </div>
+      <ol class="roles" id="roles"></ol>
+    </div>
+  </section>
+
   <!-- ============ ABOUT ============ -->
-  <section class="section" id="about" aria-labelledby="about-title">
+  <section class="section section--alt" id="about" aria-labelledby="about-title">
     <div class="shell about">
       <div>
         <span class="eyebrow">About</span>
         <h2 class="t-h2" id="about-title" style="margin-top:.7rem"></h2>
         <p class="t-lede about__body" id="about-body"></p>
-        <p class="about__meta" id="about-meta"></p>
+        <ul class="about__meta" id="about-meta"></ul>
       </div>
       <div>
         <h3 class="t-h3" style="margin-bottom:1.1rem">What I work on</h3>
@@ -1048,9 +1129,8 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 
 </main>
 
-<footer class="footer" aria-labelledby="footer-line">
+<footer class="footer" aria-label="Site footer">
   <div class="shell">
-    <p class="footer__line" id="footer-line"></p>
     <div class="footer__grid">
       <div class="footer__links" id="footer-links"></div>
       <p class="footer__legal" id="footer-legal"></p>
@@ -1078,7 +1158,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <dl class="modal__dl">
         <div><dt>Problem</dt><dd id="modal-problem"></dd></div>
         <div><dt>Solution</dt><dd id="modal-solution"></dd></div>
-        <div><dt>What it demonstrates</dt><dd id="modal-demo"></dd></div>
+        <div><dt>Impact</dt><dd id="modal-demo"></dd></div>
         <div><dt>Skills</dt><dd><ul class="tags" id="modal-tags"></ul></dd></div>
       </dl>
       <div class="modal__foot">
@@ -1184,7 +1264,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <text x="50" y="54" font-size="21" font-weight="600" class="t-ink" text-anchor="middle">38</text>
       <text x="50" y="70" font-size="7" text-anchor="middle">Gap score</text>
 
-      <text x="108" y="30" font-size="8.5">vs. Premium vendors outranking you</text>
+      <text x="108" y="30" font-size="8.5">vs. profiles outranking you</text>
       <path class="ln" d="M108 46h188" stroke-dasharray="3 4" stroke="var(--line)"/>
 
       <g class="anim g1">
@@ -1195,7 +1275,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <g class="anim g2">
         <rect x="180" y="82" width="40" height="70" rx="8" class="fill-soft"/>
         <rect x="180" y="82" width="40" height="70" rx="8" fill="var(--line)"/>
-        <text x="200" y="166" font-size="8" text-anchor="middle">Premium avg</text>
+        <text x="200" y="166" font-size="8" text-anchor="middle">Their median</text>
       </g>
       <g class="anim g3">
         <rect x="242" y="46" width="40" height="106" rx="8" class="fill-soft"/>
@@ -1322,13 +1402,12 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
      Static content from SITE
   ----------------------------------------------------------------*/
   document.title = SITE.name + ' — ' + SITE.role;
-  $('#hero-eyebrow').textContent = SITE.role;
+  $('#hero-eyebrow').textContent = SITE.heroEyebrow;
   $('#hero-title').textContent = SITE.headline;
   $('#hero-sub').textContent = SITE.subheadline;
   $('#hero-intro').textContent = SITE.intro;
   $('#about-title').textContent = SITE.aboutHeading;
   $('#about-body').textContent = SITE.aboutBody;
-  $('#footer-line').textContent = SITE.footerLine;
   $('#footer-legal').textContent = SITE.copyright;
 
   const cta = $('#header-cta');
@@ -1336,7 +1415,8 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   cta.textContent = SITE.ctaLabel;
 
   $('#about-meta').innerHTML =
-    `<span>Based in ${esc(SITE.location)}</span><span>Open to collaboration</span><span>Personal projects</span>`;
+    `<li>${esc(SITE.location)}, Spain · Working across European and US Eastern hours</li>
+     <li>${esc(SITE.availability)}</li>`;
 
   $('#markers').innerHTML = SITE.markers.map((m) =>
     `<li>${tick}<span>${esc(m)}</span></li>`).join('');
@@ -1372,6 +1452,15 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
     `<li class="principle reveal"><span class="principle__n" aria-hidden="true">${pad(i + 1)}</span>
       <h3 class="t-h3">${esc(p.title)}</h3><p>${esc(p.body)}</p></li>`).join('');
 
+  $('#roles').innerHTML = SITE.experience.map((r) =>
+    `<li class="role">
+      <div class="role__head">
+        <h3 class="role__title">${esc(r.title)} <span class="at">at ${esc(r.company)}</span></h3>
+        <p class="role__meta">${esc(r.period)} · ${esc(r.location)}</p>
+      </div>
+      <ul class="role__bullets">${r.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>
+    </li>`).join('');
+
   $('#skills').innerHTML = SITE.skills.map((s) =>
     `<li>${tick}<span>${esc(s)}</span></li>`).join('');
 
@@ -1404,7 +1493,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <div class="card__text">
           <h3 class="t-h3"><button type="button" data-open="${idx}">${esc(p.name)}</button></h3>
           <p class="card__desc">${esc(p.description)}</p>
-          <dl class="demo"><dt>Shows</dt><dd>${esc(p.demonstrates)}</dd></dl>
+          <dl class="demo"><dt>Impact</dt><dd>${esc(p.impact)}</dd></dl>
           <ul class="tags">${p.tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
           <div class="card__foot">
             <a class="openlink" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"
@@ -1483,7 +1572,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
     $('#modal-visual').innerHTML = VISUALS[p.visual] || '';
     $('#modal-problem').textContent = p.problem;
     $('#modal-solution').textContent = p.solution;
-    $('#modal-demo').textContent = p.demonstrates;
+    $('#modal-demo').textContent = p.impact;
     $('#modal-tags').innerHTML = p.tags.map((t) => `<li>${esc(t)}</li>`).join('');
     $$('#modal-link, #modal-link-top').forEach((link) => {
       link.href = p.url;
@@ -1539,7 +1628,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
           a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + en.target.id)));
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['work', 'approach', 'about'].forEach((id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
+    ['work', 'approach', 'experience', 'about'].forEach((id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
     const reveal = new IntersectionObserver((entries, obs) => {
       entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); } });
