@@ -120,7 +120,7 @@ const SITE = {
   intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
 
   markers: [
-    '9 tools shipped',
+    '8 tools shipped',
     'AI-powered workflows',
     'Growth & conversion systems'
   ],
@@ -162,18 +162,6 @@ const PROJECTS = [
     solution: 'Five specialized agents run in parallel: one scrapes real Meta/Google ads and news per competitor, one drafts battlecards, one reviews them and regenerates any that fail the check, one writes ad creative for the brand, one builds the outbound sequence — each streaming in live as it finishes.',
     demonstrates: 'Multi-agent orchestration, schema-validated outputs with retries, self-review and regeneration, real-time streaming.',
     tags: ['Agent Orchestration', 'Claude API', 'Streaming', 'Next.js']
-  },
-  {
-    name: 'The ROI Roadmap',
-    category: 'Conversion & Revenue',
-    status: 'Live tool',
-    url: 'https://roi-roadmap.vercel.app/',
-    visual: 'roi',
-    description: 'An interactive calculator that helps wedding vendors understand acquisition cost, booking economics, and growth levers.',
-    problem: 'Vendors often see spend and bookings separately, without a clear view of profitability.',
-    solution: 'A guided ROI model with CAC, profit per booking, scenario planning, and tailored ad-creation prompts.',
-    demonstrates: 'Business modelling, interactive lead magnets, conversion strategy.',
-    tags: ['ROI', 'CAC', 'Interactive Tool', 'Lead Magnet']
   },
   {
     name: 'Competitor Gap Analyzer',
@@ -1130,24 +1118,6 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <rect x="98" y="150" width="60" height="7" rx="3.5" class="fill-acc"/>
       </g>
       <text x="24" y="188" font-size="9">5 agents · streamed live</text>
-    </svg>`,
-
-    /* Break-even model: profit curve crossing a spend baseline */
-    roi: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract chart: a profit curve rising above a spend baseline">
-      <path class="ln-2" d="M46 34h248M46 74h248M46 114h248M46 154h248"/>
-      <path class="ln-2" d="M104 26v128M162 26v128M220 26v128M278 26v128"/>
-      <path class="ln" d="M46 26v128h248"/>
-      <path class="acc sweep" style="--dash:300" d="M46 140 104 130 162 104 220 66 278 40" stroke-linecap="round" stroke-linejoin="round"/>
-      <path class="ln" d="M46 146 104 141 162 136 220 131 278 126" stroke-dasharray="4 4" stroke="var(--gray-2)"/>
-      <circle cx="278" cy="40" r="4.5" class="fill-acc"/>
-      <circle cx="278" cy="40" r="9" class="acc" opacity=".28" stroke-width="1.5"/>
-      <g class="anim g1">
-        <rect x="146" y="52" width="86" height="30" rx="8" class="fill-card"/>
-        <text x="158" y="66" font-size="9" class="t-ink">Break-even</text>
-        <text x="158" y="77" font-size="8">at 12 bookings</text>
-      </g>
-      <text x="46" y="176" font-size="9">CAC</text>
-      <text x="212" y="176" font-size="9">Profit per booking</text>
     </svg>`,
 
     /* Profile score dial + prioritized friction rows */
