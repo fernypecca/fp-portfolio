@@ -649,14 +649,14 @@ a{ color:inherit; }
    project so it doesn't compete with the rest of the grid. */
 .card[data-featured="true"]::before{
   content:"";
-  position:absolute; inset:-14px; z-index:-1;
-  border-radius:calc(var(--r-xl) + 14px);
+  position:absolute; inset:-4px; z-index:-1;
+  border-radius:calc(var(--r-xl) + 4px);
   background:conic-gradient(from 180deg,
     #ff5f6d, #ffc371, #ffe066, #6fdc8c, #40c8e0, #5e5ce6, #bf5af2, #ff5f6d);
-  filter:blur(26px); opacity:.45;
+  filter:blur(11px); opacity:.16;
   transition:opacity .35s var(--ease), filter .35s var(--ease);
 }
-.card[data-featured="true"]:hover::before{ opacity:.6; filter:blur(30px); }
+.card[data-featured="true"]:hover::before{ opacity:.24; filter:blur(13px); }
 
 @media (min-width:56rem){
   .card[data-span="2"]{ grid-column:span 2; }
