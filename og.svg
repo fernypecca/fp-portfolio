@@ -28,7 +28,7 @@
   <!-- footer marks -->
   <g font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif" font-size="22" fill="#6e6e73" letter-spacing="-0.2">
     <path d="M82 542l9 9 17-19" stroke="#0068D6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="120" y="551">8 tools shipped</text>
+    <text x="120" y="551">9 tools shipped</text>
     <path d="M348 542l9 9 17-19" stroke="#0068D6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="386" y="551">AI-powered workflows</text>
     <path d="M700 542l9 9 17-19" stroke="#0068D6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>

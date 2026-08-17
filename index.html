@@ -120,7 +120,7 @@ const SITE = {
   intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
 
   markers: [
-    '8 tools shipped',
+    '9 tools shipped',
     'AI-powered workflows',
     'Growth & conversion systems'
   ],
@@ -151,6 +151,19 @@ const FILTERS = ['All', 'Conversion & Revenue', 'AI Lead Magnets', 'Internal Too
 
 /* Ordered by significance, not chronology. */
 const PROJECTS = [
+  {
+    name: 'Reactor',
+    category: 'AI Lead Magnets',
+    status: 'Live tool',
+    url: 'https://audience-reactor.vercel.app/',
+    visual: 'reactor',
+    featured: true,
+    description: 'Simulates a cloned audience reacting to launch copy before it goes out — two variants tested in parallel against 24–26 persona clones, with a live reaction graph and a verdict on which one actually wins.',
+    problem: 'There is no way to know how a specific audience will react to a post until it is already live — by the time real engagement is the signal, a weak variant has already gone out.',
+    solution: 'Pick or generate an audience, paste two copy variants, and watch a force-directed graph light up one clone at a time as each reacts — then see exactly who moved between variants, with a verdict that refuses to call a winner inside the noise floor.',
+    demonstrates: 'Real-time streaming visualization, statistical significance handling, synthetic persona generation with built-in safeguards.',
+    tags: ['Audience Simulation', 'Claude API', 'Data Viz', 'Streaming']
+  },
   {
     name: 'Growth Agent Orchestrator',
     category: 'AI Lead Magnets',
@@ -631,6 +644,20 @@ a{ color:inherit; }
 @keyframes cardIn{ from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:none; } }
 .card:hover{ box-shadow:var(--shadow-md); transform:translateY(-2px); }
 
+/* Featured card: a small rainbow glow sitting behind it — the one place
+   the palette breaks from a single accent, reserved for the strongest
+   project so it doesn't compete with the rest of the grid. */
+.card[data-featured="true"]::before{
+  content:"";
+  position:absolute; inset:-14px; z-index:-1;
+  border-radius:calc(var(--r-xl) + 14px);
+  background:conic-gradient(from 180deg,
+    #ff5f6d, #ffc371, #ffe066, #6fdc8c, #40c8e0, #5e5ce6, #bf5af2, #ff5f6d);
+  filter:blur(26px); opacity:.45;
+  transition:opacity .35s var(--ease), filter .35s var(--ease);
+}
+.card[data-featured="true"]:hover::before{ opacity:.6; filter:blur(30px); }
+
 @media (min-width:56rem){
   .card[data-span="2"]{ grid-column:span 2; }
   .card[data-span="2"] .card__body{
@@ -1095,6 +1122,34 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
      Each is a fragment of the interface or model behind the tool.
   ----------------------------------------------------------------*/
   const VISUALS = {
+    /* A scattered force-directed audience graph beside a verdict panel */
+    reactor: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract constellation: a scattered audience reaction graph beside a verdict panel">
+      <g class="anim g1">
+        <path class="ln" d="M40 60 66 42M66 42 92 66M66 42 58 90M58 90 84 108M58 90 30 110M92 66 112 84M112 84 120 50M112 84 140 100M84 108 100 130M58 90 70 130" opacity=".45"/>
+      </g>
+      <g class="anim g2">
+        <circle cx="40" cy="60" r="4" class="fill-soft"/>
+        <circle cx="66" cy="42" r="5" class="fill-acc"/>
+        <circle cx="92" cy="66" r="3" class="fill-soft"/>
+        <circle cx="58" cy="90" r="6" class="fill-acc"/>
+        <circle cx="84" cy="108" r="4" class="fill-soft"/>
+        <circle cx="30" cy="110" r="3" class="fill-soft"/>
+        <circle cx="112" cy="84" r="5" class="fill-acc"/>
+        <circle cx="120" cy="50" r="3" class="fill-soft"/>
+        <circle cx="140" cy="100" r="4" class="fill-soft"/>
+        <circle cx="100" cy="130" r="3" class="fill-soft"/>
+        <circle cx="70" cy="130" r="4" class="fill-acc"/>
+      </g>
+      <g class="anim g3">
+        <rect x="200" y="46" width="96" height="108" rx="12" class="fill-card"/>
+        <path class="acc" d="M214 130 232 118 250 122 268 96 284 84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="284" cy="84" r="3" class="fill-acc"/>
+        <rect x="214" y="138" width="52" height="16" rx="8" class="fill-acc"/>
+        <text x="222" y="149" font-size="8" fill="#fff" font-weight="600">B wins</text>
+      </g>
+      <text x="20" y="176" font-size="9">26 clones · live reaction graph</text>
+    </svg>`,
+
     /* Five parallel agent nodes converging into one compiled package */
     orchestrator: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract pipeline: five parallel agent nodes converging into one compiled package">
       <g class="anim g1">
@@ -1364,7 +1419,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 
   function cardHTML(p, i) {
     const idx = PROJECTS.indexOf(p);
-    return `<li class="card" style="animation-delay:${Math.min(i * 55, 280)}ms">
+    return `<li class="card"${p.featured ? ' data-featured="true"' : ''} style="animation-delay:${Math.min(i * 55, 280)}ms">
       <div class="card__top">
         <span class="card__cat">${esc(p.category)}</span>
         <span class="status" data-status="${esc(p.status)}"><span class="dot" aria-hidden="true"></span>${esc(p.status)}</span>
