@@ -647,16 +647,27 @@ a{ color:inherit; }
 /* Featured card: a small rainbow glow sitting behind it — the one place
    the palette breaks from a single accent, reserved for the strongest
    project so it doesn't compete with the rest of the grid. */
+/* A thin gradient RING traced right at the card's edge, not a filled
+   rectangle behind it — padding defines the ring thickness, and the two
+   masks (content-box vs. full box) are XORed to punch out everything
+   except that ring, so it reads as a shadow tracing the outline rather
+   than a colour wash filling the whole card. */
 .card[data-featured="true"]::before{
   content:"";
-  position:absolute; inset:-4px; z-index:-1;
-  border-radius:calc(var(--r-xl) + 4px);
+  position:absolute; inset:-5px; z-index:-1;
+  border-radius:calc(var(--r-xl) + 5px);
+  padding:5px;
   background:conic-gradient(from 180deg,
     #ff5f6d, #ffc371, #ffe066, #6fdc8c, #40c8e0, #5e5ce6, #bf5af2, #ff5f6d);
-  filter:blur(11px); opacity:.16;
-  transition:opacity .35s var(--ease), filter .35s var(--ease);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter:blur(4px); opacity:.65;
+  transition:opacity .35s var(--ease);
 }
-.card[data-featured="true"]:hover::before{ opacity:.24; filter:blur(13px); }
+.card[data-featured="true"]:hover::before{ opacity:.85; }
 
 @media (min-width:56rem){
   .card[data-span="2"]{ grid-column:span 2; }
