@@ -155,7 +155,7 @@ const PROJECTS = [
     name: 'Reactor',
     category: 'AI Lead Magnets',
     status: 'Live tool',
-    url: 'https://audience-reactor.vercel.app/',
+    url: 'https://reactor-chi-seven.vercel.app/',
     visual: 'reactor',
     featured: true,
     description: 'Simulates a cloned audience reacting to launch copy before it goes out — two variants tested in parallel against 24–26 persona clones, with a live reaction graph and a verdict on which one actually wins.',
@@ -165,16 +165,16 @@ const PROJECTS = [
     tags: ['Audience Simulation', 'Claude API', 'Data Viz', 'Streaming']
   },
   {
-    name: 'Growth Agent Orchestrator',
+    name: 'Competitor Teardowns',
     category: 'AI Lead Magnets',
     status: 'Live tool',
-    url: 'https://growth-agent-orchestrator.vercel.app/',
-    visual: 'orchestrator',
-    description: 'Turns a brand, its competitors, and a buyer persona into a full GTM package — competitor ad intel, sales battlecards, ad creative, and an outbound sequence — in about 60 seconds.',
-    problem: 'Pulling real competitive intel and matching campaign copy for a launch normally means hours of ad research, news monitoring, battlecard writing, and outbound drafting, done one at a time.',
-    solution: 'Five specialized agents run in parallel: one scrapes real Meta/Google ads and news per competitor, one drafts battlecards, one reviews them and regenerates any that fail the check, one writes ad creative for the brand, one builds the outbound sequence — each streaming in live as it finishes.',
-    demonstrates: 'Multi-agent orchestration, schema-validated outputs with retries, self-review and regeneration, real-time streaming.',
-    tags: ['Agent Orchestration', 'Claude API', 'Streaming', 'Next.js']
+    url: 'https://battle-room-five.vercel.app/',
+    visual: 'teardown',
+    description: 'Paste a competitor’s URL and get a report on what they sell, what they charge, what their customers say, what they’re advertising, and where they’re exposed — every sentence carrying a citation you can open to read the exact source text it came from.',
+    problem: 'Competitor research pulled from a model alone can sound completely plausible and still be wrong, with no way to check where any specific claim came from.',
+    solution: 'Four collectors — site, reviews, ads, press — each return only verbatim quotes, never prose. After the model writes the report, a citation validator strips, in code, any claim whose source id doesn’t match evidence that was actually collected, so the guarantee doesn’t depend on the model policing itself.',
+    demonstrates: 'Code-enforced citation validation, prompt-injection-aware handling of untrusted scraped content, resilient multi-source collection.',
+    tags: ['Verifiable AI', 'Claude API', 'Web Scraping', 'Next.js']
   },
   {
     name: 'Competitor Gap Analyzer',
@@ -1161,29 +1161,28 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <text x="20" y="176" font-size="9">26 clones · live reaction graph</text>
     </svg>`,
 
-    /* Five parallel agent nodes converging into one compiled package */
-    orchestrator: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract pipeline: five parallel agent nodes converging into one compiled package">
+    /* Four sources converging into a report where every line ends in a
+       citation chip */
+    teardown: `<svg class="pv" viewBox="0 0 320 200" role="img" aria-label="Abstract report: four sources converging into a document where every line ends in a citation marker">
       <g class="anim g1">
-        <path class="ln" d="M46 40h212" opacity=".55"/>
-        <circle cx="46" cy="40" r="9" class="fill-soft"/>
-        <circle cx="99" cy="40" r="9" class="fill-soft"/>
-        <circle cx="152" cy="40" r="10" class="fill-acc"/>
-        <circle cx="152" cy="40" r="16" class="acc" stroke-width="1.5" opacity=".35"/>
-        <circle cx="205" cy="40" r="9" class="fill-soft"/>
-        <circle cx="258" cy="40" r="9" class="fill-soft"/>
+        <rect x="20" y="26" width="26" height="20" rx="5" class="fill-soft"/>
+        <rect x="20" y="60" width="26" height="20" rx="5" class="fill-soft"/>
+        <rect x="20" y="94" width="26" height="20" rx="5" class="fill-soft"/>
+        <rect x="20" y="128" width="26" height="20" rx="5" class="fill-soft"/>
+        <path class="ln" d="M46 36 96 96M46 70 96 96M46 104 96 96M46 138 96 96" opacity=".5"/>
       </g>
       <g class="anim g2">
-        <path class="ln" d="M46 40V92M99 40V92M152 40V92M205 40V92M258 40V92" opacity=".4"/>
-        <path class="ln" d="M46 92 152 92 258 92" opacity=".4"/>
-        <path class="ln" d="M152 92V106" opacity=".4"/>
+        <rect x="100" y="40" width="184" height="120" rx="12" class="fill-card"/>
+        <rect x="118" y="60" width="100" height="7" rx="3.5" class="fill-soft"/>
+        <rect x="226" y="60" width="22" height="12" rx="6" class="fill-acc"/>
+        <rect x="118" y="80" width="130" height="7" rx="3.5" class="fill-soft"/>
+        <rect x="256" y="80" width="22" height="12" rx="6" class="fill-acc"/>
+        <rect x="118" y="100" width="86" height="7" rx="3.5" class="fill-soft"/>
+        <rect x="212" y="100" width="22" height="12" rx="6" class="fill-acc"/>
+        <rect x="118" y="120" width="112" height="7" rx="3.5" class="fill-soft"/>
+        <rect x="238" y="120" width="22" height="12" rx="6" class="fill-acc"/>
       </g>
-      <g class="anim g3">
-        <rect x="82" y="108" width="140" height="62" rx="12" class="fill-card"/>
-        <rect x="98" y="122" width="76" height="7" rx="3.5" class="fill-soft"/>
-        <rect x="98" y="136" width="108" height="7" rx="3.5" class="fill-soft"/>
-        <rect x="98" y="150" width="60" height="7" rx="3.5" class="fill-acc"/>
-      </g>
-      <text x="24" y="188" font-size="9">5 agents · streamed live</text>
+      <text x="20" y="176" font-size="9">4 sources · every line cited</text>
     </svg>`,
 
     /* Profile score dial + prioritized friction rows */
