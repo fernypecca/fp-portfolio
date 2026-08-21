@@ -275,14 +275,14 @@ const PROJECTS = [
 :root{
   --bg:        #151312;
   --bg-alt:    #1a1613;
-  --surface:   #1c1815;
-  --fill:      #241f1c;
+  --surface:   #262019;
+  --fill:      #332b23;
   --ink:       #f7f3ef;
   --ink-2:     #cdc3ba;
   --gray:      #a39a92;
   --gray-2:    #8a8078;
-  --line:      #332c27;
-  --line-soft: #2a2422;
+  --line:      #45392e;
+  --line-soft: #362d25;
   /* Warm amber accent. Dark-on-orange (not white-on-orange) is the fill
      pairing everywhere --accent is used as a solid background — #ff7a1a
      only clears ~2.6:1 with white text, short of AA, but ~7:1 with the
@@ -309,9 +309,9 @@ const PROJECTS = [
   --ease: cubic-bezier(.28,.11,.32,1);
   /* Dark-on-dark cards need a hairline to read as raised, not just a
      shadow — black shadow alone barely shows against an already-dark page. */
-  --shadow-sm: 0 0 0 1px rgba(255,255,255,.055), 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.3);
-  --shadow-md: 0 0 0 1px rgba(255,255,255,.07), 0 2px 8px rgba(0,0,0,.32), 0 14px 36px rgba(0,0,0,.42);
-  --shadow-lg: 0 10px 28px rgba(0,0,0,.45), 0 32px 64px rgba(0,0,0,.55);
+  --shadow-sm: 0 0 0 1px rgba(255,255,255,.09), inset 0 1px 0 rgba(255,255,255,.04), 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.3);
+  --shadow-md: 0 0 0 1px rgba(255,255,255,.11), inset 0 1px 0 rgba(255,255,255,.05), 0 2px 8px rgba(0,0,0,.32), 0 14px 36px rgba(0,0,0,.42);
+  --shadow-lg: 0 0 0 1px rgba(255,255,255,.1), 0 10px 28px rgba(0,0,0,.45), 0 32px 64px rgba(0,0,0,.55);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -562,7 +562,7 @@ a{ color:inherit; }
 .hcard{
   position:absolute; margin:0;
   background:var(--surface); border-radius:18px; padding:.85rem;
-  box-shadow:0 0 0 1px rgba(255,255,255,.06), 0 18px 46px rgba(0,0,0,.4);
+  box-shadow:0 0 0 1px rgba(255,255,255,.09), 0 18px 46px rgba(0,0,0,.4);
   width:20rem;
   transition:transform .5s var(--ease);
 }
