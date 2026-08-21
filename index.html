@@ -515,88 +515,65 @@ a{ color:inherit; }
     radial-gradient(60% 80% at 18% 0%, rgba(255,122,26,.14), transparent 60%),
     var(--bg-alt);
 }
-.hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); }
-.hero__grid{ display:grid; gap:clamp(2.5rem,5vw,3.5rem); align-items:center; }
-@media (min-width:62rem){
-  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(2.5rem,5vw,4rem); }
-}
+.hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); text-align:center; }
 .hero__eyebrow{ margin-bottom:1rem; }
-/* Capped below --t-hero: the headline now lives in half a column, and at the
-   full size it broke into four lines with "tools." stranded on its own. */
-.hero h1{ max-width:16ch; font-size:clamp(2.5rem, 1.2rem + 4.2vw, 3.5rem); }
-.hero__sub{ margin-top:1.25rem; max-width:46ch; }
+.hero h1{
+  max-width:17ch; margin-inline:auto;
+  font-size:clamp(2.5rem, 1.2rem + 4.2vw, 3.5rem);
+}
+.hero__sub{ margin:1.25rem auto 0; max-width:42ch; }
 .hero__actions{
-  display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; align-items:center;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem 1.25rem; align-items:center;
   margin-top:clamp(1.5rem,3vw,1.75rem);
 }
 
 .markers{
-  list-style:none; margin:2rem 0 0; padding:1.25rem 0 0;
+  list-style:none; margin:2rem auto 0; padding:1.25rem 0 0;
   border-top:1px solid var(--line);
-  display:grid; gap:.6rem;
+  max-width:38rem;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem 1.75rem;
 }
 .markers li{ display:flex; gap:.55rem; align-items:center; font-size:.9375rem; color:var(--ink-2); }
 .markers .tick{ color:var(--accent); flex:none; }
 
-/* Stacked tool cards — the real interfaces, fanned.
-   Card width and left offsets are fixed rem, not %: they used to be
-   percentages of the column, so widening the column (to balance the grid)
-   silently widened the empty space past the fan instead of closing it.
-   Fixed rem + a width-matched container centers the fan exactly, regardless
-   of how wide its grid column is.
-   Height is only a pre-JS fallback: card height depends on how the captions
-   wrap, which CSS can't know, so fanStack() measures and sets the real
-   vertical offsets and container height. */
-.hero__stack{ position:relative; width:min(100%,22.75rem); margin-inline:auto; height:clamp(24rem, 34vw + 14rem, 30rem); }
-/* Below 62rem the fan is centered under the stacked text (rule above). At
-   62rem+ it should mirror the text column instead — text sits flush at its
-   column's start edge, so a fan narrower than its own column, if centered,
-   leaves matching slack on both sides, which reads as extra empty space on
-   the right since the text side has none. Flush to the column's end edge
-   fixes that. This has to come AFTER the base rule above: same selector,
-   same specificity, so source order decides, and the base rule already sits
-   below the old location of this override, silently winning every time. */
-@media (min-width:62rem){
-  .hero__stack{ margin-left:auto; margin-right:0; }
+/* Tool-card trio, fanned side by side under the centered copy — the real
+   interfaces, not an illustration. Widths and overlaps are fluid (clamp)
+   rather than breakpoint-switched: each card's natural height (caption
+   wrap included) drives the row, so there's no JS measuring step like the
+   old vertical fan needed. */
+.hero__stack{
+  display:flex; justify-content:center; align-items:flex-start;
+  margin-top:clamp(2.25rem,4vw,3rem);
 }
 .hcard{
-  position:absolute; margin:0;
-  background:var(--surface); border-radius:18px; padding:.85rem;
+  flex:none; margin:0;
+  background:var(--surface); border-radius:18px; padding:.75rem;
   box-shadow:0 0 0 1px rgba(255,255,255,.09), 0 18px 46px rgba(0,0,0,.4);
-  width:20rem;
-  transition:transform .5s var(--ease);
+  width:clamp(6.75rem, 3rem + 20vw, 13rem);
+  transition:transform .35s var(--ease);
 }
 .hcard__v{ border-radius:11px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
 .hcard figcaption{
-  display:flex; align-items:center; gap:.5rem;
-  padding:.55rem .3rem .1rem; font-size:.75rem; color:var(--gray);
+  display:flex; flex-wrap:wrap; align-items:center; gap:.4rem;
+  padding:.5rem .25rem .1rem; font-size:.6875rem; color:var(--gray);
 }
-.hcard figcaption b{ font-size:.8125rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+.hcard figcaption b{ font-size:.75rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
 .hcard .pill{
-  margin-left:auto; font-size:.625rem; padding:.16rem .5rem;
+  font-size:.5625rem; padding:.14rem .45rem;
   border-radius:var(--pill); background:var(--accent); color:var(--on-accent); white-space:nowrap;
 }
 .hcard .pill--gray{ background:var(--fill); color:var(--ink-2); }
-/* Offsets span exactly 0–22.75rem — the same as .hero__stack's width — so
-   the fan fills its container edge to edge with no leftover gap on either
-   side. */
-.hcard--1{ top:0;   left:0;      transform:rotate(-4deg);   z-index:3; }
-.hcard--2{ top:44%; left:2.75rem; transform:rotate(2.5deg);  z-index:2; }
-.hcard--3{ top:88%; left:1rem;   transform:rotate(-1.5deg); z-index:1; }
-.hero__stack:hover .hcard--1{ transform:rotate(-6deg) translate(-10px,-8px); }
-.hero__stack:hover .hcard--2{ transform:rotate(3.5deg) translate(12px,0); }
-.hero__stack:hover .hcard--3{ transform:rotate(-2.5deg) translate(-6px,10px); }
-@media (max-width:61.99rem){
-  /* Union scaled down to match: 16 + 2.2 = 18.2rem. */
-  .hero__stack{ width:min(100%,18.2rem); }
-  .hcard{ width:16rem; }
-  .hcard--2{ left:2.2rem; }
-  .hcard--3{ left:.8rem; }
-}
+.hcard--1{ transform:rotate(-5deg); z-index:1; margin-right:clamp(-1.5rem,-4vw,-.75rem); }
+.hcard--2{ transform:rotate(1deg);  z-index:3; margin-top:-.4rem; }
+.hcard--3{ transform:rotate(5deg);  z-index:1; margin-left:clamp(-1.5rem,-4vw,-.75rem); }
+.hero__stack:hover .hcard--1{ transform:rotate(-7deg) translate(-6px,-4px); }
+.hero__stack:hover .hcard--2{ transform:rotate(1.5deg) translateY(-6px); }
+.hero__stack:hover .hcard--3{ transform:rotate(7deg) translate(6px,-4px); }
 
 .hero__intro{
-  margin:clamp(2.5rem,5vw,4rem) 0 0;
+  margin:clamp(2.5rem,5vw,4rem) auto 0;
   max-width:46rem;
+  text-align:left;
   background:var(--surface);
   border-radius:var(--r-xl);
   padding:clamp(1.5rem,3.2vw,2.25rem);
@@ -956,9 +933,9 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   .reveal{ opacity:1; transform:none; }
   .pv .sweep{ stroke-dashoffset:0; }
   .card:hover{ transform:none; }
-  .hero__stack:hover .hcard--1{ transform:rotate(-4deg); }
-  .hero__stack:hover .hcard--2{ transform:rotate(2.5deg); }
-  .hero__stack:hover .hcard--3{ transform:rotate(-1.5deg); }
+  .hero__stack:hover .hcard--1{ transform:rotate(-5deg); }
+  .hero__stack:hover .hcard--2{ transform:rotate(1deg); }
+  .hero__stack:hover .hcard--3{ transform:rotate(5deg); }
 }
 
 /* ---------- Small screens ---------- */
@@ -1009,26 +986,22 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero__inner">
-      <div class="hero__grid">
-        <div>
-          <p class="eyebrow hero__eyebrow" id="hero-eyebrow"></p>
-          <h1 class="t-hero" id="hero-title"></h1>
-          <p class="t-lede hero__sub" id="hero-sub"></p>
+      <p class="eyebrow hero__eyebrow" id="hero-eyebrow"></p>
+      <h1 class="t-hero" id="hero-title"></h1>
+      <p class="t-lede hero__sub" id="hero-sub"></p>
 
-          <div class="hero__actions">
-            <a class="btn" href="#work">Explore the tools</a>
-            <a class="linkarrow" href="#approach">
-              My approach
-              <svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-
-          <ul class="markers" id="markers" aria-label="Capability markers"></ul>
-        </div>
-
-        <!-- Populated from the first three PROJECTS, so it stays in sync -->
-        <div class="hero__stack" id="hero-stack" aria-hidden="true"></div>
+      <div class="hero__actions">
+        <a class="btn" href="#work">Explore the tools</a>
+        <a class="linkarrow" href="#approach">
+          My approach
+          <svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
+
+      <ul class="markers" id="markers" aria-label="Capability markers"></ul>
+
+      <!-- Populated from the first three PROJECTS, so it stays in sync -->
+      <div class="hero__stack" id="hero-stack" aria-hidden="true"></div>
 
       <div class="hero__intro">
         <span class="eyebrow">Short intro</span>
@@ -1395,23 +1368,6 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <span class="pill${p.status === 'Live tool' ? '' : ' pill--gray'}">${esc(p.status)}</span>
       </figcaption>
     </figure>`).join('');
-
-  /* Card height depends on how each caption wraps, so the fan geometry has to
-     be measured rather than guessed — otherwise the last card gets clipped by
-     .hero's overflow:hidden at some widths. */
-  const STEP = 0.44;   /* vertical offset per card, as a share of card height */
-  function fanStack() {
-    const stack = $('#hero-stack');
-    const cards = $$('.hcard', stack);
-    if (!cards.length) return;
-    const h = Math.max(...cards.map((c) => c.offsetHeight));
-    cards.forEach((c, i) => { c.style.top = Math.round(i * STEP * h) + 'px'; });
-    stack.style.height = Math.round(((cards.length - 1) * STEP + 1) * h) + 'px';
-  }
-  fanStack();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fanStack);
-  let fanT;
-  window.addEventListener('resize', () => { clearTimeout(fanT); fanT = setTimeout(fanStack, 120); });
 
   $('#principles').innerHTML = SITE.approach.map((p, i) =>
     `<li class="principle reveal"><span class="principle__n" aria-hidden="true">${pad(i + 1)}</span>
