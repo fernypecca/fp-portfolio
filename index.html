@@ -517,11 +517,11 @@ a{ color:inherit; }
 }
 .hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); text-align:center; }
 .hero__eyebrow{ margin-bottom:1rem; }
-.hero h1{
-  max-width:17ch; margin-inline:auto;
-  font-size:clamp(2.5rem, 1.2rem + 4.2vw, 3.5rem);
-}
-.hero__sub{ margin:1.25rem auto 0; max-width:42ch; }
+/* No longer squeezed into a half column since the hero went centered/
+   single-column — inherits .t-hero's own scale (up to 4.75rem) instead of
+   the smaller cap the old two-column layout needed. */
+.hero h1{ max-width:19ch; margin-inline:auto; }
+.hero__sub{ margin:1.25rem auto 0; max-width:46ch; }
 .hero__actions{
   display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem 1.25rem; align-items:center;
   margin-top:clamp(1.5rem,3vw,1.75rem);
