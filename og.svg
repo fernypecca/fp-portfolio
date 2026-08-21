@@ -1,37 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
-  <rect width="1200" height="1200" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="glow" cx="18%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#ff7a1a" stop-opacity="0.16"/>
+      <stop offset="60%" stop-color="#ff7a1a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="#151312"/>
+  <rect width="1200" height="1200" fill="url(#glow)"/>
   <g transform="translate(0,285)">
-  <rect x="0" y="0" width="1200" height="8" fill="#0068D6"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#ff7a1a"/>
 
   <!-- monogram -->
-  <rect x="80" y="76" width="56" height="56" rx="14" fill="#1d1d1f"/>
+  <rect x="80" y="76" width="56" height="56" rx="14" fill="#f7f3ef"/>
   <g transform="translate(80,76) scale(1.75)">
-    <path d="M6 25V7h11M6 15.5h7.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="square"/>
-    <path d="M18.5 25V7c4.3 0 7 1.9 7 5.6S22.8 18 18.5 18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round"/>
+    <path d="M6 25V7h11M6 15.5h7.5" stroke="#151312" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M18.5 25V7c4.3 0 7 1.9 7 5.6S22.8 18 18.5 18" stroke="#151312" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round"/>
   </g>
   <text x="154" y="112" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
-        font-size="24" font-weight="600" fill="#1d1d1f" letter-spacing="-0.4">Fernando Peccatiello</text>
+        font-size="24" font-weight="600" fill="#f7f3ef" letter-spacing="-0.4">Fernando Peccatiello</text>
 
   <!-- eyebrow -->
   <text x="80" y="238" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
-        font-size="24" font-weight="600" fill="#0058B0" letter-spacing="-0.2">Growth Marketing × AI × Product Thinking</text>
+        font-size="24" font-weight="600" fill="#ff9c56" letter-spacing="-0.2">Growth Marketing × AI × Product Thinking</text>
 
   <!-- headline -->
   <text x="80" y="330" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
-        font-size="76" font-weight="600" fill="#1d1d1f" letter-spacing="-2.6">I turn growth bottlenecks</text>
+        font-size="76" font-weight="600" fill="#f7f3ef" letter-spacing="-2.6">I turn growth bottlenecks</text>
   <text x="80" y="416" font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif"
-        font-size="76" font-weight="600" fill="#1d1d1f" letter-spacing="-2.6">into useful tools.</text>
+        font-size="76" font-weight="600" fill="#f7f3ef" letter-spacing="-2.6">into useful tools.</text>
 
   <!-- rule -->
-  <rect x="80" y="486" width="1040" height="1" fill="#d2d2d7"/>
+  <rect x="80" y="486" width="1040" height="1" fill="#332c27"/>
 
   <!-- footer marks -->
-  <g font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif" font-size="22" fill="#6e6e73" letter-spacing="-0.2">
-    <path d="M82 542l9 9 17-19" stroke="#0068D6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="SF Pro Display, Helvetica Neue, Helvetica, sans-serif" font-size="22" fill="#a39a92" letter-spacing="-0.2">
+    <path d="M82 542l9 9 17-19" stroke="#ff7a1a" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="120" y="551">9 tools shipped</text>
-    <path d="M348 542l9 9 17-19" stroke="#0068D6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M348 542l9 9 17-19" stroke="#ff7a1a" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="386" y="551">AI-powered workflows</text>
-    <path d="M700 542l9 9 17-19" stroke="#0068D6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M700 542l9 9 17-19" stroke="#ff7a1a" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="738" y="551">Growth &amp; conversion systems</text>
   </g>
   </g>

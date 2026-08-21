@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fernando Peccatiello — Growth Marketing × AI × Product Thinking</title>
 <meta name="description" content="I turn growth bottlenecks into useful tools. Focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions." />
-<meta name="color-scheme" content="light" />
-<meta name="theme-color" content="#ffffff" />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#151312" />
 <meta name="author" content="Fernando Peccatiello" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
@@ -273,25 +273,27 @@ const PROJECTS = [
    Apple's hardware finish palette rather than their web link blue.
    ========================================================================= */
 :root{
-  --bg:        #ffffff;
-  --bg-alt:    #f5f5f7;
-  --surface:   #ffffff;
-  --fill:      #e8e8ed;
-  --ink:       #1d1d1f;
-  --ink-2:     #424245;
-  --gray:      #6e6e73;
-  --gray-2:    #86868b;
-  --line:      #d2d2d7;
-  --line-soft: #e5e5ea;
-  /* System Blue — iOS/macOS's own accent color. The vivid #0A84FF he picked
-     only hits ~3.6:1 white-on-it / text-on-white, short of AA's 4.5:1 — so
-     it's the --accent-hover "reveal" instead of the resting fill. Resting
-     --accent is darkened just enough for AA (5.3:1), --accent-ink further
-     still for direct text-on-white use (6.9:1). */
-  --accent:       #0068D6;
-  --accent-ink:   #0058B0;
-  --accent-hover: #0A84FF;   /* the vivid System Blue itself, on hover */
-  --accent-wash:  #eaf3ff;
+  --bg:        #151312;
+  --bg-alt:    #1a1613;
+  --surface:   #1c1815;
+  --fill:      #241f1c;
+  --ink:       #f7f3ef;
+  --ink-2:     #cdc3ba;
+  --gray:      #a39a92;
+  --gray-2:    #8a8078;
+  --line:      #332c27;
+  --line-soft: #2a2422;
+  /* Warm amber accent. Dark-on-orange (not white-on-orange) is the fill
+     pairing everywhere --accent is used as a solid background — #ff7a1a
+     only clears ~2.6:1 with white text, short of AA, but ~7:1 with the
+     near-black --on-accent. --accent-ink is a brighter lift of the same
+     hue for the opposite case: text sitting directly on the dark surfaces,
+     where it needs to be light rather than dark (~8.5:1 on --surface). */
+  --accent:       #ff7a1a;
+  --accent-ink:   #ff9c56;
+  --accent-hover: #ff9046;
+  --accent-wash:  rgba(255,122,26,.14);
+  --on-accent:    #1a0f06;
 
   --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
@@ -305,9 +307,11 @@ const PROJECTS = [
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --maxw: 1100px;
   --ease: cubic-bezier(.28,.11,.32,1);
-  --shadow-sm: 0 0 0 1px rgba(0,0,0,.055), 0 1px 2px rgba(0,0,0,.03), 0 4px 12px rgba(0,0,0,.04);
-  --shadow-md: 0 0 0 1px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.05), 0 12px 32px rgba(0,0,0,.08);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,.08), 0 32px 64px rgba(0,0,0,.14);
+  /* Dark-on-dark cards need a hairline to read as raised, not just a
+     shadow — black shadow alone barely shows against an already-dark page. */
+  --shadow-sm: 0 0 0 1px rgba(255,255,255,.055), 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.3);
+  --shadow-md: 0 0 0 1px rgba(255,255,255,.07), 0 2px 8px rgba(0,0,0,.32), 0 14px 36px rgba(0,0,0,.42);
+  --shadow-lg: 0 10px 28px rgba(0,0,0,.45), 0 32px 64px rgba(0,0,0,.55);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -389,7 +393,7 @@ a{ color:inherit; }
 
 .skip{
   position:absolute; left:1rem; top:-4rem; z-index:1000;
-  background:var(--ink); color:#fff;
+  background:var(--ink); color:var(--bg);
   padding:.7rem 1.15rem; border-radius:var(--pill);
   font-size:.875rem; font-weight:500; text-decoration:none;
   transition:top .2s var(--ease);
@@ -405,18 +409,18 @@ a{ color:inherit; }
 }
 .section{ padding-block:clamp(4rem, 8vw, 7.5rem); }
 .section--alt{ background:var(--bg-alt); }
-.section--dark{ background:var(--ink); color:#fff; }
+.section--dark{ background:var(--ink); color:var(--bg); }
 
 /* ---------- Header ---------- */
 .header{
   position:sticky; top:0; z-index:800;
-  background:rgba(255,255,255,.72);
+  background:rgba(21,19,18,.78);
   backdrop-filter:saturate(180%) blur(20px);
   -webkit-backdrop-filter:saturate(180%) blur(20px);
   border-bottom:1px solid transparent;
   transition:border-color .3s var(--ease);
 }
-.header[data-stuck="true"]{ border-bottom-color:rgba(0,0,0,.09); }
+.header[data-stuck="true"]{ border-bottom-color:rgba(255,255,255,.08); }
 .header__inner{
   display:flex; align-items:center; gap:1rem;
   min-height:3.5rem;
@@ -434,6 +438,7 @@ a{ color:inherit; }
   transition:background .25s var(--ease);
 }
 .brand__mark svg{ width:60%; height:60%; }
+.brand__mark svg path{ stroke:var(--bg); }
 .brand:hover .brand__mark{ background:var(--accent); }
 .brand__name span{ color:var(--gray); font-weight:400; }
 
@@ -477,19 +482,19 @@ a{ color:inherit; }
 /* ---------- Buttons ---------- */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.35rem;
-  font-family:inherit; font-size:1rem; font-weight:500; letter-spacing:-.01em;
+  font-family:inherit; font-size:1rem; font-weight:600; letter-spacing:-.01em;
   padding:.72rem 1.35rem;
   border:0; border-radius:var(--pill);
-  background:var(--accent); color:#fff;
+  background:linear-gradient(180deg,#ff9c56,var(--accent)); color:var(--on-accent);
   text-decoration:none; cursor:pointer;
-  box-shadow:0 4px 14px -6px rgba(10,132,255,.35);
+  box-shadow:0 4px 16px -6px rgba(255,122,26,.45);
   transition:background .22s var(--ease), transform .22s var(--ease), box-shadow .22s var(--ease);
 }
-.btn:hover{ background:var(--accent-hover); box-shadow:0 6px 18px -6px rgba(10,132,255,.45); }
+.btn:hover{ background:linear-gradient(180deg,#ffb377,var(--accent-hover)); box-shadow:0 6px 20px -6px rgba(255,122,26,.55); }
 .btn:active{ transform:scale(.975); }
 
-.btn--secondary{ background:var(--fill); color:var(--ink); }
-.btn--secondary:hover{ background:#dcdce1; }
+.btn--secondary{ background:var(--fill); color:var(--ink); box-shadow:none; }
+.btn--secondary:hover{ background:#2f2925; }
 
 .btn--sm{ font-size:.8125rem; padding:.42rem 1rem; }
 
@@ -504,7 +509,12 @@ a{ color:inherit; }
 .linkarrow:hover .chev{ transform:translateX(3px); }
 
 /* ---------- Hero (left copy, tool cards as the hero image) ---------- */
-.hero{ position:relative; overflow:hidden; background:var(--bg-alt); }
+.hero{
+  position:relative; overflow:hidden;
+  background:
+    radial-gradient(60% 80% at 18% 0%, rgba(255,122,26,.14), transparent 60%),
+    var(--bg-alt);
+}
 .hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); }
 .hero__grid{ display:grid; gap:clamp(2.5rem,5vw,3.5rem); align-items:center; }
 @media (min-width:62rem){
@@ -552,7 +562,7 @@ a{ color:inherit; }
 .hcard{
   position:absolute; margin:0;
   background:var(--surface); border-radius:18px; padding:.85rem;
-  box-shadow:0 2px 8px rgba(0,0,0,.06), 0 18px 46px rgba(0,0,0,.13);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06), 0 18px 46px rgba(0,0,0,.4);
   width:20rem;
   transition:transform .5s var(--ease);
 }
@@ -564,7 +574,7 @@ a{ color:inherit; }
 .hcard figcaption b{ font-size:.8125rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
 .hcard .pill{
   margin-left:auto; font-size:.625rem; padding:.16rem .5rem;
-  border-radius:var(--pill); background:var(--accent); color:#fff; white-space:nowrap;
+  border-radius:var(--pill); background:var(--accent); color:var(--on-accent); white-space:nowrap;
 }
 .hcard .pill--gray{ background:var(--fill); color:var(--ink-2); }
 /* Offsets span exactly 0–22.75rem — the same as .hero__stack's width — so
@@ -664,10 +674,10 @@ a{ color:inherit; }
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  filter:blur(4px); opacity:.65;
+  filter:blur(4px); opacity:.5;
   transition:opacity .35s var(--ease);
 }
-.card[data-featured="true"]:hover::before{ opacity:.85; }
+.card[data-featured="true"]:hover::before{ opacity:.7; }
 
 @media (min-width:56rem){
   .card[data-span="2"]{ grid-column:span 2; }
@@ -690,7 +700,7 @@ a{ color:inherit; }
   background:var(--fill); color:var(--ink-2);
 }
 .status .dot{ width:.375rem; height:.375rem; border-radius:50%; background:currentColor; flex:none; }
-.status[data-status="Live tool"]{ background:var(--accent); color:#fff; }
+.status[data-status="Live tool"]{ background:var(--accent); color:var(--on-accent); }
 .status[data-status="Internal tool"]{ background:var(--fill); color:var(--ink-2); }
 .status[data-status="Concept experiment"]{ background:var(--surface); color:var(--gray); box-shadow:inset 0 0 0 1px var(--line); }
 
@@ -834,7 +844,7 @@ dialog.modal{
   color:var(--ink);
 }
 dialog.modal::backdrop{
-  background:rgba(0,0,0,.42);
+  background:rgba(0,0,0,.65);
   backdrop-filter:blur(14px) saturate(120%);
   -webkit-backdrop-filter:blur(14px) saturate(120%);
 }
@@ -856,7 +866,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   position:sticky; top:0; z-index:2;
   display:flex; align-items:center; gap:.6rem;
   padding:.9rem clamp(1.25rem,3vw,2rem);
-  background:rgba(255,255,255,.82);
+  background:rgba(28,24,21,.85);
   backdrop-filter:saturate(180%) blur(20px);
   -webkit-backdrop-filter:saturate(180%) blur(20px);
   border-bottom:1px solid var(--line-soft);
@@ -870,7 +880,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   color:var(--ink-2); cursor:pointer;
   transition:background .2s var(--ease), color .2s var(--ease);
 }
-.modal__close:hover{ background:#dcdce1; color:var(--ink); }
+.modal__close:hover{ background:#2f2925; color:var(--ink); }
 .modal__body{ padding:clamp(1.5rem,3.2vw,2rem); }
 .modal__status{ margin-bottom:.9rem; }
 .modal__status .status{ margin-left:0; }
@@ -1156,7 +1166,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <path class="acc" d="M214 130 232 118 250 122 268 96 284 84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <circle cx="284" cy="84" r="3" class="fill-acc"/>
         <rect x="214" y="138" width="52" height="16" rx="8" class="fill-acc"/>
-        <text x="222" y="149" font-size="8" fill="#fff" font-weight="600">B wins</text>
+        <text x="222" y="149" font-size="8" fill="#1a0f06" font-weight="600">B wins</text>
       </g>
       <text x="20" y="176" font-size="9">26 clones · live reaction graph</text>
     </svg>`,
@@ -1320,7 +1330,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
         <rect x="58" y="80" width="132" height="72" rx="12" class="fill-card" stroke="var(--line)" stroke-width="1"/>
         <path class="ln" d="M72 100h74M72 112h96" stroke="var(--line)"/>
         <rect x="72" y="124" width="70" height="18" rx="9" class="fill-acc"/>
-        <text x="84" y="136.5" font-size="8" fill="#fff" font-weight="600">Get offer</text>
+        <text x="84" y="136.5" font-size="8" fill="#1a0f06" font-weight="600">Get offer</text>
       </g>
       <text x="230" y="46" font-size="9">Output</text>
       <rect x="230" y="56" width="72" height="86" rx="10" class="fill-card"/>
