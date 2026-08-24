@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reactor — Test launch copy on 24–26 clones before it ships | Fernando Peccatiello</title>
+<meta name="description" content="Reactor tests two copy variants in parallel against 24–26 persona clones. Live reaction graph, honest verdict.">
+<link rel="canonical" href="https://www.fernandopeccatiello.com/work/reactor">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#151312">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.fernandopeccatiello.com/work/reactor">
+<meta property="og:site_name" content="Fernando Peccatiello">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Reactor — Test launch copy on 24–26 clones before it ships">
+<meta property="og:description" content="Two variants. One cloned audience. Live graph. A verdict that knows when not to call a winner.">
+<meta property="og:image" content="https://www.fernandopeccatiello.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Reactor — audience simulation for launch copy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reactor — Test launch copy on 24–26 clones before it ships">
+<meta name="twitter:description" content="Two variants. One cloned audience. Live graph. An honest verdict.">
+<meta name="twitter:image" content="https://www.fernandopeccatiello.com/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.fernandopeccatiello.com/work/reactor#app",
+      "name": "Reactor",
+      "url": "https://reactor-chi-seven.vercel.app/",
+      "isPartOf": { "@id": "https://www.fernandopeccatiello.com/#website" },
+      "author": { "@id": "https://www.fernandopeccatiello.com/#person" },
+      "creator": { "@id": "https://www.fernandopeccatiello.com/#person" },
+      "description": "Simulates a cloned audience reacting to launch copy before it goes out — two variants tested in parallel against 24–26 persona clones, with a live reaction graph and a verdict on which one actually wins.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.fernandopeccatiello.com/work/reactor#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fernandopeccatiello.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://www.fernandopeccatiello.com/#work" },
+        { "@type": "ListItem", "position": 3, "name": "Reactor", "item": "https://www.fernandopeccatiello.com/work/reactor" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* Case-study — left-aligned, same shell as the rest of the site */
+.cs-hero{ padding-block: clamp(2.5rem,6vw,4.2rem) clamp(2rem,4vw,3rem); }
+.cs-hero .shell{ text-align:left; }
+.cs-hero__eyebrow{ display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem; }
+.cs-hero__eyebrow .eyebrow{ margin:0; }
+.status--live{ display:inline-flex; align-items:center; gap:.35rem; font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-wash); border:1px solid rgba(255,122,26,.22); padding:.3rem .6rem; border-radius:999px; }
+.status--live::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+.cs-hero h1{ margin:0; max-width:14ch; }
+.cs-hero__lede{ margin-top:.9rem; max-width:38rem; }
+.cs-hero__actions{ display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.5rem; }
+.cs-hero__visual{ margin-top:2rem; background:var(--bg-alt); border:1px solid var(--line-soft); border-radius:14px; overflow:hidden; }
+.cs-hero__visual .pv{ display:block; }
+.cs-hero__cap{ font-size:.8125rem; color:var(--gray); padding:.7rem 1rem; border-top:1px solid var(--line-soft); }
+.cs-section{ padding-block: clamp(2rem,4vw,3.2rem); }
+.cs-section .t-h2{ font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.15rem); letter-spacing:-.022em; }
+.cs-section .eyebrow{ font-size:.8125rem; }
+.cs-section h2{ margin:0 0 .85rem; }
+.cs-section p{ color:var(--ink-2); line-height:1.6; max-width:38rem; }
+.cs-section p + p{ margin-top:.85rem; }
+.cs-kicker{ color:var(--accent-ink); }
+.cs-gallery{ display:grid; gap:1rem; margin-top:1.5rem; }
+@media (min-width: 640px){ .cs-gallery{ grid-template-columns: repeat(3,1fr); } }
+.cs-card{ background:var(--surface); border-radius:14px; overflow:hidden; border:1px solid var(--line-soft); }
+.cs-card__media{ aspect-ratio: 4/3; background:var(--bg-alt); overflow:hidden; }
+.cs-card__body{ padding:.9rem 1rem; }
+.cs-card__body b{ font-size:.875rem; color:var(--ink); }
+.cs-card__body p{ font-size:.8125rem; color:var(--gray); margin-top:.25rem; line-height:1.45; }
+.cs-steps{ display:grid; gap:1rem; margin-top:1.25rem; max-width:42rem; }
+.cs-step{ display:grid; grid-template-columns:2rem 1fr; gap:.75rem; align-items:start; }
+.cs-step__n{ width:2rem; height:2rem; border-radius:50%; background:var(--fill); border:1px solid var(--line); display:grid; place-items:center; font-size:.8rem; font-weight:700; color:var(--accent-ink); flex:none; }
+.cs-step p{ margin:0; }
+.cs-list{ list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.75rem; max-width:38rem; }
+.cs-list li{ display:flex; gap:.6rem; align-items:flex-start; color:var(--ink-2); line-height:1.5; }
+.cs-list .tick{ color:var(--accent); flex:none; margin-top:.15rem; }
+.cs-meta{ margin-top:1.25rem; }
+.cs-cta{ display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.5rem; align-items:center; }
+@media (max-width:640px){ .cs-hero__actions .btn{ flex:1 1 auto; justify-content:center; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="header" id="header">
+  <div class="shell header__inner">
+    <a class="brand" href="/" aria-label="Fernando Peccatiello — back to home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#fff" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#fff" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand__name">Fernando <span>Peccatiello</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#work">Work</a>
+      <a href="/#approach">Approach</a>
+      <a href="/#about">About</a>
+    </nav>
+    <a class="btn btn--sm" href="mailto:fernypecca@gmail.com?subject=Hello%20Fernando">Get in touch</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Primary" hidden>
+    <a href="/#work">Work</a>
+    <a href="/#approach">Approach</a>
+    <a href="/#about">About</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="cs-hero">
+    <div class="shell">
+      <div class="cs-hero__eyebrow">
+        <span class="eyebrow">Case study</span>
+        <span class="status--live">Live tool</span>
+      </div>
+      <h1 class="t-hero">Reactor</h1>
+      <p class="t-lede cs-hero__lede">Two copy variants. One cloned audience. A live verdict before you publish.</p>
+      <div class="cs-hero__actions">
+        <a class="btn" href="https://reactor-chi-seven.vercel.app/" target="_blank" rel="noopener noreferrer">Open the tool</a>
+        <a class="btn btn--secondary" href="/#work">← Back to all work</a>
+      </div>
+      <div class="cs-hero__visual" aria-hidden="true">
+        <svg class="pv" viewBox="0 0 640 280" role="img" aria-label="Reactor interface: cloned audience graph and verdict panel">
+          <!-- left: graph -->
+          <rect x="0" y="0" width="360" height="280" fill="#1a1613"/>
+          <g opacity=".45">
+            <path class="ln" d="M48 72 78 48M78 48 108 76M78 48 68 108M68 108 102 132M68 108 36 136M108 76 132 102M132 102 144 58M132 102 168 122M102 132 122 160M68 108 84 160" stroke="#45392e"/>
+          </g>
+          <circle cx="48" cy="72" r="5" class="fill-soft"/>
+          <circle cx="78" cy="48" r="7" class="fill-acc"/>
+          <circle cx="108" cy="76" r="4" class="fill-soft"/>
+          <circle cx="68" cy="108" r="8" class="fill-acc"/>
+          <circle cx="102" cy="132" r="5" class="fill-soft"/>
+          <circle cx="36" cy="136" r="4" class="fill-soft"/>
+          <circle cx="132" cy="102" r="7" class="fill-acc"/>
+          <circle cx="144" cy="58" r="4" class="fill-soft"/>
+          <circle cx="168" cy="122" r="5" class="fill-soft"/>
+          <circle cx="122" cy="160" r="4" class="fill-soft"/>
+          <circle cx="84" cy="160" r="5" class="fill-acc"/>
+          <circle cx="188" cy="88" r="4" class="fill-soft"/>
+          <circle cx="200" cy="142" r="5" class="fill-acc"/>
+          <text x="24" y="248" font-size="10" fill="#a39a92">24–26 clones · lights up one by one</text>
+          <!-- divider -->
+          <rect x="360" y="24" width="1" height="232" fill="#332b23"/>
+          <!-- right: verdict -->
+          <rect x="384" y="24" width="232" height="160" rx="14" fill="#262019" stroke="#362d25"/>
+          <text x="400" y="54" font-size="11" fill="#cdc3ba">Verdict</text>
+          <text x="400" y="76" font-size="9" fill="#a39a92">Variant B · +3.2 pts</text>
+          <path d="M400 94 L430 108 L460 104 L490 128 L520 142 L600 112" stroke="#ff7a1a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <circle cx="600" cy="112" r="4" fill="#ff7a1a"/>
+          <rect x="400" y="148" width="68" height="20" rx="10" fill="#ff7a1a"/>
+          <text x="412" y="162" font-size="9" fill="#1a0f06" font-weight="700">B wins</text>
+          <text x="478" y="162" font-size="9" fill="#8a8078">inside noise floor → no call</text>
+          <rect x="384" y="196" width="232" height="36" rx="10" fill="#332b23"/>
+          <text x="398" y="212" font-size="9" fill="#a39a92">Who switched</text>
+          <text x="398" y="224" font-size="9" fill="#f7f3ef">7 moved A→B · 2 moved B→A</text>
+        </svg>
+        <div class="cs-hero__cap">Simulates a cloned audience reacting to launch copy — two variants tested in parallel against 24–26 persona clones, with a live reaction graph.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="shell">
+      <span class="eyebrow cs-kicker">The problem</span>
+      <h2 class="t-h2" style="margin-top:.7rem; max-width:18ch;">You only know if copy works after it's already live.</h2>
+      <p>By the time likes and comments tell you something, the weaker version has already gone out.</p>
+      <p>You lose the first impression with the very people you wanted to reach. And you still don't know <em>why</em> one phrasing moved them and the other didn't.</p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="shell">
+      <span class="eyebrow cs-kicker">Who it's for</span>
+      <h2 class="t-h2" style="margin-top:.7rem; max-width:20ch;">People who ship words to a real audience.</h2>
+      <p>Growth marketers. Founders writing their own LinkedIn. Content teams choosing between two headlines.</p>
+      <p>If you have a defined audience and the cost of guessing wrong is visible, Reactor fits before the publish button.</p>
+      <p>No signup. Paste two versions. The graph starts lighting up — you see value before any form.</p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="shell">
+      <span class="eyebrow cs-kicker">How it works</span>
+      <h2 class="t-h2" style="margin-top:.7rem; max-width:18ch;">Two variants, one audience, one honest answer.</h2>
+      <div class="cs-steps">
+        <div class="cs-step"><span class="cs-step__n">1</span><p><strong>Pick the audience.</strong> Use a preset or generate clones that match the segment you care about.</p></div>
+        <div class="cs-step"><span class="cs-step__n">2</span><p><strong>Paste A and B.</strong> Same frame, side by side. Parallel test, not sequential.</p></div>
+        <div class="cs-step"><span class="cs-step__n">3</span><p><strong>Watch it react.</strong> The graph lights up clone by clone. You see who moves, not just a final score.</p></div>
+        <div class="cs-step"><span class="cs-step__n">4</span><p><strong>Read the verdict.</strong> If the gap is inside the noise floor, it says so. No fake certainty.</p></div>
+      </div>
+
+      <div class="cs-gallery">
+        <div class="cs-card">
+          <div class="cs-card__media">
+            <svg class="pv" viewBox="0 0 320 240" role="img" aria-label="Audience picker">
+              <rect width="320" height="240" fill="#1a1613"/>
+              <rect x="16" y="16" width="288" height="36" rx="10" fill="#262019" stroke="#362d25"/>
+              <text x="32" y="38" font-size="10" fill="#cdc3ba">Preset: B2B founders · Seed 70–85</text>
+              <rect x="16" y="64" width="136" height="80" rx="12" fill="#262019"/>
+              <circle cx="48" cy="92" r="10" fill="#332b23"/><text x="68" y="92" font-size="9" fill="#f7f3ef">Founder, 34</text><text x="68" y="104" font-size="8" fill="#8a8078">SaaS · Madrid</text>
+              <rect x="168" y="64" width="136" height="80" rx="12" fill="#ff7a1a"/>
+              <text x="184" y="92" font-size="9" fill="#1a0f06" font-weight="700">+ Generate clones</text><text x="184" y="104" font-size="8" fill="#1a0f06">24–26 personas</text>
+              <rect x="16" y="156" width="288" height="68" rx="12" fill="#332b23"/>
+              <text x="32" y="176" font-size="9" fill="#a39a92">Clones keep context · safeguards on</text>
+              <text x="32" y="192" font-size="9" fill="#f7f3ef">No open-ended roleplay</text>
+            </svg>
+          </div>
+          <div class="cs-card__body"><b>1 · Audience</b><p>Pick a preset or generate 24–26 clones. Built with safeguards, not free-form roleplay.</p></div>
+        </div>
+        <div class="cs-card">
+          <div class="cs-card__media">
+            <svg class="pv" viewBox="0 0 320 240" role="img" aria-label="Parallel copy test">
+              <rect width="320" height="240" fill="#1a1613"/>
+              <rect x="16" y="16" width="144" height="160" rx="12" fill="#262019" stroke="#362d25"/>
+              <text x="28" y="36" font-size="9" fill="#ff9c56">Variant A</text>
+              <text x="28" y="54" font-size="9" fill="#cdc3ba">We help teams launch</text><text x="28" y="66" font-size="9" fill="#cdc3ba">faster without the</text><text x="28" y="78" font-size="9" fill="#cdc3ba">manual work.</text>
+              <rect x="168" y="16" width="136" height="160" rx="12" fill="#262019" stroke="#ff7a1a"/>
+              <text x="180" y="36" font-size="9" fill="#ff9c56">Variant B · live</text>
+              <text x="180" y="54" font-size="9" fill="#f7f3ef">Launch day without</text><text x="180" y="66" font-size="9" fill="#f7f3ef">the busywork.</text>
+              <text x="32" y="200" font-size="9" fill="#a39a92">Both run at once — same clones</text>
+            </svg>
+          </div>
+          <div class="cs-card__body"><b>2 · Parallel test</b><p>Not sequential. Same clones see A and B, so the difference is the copy.</p></div>
+        </div>
+        <div class="cs-card">
+          <div class="cs-card__media">
+            <svg class="pv" viewBox="0 0 320 240" role="img" aria-label="Verdict that respects variance">
+              <rect width="320" height="240" fill="#1a1613"/>
+              <rect x="16" y="16" width="288" height="96" rx="12" fill="#262019"/>
+              <text x="32" y="40" font-size="9" fill="#a39a92">Verdict</text>
+              <text x="32" y="62" font-size="16" fill="#f7f3ef" font-weight="700">Too close to call</text>
+              <text x="32" y="78" font-size="9" fill="#ff9c56">Gap inside noise floor</text>
+              <rect x="16" y="124" width="288" height="48" rx="10" fill="#332b23"/>
+              <text x="32" y="144" font-size="9" fill="#cdc3ba">7 moved A → B · 2 moved B → A · 17 held</text>
+              <text x="32" y="160" font-size="9" fill="#8a8078">Directional, not overstated</text>
+            </svg>
+          </div>
+          <div class="cs-card__body"><b>3 · Honest verdict</b><p>Refuses to crown a winner inside variance. Shows who switched.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <div class="shell">
+      <span class="eyebrow cs-kicker">What it demonstrates</span>
+      <h2 class="t-h2" style="margin-top:.7rem;">Why it was built this way.</h2>
+      <ul class="cs-list">
+        <li><svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Streaming visualization</strong> — the graph renders progressively. You trust it because you watch it happen.</span></li>
+        <li><svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Honest statistics</strong> — withholds the call when the margin is noise. Fewer false wins.</span></li>
+        <li><svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Clones with guardrails</strong> — persona generation that stays useful, not theatrical.</span></li>
+      </ul>
+      <ul class="tags cs-meta">
+        <li>Audience Simulation</li>
+        <li>Claude API</li>
+        <li>Data Viz</li>
+        <li>Streaming</li>
+      </ul>
+      <div class="cs-cta">
+        <a class="btn" href="https://reactor-chi-seven.vercel.app/" target="_blank" rel="noopener noreferrer">Open Reactor</a>
+        <a class="linkarrow" href="/#work">See the rest of the work <svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" aria-labelledby="footer-line">
+  <div class="shell">
+    <p class="footer__line" id="footer-line">Built with curiosity, systems thinking, and a bias toward useful things.</p>
+    <div class="footer__grid">
+      <div class="footer__links">
+        <a href="https://www.linkedin.com/in/fernando-peccatiello/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/fernypecca" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:fernypecca@gmail.com?subject=Hello%20Fernando">Get in touch</a>
+      </div>
+      <p class="footer__legal">© 2026 Fernando Peccatiello. All experiments are personal projects.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var btn=document.getElementById('menu-btn'), nav=document.getElementById('mobile-nav');
+  if(!btn||!nav) return;
+  btn.addEventListener('click', function(){
+    var open=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded', String(!open));
+    if(open){ nav.setAttribute('hidden',''); } else { nav.removeAttribute('hidden'); }
+  });
+})();
+</script>
+</body>
+</html>

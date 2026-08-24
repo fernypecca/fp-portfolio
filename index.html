@@ -691,7 +691,7 @@ a{ color:inherit; }
 }
 .card[data-span="2"] .tags li, .modal .tags li{ background:var(--fill); }
 
-.card__foot{ margin-top:auto; padding-top:.4rem; }
+.card__foot{ margin-top:auto; padding-top:.4rem; display:flex; flex-wrap:wrap; gap:.4rem 1.25rem; }
 .openlink{
   position:relative; z-index:2;
   display:inline-flex; align-items:center; gap:.2rem;
@@ -1058,6 +1058,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       <div class="modal__foot">
         <a class="btn" id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Open tool</a>
         <span class="note">Opens in a new tab</span>
+        <a class="openlink" id="modal-cs-link" href="#" hidden>Read the case study →</a>
       </div>
     </div>
   </div>
@@ -1075,6 +1076,13 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 
   const chevron = `<svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const tick = `<svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  /* Dedicated, indexable case-study pages — pilot with these three only. */
+  const CASE_STUDY = {
+    'Reactor': '/work/reactor',
+    'Product Kit Generator': '/work/product-kit-generator',
+    'Storefront Analyzer': '/work/storefront-analyzer'
+  };
 
   /* ---------------------------------------------------------------
      Abstract project visuals — inline SVG only, no external assets.
@@ -1372,6 +1380,7 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
                aria-label="Open ${esc(p.name)} in a new tab">Open tool
               <svg class="chev" width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9L9 1M9 1H3.5M9 1v5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
+            ${CASE_STUDY[p.name] ? `<a class="openlink" href="${CASE_STUDY[p.name]}">Read the case study →</a>` : ''}
           </div>
         </div>
       </div>
@@ -1450,6 +1459,10 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
       link.href = p.url;
       link.setAttribute('aria-label', 'Open ' + p.name + ' in a new tab');
     });
+    const csLink = $('#modal-cs-link');
+    const csUrl = CASE_STUDY[p.name];
+    csLink.hidden = !csUrl;
+    if (csUrl) csLink.href = csUrl;
 
     $('.modal__panel', modal).scrollTop = 0;
     if (typeof modal.showModal === 'function') modal.showModal();
