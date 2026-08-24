@@ -115,8 +115,9 @@ const SITE = {
   ctaLabel:    'Get in touch',
   emailSubject:'Hello Fernando',
 
-  heroP1: 'Hi, I’m Fernando Peccatiello. I’m a growth marketer who also builds the tools — mostly AI-powered, always shipped, not just proposed.',
-  heroP2: 'I work at the intersection of conversion, copywriting, and front-end execution — the parts of growth marketing that usually get split across three different people. Nine tools are live right now; open any of them below.',
+  heroHeadline: 'Hi, I’m Fernando Peccatiello.',
+  heroP1: 'I’m a growth marketer who also builds the tools — mostly AI-powered, always shipped, not just proposed.',
+  heroP2: 'I work at the intersection of conversion, copywriting, and front-end execution — the parts of growth marketing that usually get split across three different people. Nine tools are live right now.',
 
   approach: [
     { title: 'Start with the bottleneck',        body: 'Focus on real workflow, conversion, or decision-making friction.' },
@@ -491,21 +492,26 @@ a{ color:inherit; }
 
 .btn--sm{ font-size:.8125rem; padding:.42rem 1rem; }
 
-/* ---------- Hero (narrative, no headline — see hero__lede) ---------- */
+/* ---------- Hero (left copy, tool cards as the hero image) ---------- */
 .hero{
   position:relative; overflow:hidden;
   background:
     radial-gradient(60% 80% at 18% 0%, rgba(255,122,26,.14), transparent 60%),
     var(--bg-alt);
 }
-.hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); text-align:center; }
-/* Deliberately not a display headline — the h1 carries the first line for
-   SEO/a11y structure but reads as plain body copy, same as the second
-   paragraph. Credibility here comes from specific facts, not type size. */
-.hero__lede{
-  font-size:1.0625rem; line-height:1.6; letter-spacing:-.008em; font-weight:400;
-  color:var(--ink-2); max-width:48ch; margin-inline:auto;
+.hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); }
+.hero__grid{ display:grid; gap:clamp(2.5rem,5vw,3.5rem); align-items:center; }
+@media (min-width:62rem){
+  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(2.5rem,5vw,4rem); }
 }
+.hero h1{ max-width:14ch; font-size:clamp(2rem, 1.2rem + 3vw, 3.25rem); }
+/* Quiet body copy, not a features pitch — credibility comes from the
+   specific facts in the sentences, not from type size or button chrome. */
+.hero__lede{
+  font-size:1.0625rem; line-height:1.55; letter-spacing:-.008em; font-weight:400;
+  color:var(--ink-2); max-width:44ch;
+}
+.hero h1 + .hero__lede{ margin-top:1.25rem; }
 .hero__lede + .hero__lede{ margin-top:1.1rem; }
 
 .hero__links{
@@ -515,14 +521,16 @@ a{ color:inherit; }
 .hero__links a:hover{ text-decoration:underline; text-underline-offset:3px; }
 .hero__links .dot{ margin:0 .55rem; color:var(--gray); }
 
-/* Tool-card trio, fanned side by side under the centered copy — the real
-   interfaces, not an illustration. Widths and overlaps are fluid (clamp)
-   rather than breakpoint-switched: each card's natural height (caption
-   wrap included) drives the row, so there's no JS measuring step like the
-   old vertical fan needed. */
+/* Tool-card trio, fanned side by side — the real interfaces, not an
+   illustration. Widths are fluid (clamp) rather than breakpoint-switched,
+   scaled down for the 62rem+ two-column case since the fan then sits in
+   half the width instead of the full centered row. */
 .hero__stack{
   display:flex; justify-content:center; align-items:flex-start;
   margin-top:clamp(2.25rem,4vw,3rem);
+}
+@media (min-width:62rem){
+  .hero__stack{ justify-content:flex-end; margin-top:0; }
 }
 .hcard{
   flex:none; margin:0;
@@ -530,6 +538,9 @@ a{ color:inherit; }
   box-shadow:0 0 0 1px rgba(255,255,255,.09), 0 18px 46px rgba(0,0,0,.4);
   width:clamp(6.75rem, 3rem + 20vw, 13rem);
   transition:transform .35s var(--ease);
+}
+@media (min-width:62rem){
+  .hcard{ width:clamp(6.5rem, 1.5rem + 10vw, 11rem); }
 }
 .hcard__v{ border-radius:11px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
 .hcard figcaption{
@@ -947,15 +958,20 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero__inner">
-      <h1 class="hero__lede" id="hero-title"></h1>
-      <p class="hero__lede" id="hero-sub"></p>
+      <div class="hero__grid">
+        <div>
+          <h1 id="hero-title"></h1>
+          <p class="hero__lede" id="hero-sub"></p>
+          <p class="hero__lede" id="hero-sub2"></p>
 
-      <p class="hero__links">
-        <a href="#work">See the tools</a><span class="dot">·</span><a href="#" id="hero-contact">Get in touch</a>
-      </p>
+          <p class="hero__links">
+            <a href="#work">See the tools</a><span class="dot">·</span><a href="#" id="hero-contact">Get in touch</a>
+          </p>
+        </div>
 
-      <!-- Populated from the first three PROJECTS, so it stays in sync -->
-      <div class="hero__stack" id="hero-stack" aria-hidden="true"></div>
+        <!-- Populated from the first three PROJECTS, so it stays in sync -->
+        <div class="hero__stack" id="hero-stack" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
@@ -1289,8 +1305,9 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
      Static content from SITE
   ----------------------------------------------------------------*/
   document.title = SITE.name + ' — ' + SITE.role;
-  $('#hero-title').textContent = SITE.heroP1;
-  $('#hero-sub').textContent = SITE.heroP2;
+  $('#hero-title').textContent = SITE.heroHeadline;
+  $('#hero-sub').textContent = SITE.heroP1;
+  $('#hero-sub2').textContent = SITE.heroP2;
   $('#hero-contact').href = mailto;
   $('#about-title').textContent = SITE.aboutHeading;
   $('#about-body').textContent = SITE.aboutBody;
