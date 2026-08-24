@@ -115,15 +115,8 @@ const SITE = {
   ctaLabel:    'Get in touch',
   emailSubject:'Hello Fernando',
 
-  headline:    'I turn growth bottlenecks into useful tools.',
-  subheadline: 'I build focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.',
-  intro:       'I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.',
-
-  markers: [
-    '9 tools shipped',
-    'AI-powered workflows',
-    'Growth & conversion systems'
-  ],
+  heroP1: 'Hi, I’m Fernando Peccatiello. I’m a growth marketer who also builds the tools — mostly AI-powered, always shipped, not just proposed.',
+  heroP2: 'I work at the intersection of conversion, copywriting, and front-end execution — the parts of growth marketing that usually get split across three different people. Nine tools are live right now; open any of them below.',
 
   approach: [
     { title: 'Start with the bottleneck',        body: 'Focus on real workflow, conversion, or decision-making friction.' },
@@ -498,17 +491,7 @@ a{ color:inherit; }
 
 .btn--sm{ font-size:.8125rem; padding:.42rem 1rem; }
 
-.linkarrow{
-  display:inline-flex; align-items:center; gap:.15rem;
-  color:var(--accent-ink); text-decoration:none;
-  font-size:1.0625rem; letter-spacing:-.012em;
-  transition:color .2s var(--ease);
-}
-.linkarrow:hover{ text-decoration:underline; text-underline-offset:3px; }
-.linkarrow .chev{ transition:transform .25s var(--ease); }
-.linkarrow:hover .chev{ transform:translateX(3px); }
-
-/* ---------- Hero (left copy, tool cards as the hero image) ---------- */
+/* ---------- Hero (narrative, no headline — see hero__lede) ---------- */
 .hero{
   position:relative; overflow:hidden;
   background:
@@ -516,25 +499,21 @@ a{ color:inherit; }
     var(--bg-alt);
 }
 .hero__inner{ padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem); text-align:center; }
-.hero__eyebrow{ margin-bottom:1rem; }
-/* No longer squeezed into a half column since the hero went centered/
-   single-column — inherits .t-hero's own scale (up to 4.75rem) instead of
-   the smaller cap the old two-column layout needed. */
-.hero h1{ max-width:19ch; margin-inline:auto; }
-.hero__sub{ margin:1.25rem auto 0; max-width:46ch; }
-.hero__actions{
-  display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem 1.25rem; align-items:center;
-  margin-top:clamp(1.5rem,3vw,1.75rem);
+/* Deliberately not a display headline — the h1 carries the first line for
+   SEO/a11y structure but reads as plain body copy, same as the second
+   paragraph. Credibility here comes from specific facts, not type size. */
+.hero__lede{
+  font-size:1.0625rem; line-height:1.6; letter-spacing:-.008em; font-weight:400;
+  color:var(--ink-2); max-width:48ch; margin-inline:auto;
 }
+.hero__lede + .hero__lede{ margin-top:1.1rem; }
 
-.markers{
-  list-style:none; margin:2rem auto 0; padding:1.25rem 0 0;
-  border-top:1px solid var(--line);
-  max-width:38rem;
-  display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem 1.75rem;
+.hero__links{
+  margin-top:1.5rem; font-size:1rem;
 }
-.markers li{ display:flex; gap:.55rem; align-items:center; font-size:.9375rem; color:var(--ink-2); }
-.markers .tick{ color:var(--accent); flex:none; }
+.hero__links a{ color:var(--accent-ink); text-decoration:none; }
+.hero__links a:hover{ text-decoration:underline; text-underline-offset:3px; }
+.hero__links .dot{ margin:0 .55rem; color:var(--gray); }
 
 /* Tool-card trio, fanned side by side under the centered copy — the real
    interfaces, not an illustration. Widths and overlaps are fluid (clamp)
@@ -554,32 +533,15 @@ a{ color:inherit; }
 }
 .hcard__v{ border-radius:11px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
 .hcard figcaption{
-  display:flex; flex-wrap:wrap; align-items:center; gap:.4rem;
-  padding:.5rem .25rem .1rem; font-size:.6875rem; color:var(--gray);
+  padding:.5rem .25rem .1rem; font-size:.75rem; font-weight:600;
+  color:var(--ink); letter-spacing:-.01em;
 }
-.hcard figcaption b{ font-size:.75rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
-.hcard .pill{
-  font-size:.5625rem; padding:.14rem .45rem;
-  border-radius:var(--pill); background:var(--accent); color:var(--on-accent); white-space:nowrap;
-}
-.hcard .pill--gray{ background:var(--fill); color:var(--ink-2); }
 .hcard--1{ transform:rotate(-5deg); z-index:1; margin-right:clamp(-1.5rem,-4vw,-.75rem); }
 .hcard--2{ transform:rotate(1deg);  z-index:3; margin-top:-.4rem; }
 .hcard--3{ transform:rotate(5deg);  z-index:1; margin-left:clamp(-1.5rem,-4vw,-.75rem); }
 .hero__stack:hover .hcard--1{ transform:rotate(-7deg) translate(-6px,-4px); }
 .hero__stack:hover .hcard--2{ transform:rotate(1.5deg) translateY(-6px); }
 .hero__stack:hover .hcard--3{ transform:rotate(7deg) translate(6px,-4px); }
-
-.hero__intro{
-  margin:clamp(2.5rem,5vw,4rem) auto 0;
-  max-width:46rem;
-  text-align:left;
-  background:var(--surface);
-  border-radius:var(--r-xl);
-  padding:clamp(1.5rem,3.2vw,2.25rem);
-}
-.hero__intro p{ color:var(--ink-2); letter-spacing:-.014em; }
-.hero__intro .eyebrow{ display:block; margin-bottom:.6rem; color:var(--gray); font-size:.8125rem; }
 
 /* ---------- Section head ---------- */
 .sechead{ margin-bottom:clamp(2rem,4vw,3rem); max-width:44rem; }
@@ -942,7 +904,6 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
 @media (max-width:47.99rem){
   .nav{ display:none; }
   .menu-btn{ display:flex; }
-  .hero__actions .btn{ flex:0 1 auto; }
   .count{ margin-left:0; }
 }
 @media (max-width:23.5rem){
@@ -986,27 +947,15 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero__inner">
-      <p class="eyebrow hero__eyebrow" id="hero-eyebrow"></p>
-      <h1 class="t-hero" id="hero-title"></h1>
-      <p class="t-lede hero__sub" id="hero-sub"></p>
+      <h1 class="hero__lede" id="hero-title"></h1>
+      <p class="hero__lede" id="hero-sub"></p>
 
-      <div class="hero__actions">
-        <a class="btn" href="#work">Explore the tools</a>
-        <a class="linkarrow" href="#approach">
-          My approach
-          <svg class="chev" width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <ul class="markers" id="markers" aria-label="Capability markers"></ul>
+      <p class="hero__links">
+        <a href="#work">See the tools</a><span class="dot">·</span><a href="#" id="hero-contact">Get in touch</a>
+      </p>
 
       <!-- Populated from the first three PROJECTS, so it stays in sync -->
       <div class="hero__stack" id="hero-stack" aria-hidden="true"></div>
-
-      <div class="hero__intro">
-        <span class="eyebrow">Short intro</span>
-        <p id="hero-intro"></p>
-      </div>
     </div>
   </section>
 
@@ -1340,10 +1289,9 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
      Static content from SITE
   ----------------------------------------------------------------*/
   document.title = SITE.name + ' — ' + SITE.role;
-  $('#hero-eyebrow').textContent = SITE.role;
-  $('#hero-title').textContent = SITE.headline;
-  $('#hero-sub').textContent = SITE.subheadline;
-  $('#hero-intro').textContent = SITE.intro;
+  $('#hero-title').textContent = SITE.heroP1;
+  $('#hero-sub').textContent = SITE.heroP2;
+  $('#hero-contact').href = mailto;
   $('#about-title').textContent = SITE.aboutHeading;
   $('#about-body').textContent = SITE.aboutBody;
   $('#footer-line').textContent = SITE.footerLine;
@@ -1356,17 +1304,12 @@ dialog.modal[open]::backdrop{ animation:fadeIn .4s var(--ease); }
   $('#about-meta').innerHTML =
     `<span>Based in ${esc(SITE.location)}</span><span>Open to collaboration</span><span>Personal projects</span>`;
 
-  $('#markers').innerHTML = SITE.markers.map((m) =>
-    `<li>${tick}<span>${esc(m)}</span></li>`).join('');
-
   /* Hero image = the first three tools, fanned. Reorder PROJECTS and this
      follows automatically. */
   $('#hero-stack').innerHTML = PROJECTS.slice(0, 3).map((p, i) =>
     `<figure class="hcard hcard--${i + 1}">
       <div class="hcard__v">${VISUALS[p.visual] || ''}</div>
-      <figcaption><b>${esc(p.name)}</b>
-        <span class="pill${p.status === 'Live tool' ? '' : ' pill--gray'}">${esc(p.status)}</span>
-      </figcaption>
+      <figcaption>${esc(p.name)}</figcaption>
     </figure>`).join('');
 
   $('#principles').innerHTML = SITE.approach.map((p, i) =>
