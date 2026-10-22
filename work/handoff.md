@@ -1,8 +1,13 @@
 # Portfolio — estado al 22 de octubre de 2026
 
-## Publicación de los últimos ajustes — autorizada
+## Publicación de los últimos ajustes — verificada
 
-Fer solicitó «ok deploy en main y live». Esta instrucción autoriza commit, push a origin/main y publicación de los ajustes de hero, ticker, cards y precisión de contenido. El build de prepublicación vuelve a generar 8/8 páginas y npm audit no detecta vulnerabilidades. La confirmación del despliegue y las comprobaciones del dominio se registrarán al cerrar el release.
+- Fer solicitó «ok deploy en main y live»: autorizados commit, push a origin/main y producción. Código publicado en `c5af70883ab470e7c871b452f28e05dcaed735ab`.
+- Vercel `dpl_6riAuqp1Qa3WspurQHyrtanMBcgG`, estado Ready/Production, check GitHub success y build remoto8/8. Deployment: https://fp-portfolio-6w3hx38mw-fernypecca-1173s-projects.vercel.app. Dominio confirmado: https://www.fernandopeccatiello.com y alias sin www.
+- Prepublicación: build aislado8/8, suite42/42 y npm audit0. Repetida la suite completa sobre el dominio público:42/42, salida0. Log: `/tmp/fp-portfolio-production-check.log`.
+- Smoke público confirma caption14px, nodo central160, cinta antes de Stats con pausa funcional, fondo piedra/cards con sombra, nueve herramientas y descripción prudente del estimador. Móvil390: etiquetas mínimas13,4px y sin overflow. Sin errores de consola/network en esa carga. Robots, sitemap, favicons y OG versionado200.
+- Este registro documental acompaña al release sin cambiar su código funcional. El check Vercel de origin/main identifica el despliegue del commit documental más reciente. Proceso original3000 intacto; preview aislada3001 conservada.
+- No queda trabajo técnico necesario para publicar. P2 editoriales y límites de la auditoría permanecen documentados en `work/audit-2026-10-22.md`; requieren evidencia de Fer o una decisión futura de CRO.
 
 ## Última revisión — legibilidad del hero y auditoría integral
 
@@ -10,7 +15,7 @@ Fer solicitó «ok deploy en main y live». Esta instrucción autoriza commit, p
 - Estimador de ingresos describe una estimación anual sin prometer ingresos “realistas” no validados. No se alteraron métricas, estados o URLs.
 - Build final aislado8/8 y suite42/42 aprobados. Axe sin infracciones detectadas en cuatro páginas/cinco tamaños y404 adicional; consola/network limpios en rutasprincipales; anchors/teclado/loop/redirects/metadatos/assets y9URLs verificados. npm audit0. Revisión de fuente, contenido y QA independientes sin P0/P1.
 - Informe completo: `work/audit-2026-10-22.md`. P2 abiertos son oportunidades editoriales: experiencia profesional verificable y probar más jerarquía del caso frente a la demo. No se inventó información ni se reorganizó la colección sin evidencia.
-- Sin commit/push/deploy. Preview final http://localhost:3001; proceso3000 intacto. Capturas `/tmp/fp-legibility-audit-PNUecY`, log `/tmp/fp-portfolio-final-audit-verified.log`. Próximo paso: Fer revisa preview y solicita publicación cuando corresponda.
+- La entrega inicial fue local; la publicación posterior autorizada y verificada figura al principio de este documento. Preview http://localhost:3001 y proceso3000 intacto. Capturas `/tmp/fp-legibility-audit-PNUecY`, log local `/tmp/fp-portfolio-final-audit-verified.log`.
 
 ## Último ajuste — cinta y separación de herramientas
 
