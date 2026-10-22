@@ -1,5 +1,24 @@
 # Portfolio — estado al 22 de octubre de 2026
 
+## Publicación de los últimos ajustes — autorizada
+
+Fer solicitó «ok deploy en main y live». Esta instrucción autoriza commit, push a origin/main y publicación de los ajustes de hero, ticker, cards y precisión de contenido. El build de prepublicación vuelve a generar 8/8 páginas y npm audit no detecta vulnerabilidades. La confirmación del despliegue y las comprobaciones del dominio se registrarán al cerrar el release.
+
+## Última revisión — legibilidad del hero y auditoría integral
+
+- User pidió ampliar los textos de HeroSystem y auditar la página completa. Labels SVG mínimos reales observados12,2px en los tamaños probados320/375/390/768/981/1024/1440; detalle14px, header12px, control13px y44pxalto. Core y outputs ampliados con conectores ajustados; caption grid conserva altura durante las tres fases. Thirdstep unificado como Measure.
+- Estimador de ingresos describe una estimación anual sin prometer ingresos “realistas” no validados. No se alteraron métricas, estados o URLs.
+- Build final aislado8/8 y suite42/42 aprobados. Axe sin infracciones detectadas en cuatro páginas/cinco tamaños y404 adicional; consola/network limpios en rutasprincipales; anchors/teclado/loop/redirects/metadatos/assets y9URLs verificados. npm audit0. Revisión de fuente, contenido y QA independientes sin P0/P1.
+- Informe completo: `work/audit-2026-10-22.md`. P2 abiertos son oportunidades editoriales: experiencia profesional verificable y probar más jerarquía del caso frente a la demo. No se inventó información ni se reorganizó la colección sin evidencia.
+- Sin commit/push/deploy. Preview final http://localhost:3001; proceso3000 intacto. Capturas `/tmp/fp-legibility-audit-PNUecY`, log `/tmp/fp-portfolio-final-audit-verified.log`. Próximo paso: Fer revisa preview y solicita publicación cuando corresponda.
+
+## Último ajuste — cinta y separación de herramientas
+
+- Fer pidió recuperar movimiento en las disciplinas, considerar situarlas encima de 09/04/02/03 y distinguir mejor las cards. Implementado en preview: Hero → cinta negra animada → Stats. Botón pausa/reanudación; se detiene fuera de viewport, en pestaña oculta y con movimiento reducido. Sin JS o con movimiento reducido, una sola copia permite desplazamiento horizontal con teclado/touch. Grupos de al menos 100vw evitan huecos en ultrawide.
+- Work usa fondo piedra; cards blancas con borde y sombra visibles en reposo, gap de 26px y división más clara entre preview y contenido. Se conserva el sistema paper/black/yellow y el contenido existente.
+- Verificación: build aislado 8/8; suite portfolio/hero/ticker completa aprobada, incluyendo Axe y cinco tamaños. Revisión adicional de cinta en 375, 390, 768, 1024, 1440 y 2560 px sin overflow; flecha derecha desplaza la cinta estática con foco. Revisión independiente final sin hallazgos accionables.
+- Estado: cambios locales sin commit, push ni deploy. Preview http://localhost:3001. Producción conserva el release anterior; el proceso original :3000 no se detuvo. Próximo paso: revisión visual de Fer y publicación cuando la solicite.
+
 ## Alcance y restricciones
 
 Fer autorizó primero las correcciones y, posteriormente, el commit/push y publicación de toda la versión el 22 de octubre de 2026. Se conserva el checkout y el servidor original de localhost:3000. Los checks aislados usan :3001. Las restricciones anteriores de no publicar correspondían a la fase de auditoría.
@@ -7,7 +26,7 @@ Fer autorizó primero las correcciones y, posteriormente, el commit/push y publi
 ## Implementado
 
 - Reveal muestra HTML por defecto, usa IntersectionObserver/Web Animations sólo para desplazamiento opcional y cancela movimiento cuando cambia la preferencia del usuario. Hero es un componente de servidor. Eliminada dependencia Framer Motion.
-- Corregidos contrastes secundarios y foco con anillo de dos colores. Skip link global con main enfocable en home/casos/404; headings de galería coherentes; ticker estático sin bucle continuo.
+- Corregidos contrastes secundarios y foco con anillo de dos colores. Skip link global con main enfocable en home/casos/404; headings de galería coherentes. El ticker inicialmente se dejó estático; el ajuste posterior solicitado por Fer se documenta al final.
 - Inventario 9/4/2/3 derivado desde lib/tools.js; retiradas cifras personales de mercados/idiomas cuyo alcance no estaba documentado; corregidos 01–02 del hero y nombre Wedding Earnings Estimator.
 - Casos distinguen alcance funcional, conceptos y límites; Reactor identifica respuestas sintéticas sin pretender validación humana; no se inventaron resultados comerciales. proof.limitations se muestra antes de métricas Product scope. Títulos SEO de casos acortados.
 - lib/site.js centraliza origen, contactos y OG. Imagen social 1200×630 actualizada, URL versionada y fallback og.png. SoftwareApplication ya no afirma un precio gratuito no documentado. 404 declara noindex.

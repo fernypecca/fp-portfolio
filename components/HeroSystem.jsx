@@ -77,22 +77,22 @@ export default function HeroSystem() {
         </g>
 
         <g className="hero-system__wires" fill="none">
-          <path d="M78 108H122Q144 108 144 130V154Q144 176 166 176H200" />
-          <path d="M78 176H200" />
-          <path d="M78 244H122Q144 244 144 222V198Q144 176 166 176H200" />
-          <path d="M320 176H348Q372 176 372 152V130Q372 108 394 108H408" />
-          <path d="M320 176H408" />
-          <path d="M320 176H348Q372 176 372 200V222Q372 244 394 244H408" />
+          <path d="M78 108H122Q144 108 144 130V154Q144 176 166 176H180" />
+          <path d="M78 176H180" />
+          <path d="M78 244H122Q144 244 144 222V198Q144 176 166 176H180" />
+          <path d="M340 176H344Q360 176 360 152V130Q360 108 376 108" />
+          <path d="M340 176H376" />
+          <path d="M340 176H344Q360 176 360 200V222Q360 244 376 244" />
           <path className="hero-system__return" d="M446 266V294Q446 308 432 308H92Q56 308 56 272" />
         </g>
 
         <g className="hero-system__signals" fill="none" aria-hidden="true">
-          <path className="hero-system__signal hero-system__signal--one" pathLength="1" d="M78 108H122Q144 108 144 130V154Q144 176 166 176H200" />
-          <path className="hero-system__signal hero-system__signal--two" pathLength="1" d="M78 176H200" />
-          <path className="hero-system__signal hero-system__signal--three" pathLength="1" d="M78 244H122Q144 244 144 222V198Q144 176 166 176H200" />
-          <path className="hero-system__signal hero-system__signal--out" pathLength="1" d="M320 176H348Q372 176 372 152V130Q372 108 394 108H408" />
-          <path className="hero-system__signal hero-system__signal--out hero-system__signal--two" pathLength="1" d="M320 176H408" />
-          <path className="hero-system__signal hero-system__signal--out hero-system__signal--three" pathLength="1" d="M320 176H348Q372 176 372 200V222Q372 244 394 244H408" />
+          <path className="hero-system__signal hero-system__signal--one" pathLength="1" d="M78 108H122Q144 108 144 130V154Q144 176 166 176H180" />
+          <path className="hero-system__signal hero-system__signal--two" pathLength="1" d="M78 176H180" />
+          <path className="hero-system__signal hero-system__signal--three" pathLength="1" d="M78 244H122Q144 244 144 222V198Q144 176 166 176H180" />
+          <path className="hero-system__signal hero-system__signal--out" pathLength="1" d="M340 176H344Q360 176 360 152V130Q360 108 376 108" />
+          <path className="hero-system__signal hero-system__signal--out hero-system__signal--two" pathLength="1" d="M340 176H376" />
+          <path className="hero-system__signal hero-system__signal--out hero-system__signal--three" pathLength="1" d="M340 176H344Q360 176 360 200V222Q360 244 376 244" />
         </g>
 
         <g className="hero-system__sources">
@@ -107,24 +107,23 @@ export default function HeroSystem() {
         </g>
 
         <g className="hero-system__core">
-          <rect className="hero-system__core-outline" x="191" y="101" width="138" height="150" rx="25" />
-          <rect className="hero-system__core-body" x="200" y="110" width="120" height="132" rx="18" />
+          <rect className="hero-system__core-outline" x="171" y="101" width="178" height="150" rx="25" />
+          <rect className="hero-system__core-body" x="180" y="110" width="160" height="132" rx="18" />
           <g className="hero-system__crosshair" aria-hidden="true">
             <path d="M246 140V132H254M266 132H274V140M274 151V159H266M254 159H246V151" />
             <circle cx="260" cy="145" r="3" />
           </g>
-          <text x="260" y="185" textAnchor="middle" className="hero-system__core-top">{current.top}</text>
-          <text x="260" y="207" textAnchor="middle" className="hero-system__core-bottom">{current.bottom}</text>
-          <circle className="hero-system__port" cx="200" cy="176" r="4" />
-          <circle className="hero-system__port" cx="320" cy="176" r="4" />
+          <text x="260" y="188" textAnchor="middle" className="hero-system__core-top">{current.top}</text>
+          <text x="260" y="216" textAnchor="middle" className="hero-system__core-bottom">{current.bottom}</text>
+          <circle className="hero-system__port" cx="180" cy="176" r="4" />
+          <circle className="hero-system__port" cx="340" cy="176" r="4" />
         </g>
 
         <g className="hero-system__outputs">
           {[[108, "Signal"], [176, "Intent"], [244, "Next step"]].map(([y, label], index) => (
             <g key={label} className={`hero-system__output hero-system__output--${index}`}>
-              <rect x="408" y={y - 21} width="86" height="42" rx="11" />
-              <circle cx="422" cy={y} r="3" />
-              <text x="433" y={y + 4}>{label}</text>
+              <rect x="376" y={y - 21} width="118" height="42" rx="11" />
+              <text x="435" y={y + 6} textAnchor="middle">{label}</text>
             </g>
           ))}
         </g>

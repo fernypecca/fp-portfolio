@@ -26,7 +26,7 @@ AUDIT_URL=http://localhost:3001 npm run check
 npm audit
 ```
 
-The check uses Playwright and Axe to verify visible content without JavaScript and with reduced motion, the five responsive sizes, contrast and common accessibility rules, skip-link focus, the case-study loop, permanent redirects, security headers and 404 status. It also checks the native hero illustration, phase progression, pause/resume and pausing outside the viewport. It does not submit forms or call external tool-generation APIs. Automated checks do not replace screen-reader or physical-device testing.
+The check uses Playwright and Axe to verify visible content without JavaScript and with reduced motion, the five responsive sizes, contrast and common accessibility rules, skip-link focus, the case-study loop, permanent redirects, security headers and 404 status. It also checks the native hero illustration, phase progression, pause/resume and pausing outside the viewport. The disciplines strip is checked for movement, placement above the inventory, pause/resume, ultrawide coverage and manual scrolling with reduced motion or without JavaScript. It does not submit forms or call external tool-generation APIs. Automated checks do not replace screen-reader or physical-device testing.
 
 Verification builds use .next-check so they do not overwrite assets held by an existing server on port 3000. The normal npm run build / npm start workflow still uses .next for deployment. The checker covers five widths: 375, 390, 768, 1024 and 1440 px.
 
@@ -42,6 +42,7 @@ Verification builds use .next-check so they do not overwrite assets held by an e
 - public/images/: actual interface screenshots used by the app.
 - og.svg and scripts/generate-og.mjs: social-card source and renderer.
 - scripts/check-portfolio.mjs: repeatable browser checks.
+- scripts/check-hero.mjs and scripts/check-ticker.mjs: animated component and static fallback checks.
 - work/: implementation notes and handoff.
 
 ## Content and accessibility

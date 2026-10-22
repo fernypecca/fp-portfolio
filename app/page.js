@@ -64,7 +64,7 @@ const approach = [
     text: "A calculator, a diagnostic, a QA workflow, a funnel. Built fast, in the open, and useful on day one.",
   },
   {
-    n: "03 — PROVE",
+    n: "03 — MEASURE",
     title: "Measure. Kill. Or scale.",
     text: "Instrument the outcome, read the signal honestly, and double down only when the number earns it.",
   },
@@ -87,8 +87,8 @@ export default function Home() {
       <Nav />
       <main id="main-content" tabIndex={-1}>
         <Hero />
-        <Stats />
         <Ticker />
+        <Stats />
 
         <section className="section work" id="work">
           <div className="wrap">
