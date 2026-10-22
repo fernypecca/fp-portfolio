@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design concepts — black + orange</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:#e5e5ea; color:#1d1d1f;
+    font-family:-apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .intro{
+    max-width:640px; margin:0 auto; padding:3rem 1.5rem 1rem;
+    text-align:center;
+  }
+  .intro h1{ font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .5rem; }
+  .intro p{ color:#6e6e73; font-size:.9375rem; line-height:1.5; margin:0; }
+
+  .concept{ padding:3.5rem 1.5rem 4.5rem; }
+  .concept__label{
+    max-width:960px; margin:0 auto 1.25rem; display:flex; align-items:baseline; gap:.75rem;
+  }
+  .concept__label b{ font-size:.8125rem; letter-spacing:.04em; text-transform:uppercase; color:#6e6e73; }
+  .concept__label span{ font-size:.8125rem; color:#86868b; }
+
+  .stage{
+    max-width:960px; margin:0 auto; border-radius:24px; overflow:hidden;
+    box-shadow:0 1px 2px rgba(0,0,0,.06), 0 20px 48px rgba(0,0,0,.16);
+  }
+
+  /* ---------- shared mock header ---------- */
+  .mheader{
+    display:flex; align-items:center; gap:1rem; padding:1rem 2rem;
+  }
+  .mbrand{ display:inline-flex; align-items:center; gap:.6rem; font-size:.9375rem; font-weight:600; margin-right:auto; }
+  .mbrand__mark{ width:1.75rem; height:1.75rem; border-radius:8px; display:grid; place-items:center; flex:none; }
+  .mnav{ display:flex; gap:1.5rem; font-size:.8125rem; }
+
+  /* ---------- shared mock hero ---------- */
+  .mhero{ padding:3.5rem 2rem 3rem; }
+  .meyebrow{ font-size:.8125rem; font-weight:600; letter-spacing:-.006em; margin-bottom:.85rem; }
+  .mh1{ font-size:clamp(1.9rem,1.2rem+3vw,2.75rem); font-weight:600; letter-spacing:-.025em; line-height:1.06; max-width:15ch; margin:0; }
+  .msub{ font-size:1.0625rem; line-height:1.5; max-width:38ch; margin:1rem 0 0; }
+  .mactions{ display:flex; gap:.9rem; margin-top:1.75rem; flex-wrap:wrap; }
+  .mbtn{
+    display:inline-flex; align-items:center; gap:.35rem; font-size:.9375rem; font-weight:500;
+    padding:.68rem 1.3rem; border-radius:980px; text-decoration:none; letter-spacing:-.008em;
+  }
+
+  /* ---------- shared mock cards ---------- */
+  .mcards{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; padding:0 2rem 3rem; }
+  .mcard{ border-radius:16px; padding:1.15rem; }
+  .mcard__viz{ border-radius:10px; aspect-ratio:16/10; margin-bottom:.9rem; }
+  .mcard b{ display:block; font-size:.9375rem; font-weight:600; letter-spacing:-.01em; margin-bottom:.3rem; }
+  .mcard span{ font-size:.8125rem; }
+  .mcard__tag{
+    display:inline-block; margin-top:.65rem; font-size:.6875rem; font-weight:600;
+    padding:.2rem .55rem; border-radius:980px;
+  }
+
+  @media (max-width:640px){
+    .mcards{ grid-template-columns:1fr; }
+    .mnav{ display:none; }
+  }
+
+  /* ============================================================
+     VARIANT A — Near-black, single crisp orange, high restraint.
+     Orange only on the CTA, the eyebrow, and tags. Everything
+     else is white/grey. Closest to the current Apple system,
+     just re-themed dark.
+     ============================================================ */
+  .v-a{ background:#0a0a0b; color:#f5f5f7; }
+  .v-a .mheader{ border-bottom:1px solid #1c1c1e; }
+  .v-a .mbrand__mark{ background:#f5f5f7; }
+  .v-a .mbrand__mark svg{ stroke:#0a0a0b; }
+  .v-a .mbrand span{ color:#8e8e93; font-weight:400; }
+  .v-a .mnav a{ color:#c7c7cc; text-decoration:none; }
+  .v-a .mhero{ background:#0a0a0b; }
+  .v-a .meyebrow{ color:#ff8a3d; }
+  .v-a .msub{ color:#98989d; }
+  .v-a .mbtn--primary{ background:#ff8a3d; color:#0a0a0b; font-weight:600; }
+  .v-a .mbtn--secondary{ background:#1c1c1e; color:#f5f5f7; }
+  .v-a .mcards{ background:#0a0a0b; }
+  .v-a .mcard{ background:#141416; border:1px solid #1f1f22; }
+  .v-a .mcard__viz{ background:#1c1c1e; }
+  .v-a .mcard span{ color:#8e8e93; }
+  .v-a .mcard__tag{ background:rgba(255,138,61,.14); color:#ff8a3d; }
+
+  /* ============================================================
+     VARIANT B — Warm charcoal, soft amber glow. Slightly less
+     stark than pure black; hero has a subtle radial bloom behind
+     the headline, like the teardown tool's dark hero. More
+     "crafted", less "settings app".
+     ============================================================ */
+  .v-b{ background:#151312; color:#f7f3ef; }
+  .v-b .mheader{ border-bottom:1px solid #2a2422; background:rgba(21,19,18,.8); }
+  .v-b .mbrand__mark{ background:#f7f3ef; }
+  .v-b .mbrand__mark svg{ stroke:#151312; }
+  .v-b .mbrand span{ color:#a39a92; font-weight:400; }
+  .v-b .mnav a{ color:#cdc3ba; text-decoration:none; }
+  .v-b .mhero{
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(60% 80% at 18% 0%, rgba(255,122,26,.16), transparent 60%),
+      #151312;
+  }
+  .v-b .meyebrow{ color:#ff8f4d; }
+  .v-b .msub{ color:#b7ada3; }
+  .v-b .mbtn--primary{ background:linear-gradient(180deg,#ff9c56,#ff7a1a); color:#1a0f06; font-weight:600; box-shadow:0 6px 18px -6px rgba(255,122,26,.5); }
+  .v-b .mbtn--secondary{ background:#241f1c; color:#f7f3ef; }
+  .v-b .mcards{ background:#151312; }
+  .v-b .mcard{ background:#1c1815; border:1px solid #2c2521; }
+  .v-b .mcard__viz{ background:#241f1c; }
+  .v-b .mcard span{ color:#a39a92; }
+  .v-b .mcard__tag{ background:rgba(255,143,77,.15); color:#ff9c56; }
+
+  /* ============================================================
+     VARIANT C — Orange used as sparingly as possible: black,
+     white, one grey, and orange appears ONLY as a 2px accent
+     rule + tag dot. No orange fill on buttons at all — button is
+     white-on-black, orange is reserved for marking things, not
+     decorating them. Most "quiet" of the three.
+     ============================================================ */
+  .v-c{ background:#000; color:#fff; }
+  .v-c .mheader{ border-bottom:1px solid #222; }
+  .v-c .mbrand__mark{ background:#fff; }
+  .v-c .mbrand__mark svg{ stroke:#000; }
+  .v-c .mbrand span{ color:#8a8a8a; font-weight:400; }
+  .v-c .mnav a{ color:#bdbdbd; text-decoration:none; }
+  .v-c .mhero{ background:#000; border-top:2px solid #ff6a00; }
+  .v-c .meyebrow{ color:#ff6a00; }
+  .v-c .msub{ color:#9a9a9a; }
+  .v-c .mbtn--primary{ background:#fff; color:#000; font-weight:600; }
+  .v-c .mbtn--secondary{ background:transparent; color:#fff; border:1px solid #333; }
+  .v-c .mcards{ background:#000; }
+  .v-c .mcard{ background:#0d0d0d; border:1px solid #222; position:relative; }
+  .v-c .mcard__viz{ background:#161616; }
+  .v-c .mcard span{ color:#8a8a8a; }
+  .v-c .mcard__tag{ background:transparent; color:#ff6a00; padding-left:0; }
+  .v-c .mcard__tag::before{ content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:#ff6a00; margin-right:.4rem; vertical-align:middle; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Three black + orange directions</h1>
+  <p>Same header / hero / card components, re-themed three ways. Scroll to compare, then tell me which one to take further (or mix — e.g. B's glow with C's restrained button).</p>
+</div>
+
+<!-- ============ VARIANT A ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant A</b><span>Near-black, one crisp orange accent on CTA/tags only — closest to the current site's structure, just re-skinned dark.</span></div>
+  <div class="stage v-a">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 25V7h11M6 15.5h7.5" stroke-width="2.5"/></svg></span>Fernando Peccatiello <span>— Growth × AI</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">About</a><a href="#">Contact</a></nav>
+    </header>
+    <div class="mhero">
+      <div class="meyebrow">Growth Marketing × AI × Product Thinking</div>
+      <h1 class="mh1">I turn growth bottlenecks into useful tools.</h1>
+      <p class="msub">Focused AI-powered tools and experiments that help teams improve conversion and make better decisions.</p>
+      <div class="mactions">
+        <a class="mbtn mbtn--primary" href="#">Get in touch →</a>
+        <a class="mbtn mbtn--secondary" href="#">See the work</a>
+      </div>
+    </div>
+    <div class="mcards">
+      <div class="mcard"><div class="mcard__viz"></div><b>Reactor</b><span>Answers competitor questions with citations</span><span class="mcard__tag">Claude API</span></div>
+      <div class="mcard"><div class="mcard__viz"></div><b>Competitor Teardowns</b><span>Every claim traces to a source</span><span class="mcard__tag">Web Scraping</span></div>
+      <div class="mcard"><div class="mcard__viz"></div><b>Landing QA Tool</b><span>Cross-market pre-launch checks</span><span class="mcard__tag">Puppeteer</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIANT B ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant B</b><span>Warm charcoal instead of pure black, soft amber glow behind the hero, gradient CTA — more "crafted", less "dark mode toggle".</span></div>
+  <div class="stage v-b">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 25V7h11M6 15.5h7.5" stroke-width="2.5"/></svg></span>Fernando Peccatiello <span>— Growth × AI</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">About</a><a href="#">Contact</a></nav>
+    </header>
+    <div class="mhero">
+      <div class="meyebrow">Growth Marketing × AI × Product Thinking</div>
+      <h1 class="mh1">I turn growth bottlenecks into useful tools.</h1>
+      <p class="msub">Focused AI-powered tools and experiments that help teams improve conversion and make better decisions.</p>
+      <div class="mactions">
+        <a class="mbtn mbtn--primary" href="#">Get in touch →</a>
+        <a class="mbtn mbtn--secondary" href="#">See the work</a>
+      </div>
+    </div>
+    <div class="mcards">
+      <div class="mcard"><div class="mcard__viz"></div><b>Reactor</b><span>Answers competitor questions with citations</span><span class="mcard__tag">Claude API</span></div>
+      <div class="mcard"><div class="mcard__viz"></div><b>Competitor Teardowns</b><span>Every claim traces to a source</span><span class="mcard__tag">Web Scraping</span></div>
+      <div class="mcard"><div class="mcard__viz"></div><b>Landing QA Tool</b><span>Cross-market pre-launch checks</span><span class="mcard__tag">Puppeteer</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIANT C ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant C</b><span>Truest black, orange used almost nowhere — a top rule, the eyebrow, and a small dot on tags. Buttons stay white/black. The quietest of the three.</span></div>
+  <div class="stage v-c">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 25V7h11M6 15.5h7.5" stroke-width="2.5"/></svg></span>Fernando Peccatiello <span>— Growth × AI</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">About</a><a href="#">Contact</a></nav>
+    </header>
+    <div class="mhero">
+      <div class="meyebrow">Growth Marketing × AI × Product Thinking</div>
+      <h1 class="mh1">I turn growth bottlenecks into useful tools.</h1>
+      <p class="msub">Focused AI-powered tools and experiments that help teams improve conversion and make better decisions.</p>
+      <div class="mactions">
+        <a class="mbtn mbtn--primary" href="#">Get in touch →</a>
+        <a class="mbtn mbtn--secondary" href="#">See the work</a>
+      </div>
+    </div>
+    <div class="mcards">
+      <div class="mcard"><div class="mcard__viz"></div><b>Reactor</b><span>Answers competitor questions with citations</span><span class="mcard__tag">Claude API</span></div>
+      <div class="mcard"><div class="mcard__viz"></div><b>Competitor Teardowns</b><span>Every claim traces to a source</span><span class="mcard__tag">Web Scraping</span></div>
+      <div class="mcard"><div class="mcard__viz"></div><b>Landing QA Tool</b><span>Cross-market pre-launch checks</span><span class="mcard__tag">Puppeteer</span></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

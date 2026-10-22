@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hero copy v2 — modeled on real references</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:        #151312;
+    --bg-alt:    #1a1613;
+    --surface:   #262019;
+    --fill:      #332b23;
+    --ink:       #f7f3ef;
+    --ink-2:     #cdc3ba;
+    --gray:      #a39a92;
+    --line:      #45392e;
+    --line-soft: #362d25;
+    --accent-ink:   #ff9c56;
+    --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:#e5e5ea; font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+  h1,h2,p{ margin:0; }
+
+  .intro{ max-width:720px; margin:0 auto; padding:3rem 1.5rem .5rem; text-align:center; }
+  .intro h1{ font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .5rem; color:#1d1d1f; font-weight:600; }
+  .intro p{ color:#6e6e73; font-size:.9375rem; line-height:1.5; }
+  .intro .refs{ margin-top:.85rem; font-size:.8125rem; color:#86868b; }
+  .intro .refs a{ color:#0068D6; text-decoration:none; }
+
+  .concept{ padding:2.75rem 1.5rem 3.5rem; }
+  .concept__label{ max-width:820px; margin:0 auto 1.25rem; }
+  .concept__label b{ font-size:.8125rem; letter-spacing:.04em; text-transform:uppercase; color:#6e6e73; display:block; margin-bottom:.25rem; }
+  .concept__label span{ font-size:.8125rem; color:#86868b; }
+
+  .stage{ max-width:820px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 20px 48px rgba(0,0,0,.16); background:var(--bg); color:var(--ink); }
+
+  .mheader{ display:flex; align-items:center; gap:1rem; padding:1rem 2rem; border-bottom:1px solid var(--line-soft); }
+  .mbrand{ font-size:.9375rem; font-weight:600; margin-right:auto; color:var(--ink); }
+  .mbrand span{ color:#8e8e93; font-weight:400; }
+  .mnav{ display:flex; gap:1.5rem; font-size:.8125rem; margin-left:1.5rem; }
+  .mnav a{ color:#c7c7cc; text-decoration:none; }
+
+  .hero{ padding:3.5rem 2.5rem 3rem; }
+  .qlink{ color:var(--accent-ink); text-decoration:none; }
+  .qlink:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+  /* fan of tool cards — reused across all 3, unbadged, quiet */
+  .stack{ display:flex; justify-content:center; margin-top:2.5rem; }
+  .hcard{ flex:none; background:var(--surface); border-radius:14px; padding:.65rem; box-shadow:0 0 0 1px rgba(255,255,255,.08); width:8rem; }
+  .hcard__v{ border-radius:8px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
+  .hcard span{ display:block; padding:.5rem .2rem 0; font-size:.6875rem; font-weight:600; color:var(--ink-2); }
+  .hcard--1{ transform:rotate(-4deg); margin-right:-1rem; z-index:1; }
+  .hcard--2{ transform:rotate(1deg); z-index:3; }
+  .hcard--3{ transform:rotate(4deg); margin-left:-1rem; z-index:1; }
+
+  /* ---------- Variant A: pure narrative (Wes Kao) ---------- */
+  .va p{ color:var(--ink-2); font-size:1.0625rem; line-height:1.6; letter-spacing:-.008em; max-width:44ch; }
+  .va p + p{ margin-top:1.1rem; }
+  .va p b{ color:var(--ink); font-weight:600; }
+  .va .links{ margin-top:1.5rem; font-size:1rem; }
+  .va .dot{ margin:0 .55rem; color:var(--gray); }
+
+  /* ---------- Variant B: casual voice (Corey Haines), no photo ---------- */
+  .vb .kicker{ font-size:.8125rem; color:var(--gray); margin-bottom:1rem; }
+  .vb h1{ font-size:clamp(1.75rem,1.2rem+2.4vw,2.5rem); font-weight:600; letter-spacing:-.02em; color:var(--ink); }
+  .vb p{ margin-top:1rem; color:var(--ink-2); font-size:1.0625rem; line-height:1.55; max-width:46ch; }
+  .vb p + p{ margin-top:.85rem; }
+  .vb .links{ margin-top:1.5rem; display:flex; gap:1.5rem; font-size:1rem; }
+
+  /* ---------- Variant C: specifics-first ---------- */
+  .vc .kicker{ font-size:.8125rem; color:var(--accent-ink); font-weight:600; margin-bottom:1rem; }
+  .vc h1{ font-size:clamp(1.625rem,1.1rem+2.2vw,2.25rem); font-weight:600; letter-spacing:-.018em; line-height:1.28; max-width:32ch; color:var(--ink); }
+  .vc h1 .muted{ color:var(--ink-2); font-weight:500; }
+  .vc .sub{ margin-top:1rem; color:var(--gray); font-size:1rem; max-width:46ch; }
+  .vc .links{ margin-top:1.5rem; font-size:1rem; }
+  .vc .dot{ margin:0 .55rem; color:var(--gray); }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Hero copy v2 — modeled on real references</h1>
+  <p>Three variants, each adapting a specific pattern from a real growth-marketer/personal-brand site — no photo, since you said skip it. Tool-card fan kept below each (real proof, unbadged) since none of the references have running software to show and you do.</p>
+  <p class="refs">Refs: <a href="https://corey.co" target="_blank">corey.co</a> · <a href="https://weskao.com" target="_blank">weskao.com</a></p>
+</div>
+
+<!-- ============ VARIANT A ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant A — Pure narrative (Wes Kao pattern)</b><span>No headline at all — the hero is two short paragraphs of plain body text. Credibility from specific real facts, not typography size.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <span class="mbrand">Fernando <span>Peccatiello</span></span>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="hero va">
+      <p>Hi, I'm Fernando. I'm a growth marketer who also builds the tools — mostly AI-powered, always shipped, not just proposed.</p>
+      <p>I split my time between <b>wedding-industry marketplaces</b> and <b>B2B SaaS</b>, working at the intersection of conversion, copywriting, and front-end execution. <b>Nine tools</b> are live right now — open any of them below.</p>
+      <p class="links"><a class="qlink" href="#">See the tools</a><span class="dot">·</span><a class="qlink" href="#">Get in touch</a></p>
+      <div class="stack">
+        <figure class="hcard hcard--1"><div class="hcard__v"></div><span>Reactor</span></figure>
+        <figure class="hcard hcard--2"><div class="hcard__v"></div><span>Competitor Teardowns</span></figure>
+        <figure class="hcard hcard--3"><div class="hcard__v"></div><span>Gap Analyzer</span></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIANT B ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant B — Casual voice (Corey Haines pattern, no photo)</b><span>Corey's warm, self-deprecating "Yo, I'm Corey" energy without leaning on a photo — a small headline carries the personality instead.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <span class="mbrand">Fernando <span>Peccatiello</span></span>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="hero vb">
+      <div class="kicker">Barcelona · Growth marketer</div>
+      <h1>Hey — I'm Fernando.</h1>
+      <p>I got tired of handing off briefs and waiting, so I started building the thing myself. Now I ship AI tools in the time I'd normally still be writing the spec.</p>
+      <p>Nine of them are live. Every one started as a real bottleneck for a real team.</p>
+      <div class="links"><a class="qlink" href="#">Take a look ↓</a><a class="qlink" href="#">Say hi</a></div>
+      <div class="stack">
+        <figure class="hcard hcard--1"><div class="hcard__v"></div><span>Reactor</span></figure>
+        <figure class="hcard hcard--2"><div class="hcard__v"></div><span>Competitor Teardowns</span></figure>
+        <figure class="hcard hcard--3"><div class="hcard__v"></div><span>Gap Analyzer</span></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIANT C ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant C — Specifics first</b><span>Research flagged a real risk: pure minimalism works for people who are already known (Wes Kao co-founded a $25M-raised company). You're not there yet, so this one leads with the concrete anchor (9 tools, live) before the narrative voice, instead of after.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <span class="mbrand">Fernando <span>Peccatiello</span></span>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="hero vc">
+      <div class="kicker">9 AI tools · Live in production</div>
+      <h1>I'm Fernando Peccatiello, a growth marketer who <span class="muted">ships his own tools instead of just briefing them.</span></h1>
+      <p class="sub">Wedding marketplaces and B2B SaaS. Conversion, copywriting, and front-end — in one person, not a handoff chain.</p>
+      <p class="links"><a class="qlink" href="#">Explore the tools</a><span class="dot">·</span><a class="qlink" href="#">Get in touch</a></p>
+      <div class="stack">
+        <figure class="hcard hcard--1"><div class="hcard__v"></div><span>Reactor</span></figure>
+        <figure class="hcard hcard--2"><div class="hcard__v"></div><span>Competitor Teardowns</span></figure>
+        <figure class="hcard hcard--3"><div class="hcard__v"></div><span>Gap Analyzer</span></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

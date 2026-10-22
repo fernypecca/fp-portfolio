@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hero copy — quiet variants</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:        #151312;
+    --bg-alt:    #1a1613;
+    --surface:   #262019;
+    --fill:      #332b23;
+    --ink:       #f7f3ef;
+    --ink-2:     #cdc3ba;
+    --gray:      #a39a92;
+    --line:      #45392e;
+    --line-soft: #362d25;
+    --accent:       #ff7a1a;
+    --accent-ink:   #ff9c56;
+    --on-accent:    #1a0f06;
+    --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
+    --ease: cubic-bezier(.28,.11,.32,1);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:#e5e5ea; font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+  h1,p{ margin:0; }
+
+  .intro{ max-width:680px; margin:0 auto; padding:3rem 1.5rem 1rem; text-align:center; }
+  .intro h1{ font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .5rem; color:#1d1d1f; font-weight:600; }
+  .intro p{ color:#6e6e73; font-size:.9375rem; line-height:1.5; }
+
+  .concept{ padding:3rem 1.5rem 4rem; }
+  .concept__label{ max-width:900px; margin:0 auto 1.25rem; }
+  .concept__label b{ font-size:.8125rem; letter-spacing:.04em; text-transform:uppercase; color:#6e6e73; display:block; margin-bottom:.25rem; }
+  .concept__label span{ font-size:.8125rem; color:#86868b; }
+
+  .stage{ max-width:900px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 20px 48px rgba(0,0,0,.16); background:var(--bg); color:var(--ink); }
+
+  .mheader{ display:flex; align-items:center; gap:1rem; padding:1rem 2rem; border-bottom:1px solid var(--line-soft); }
+  .mbrand{ display:inline-flex; align-items:center; gap:.6rem; font-size:.9375rem; font-weight:600; margin-right:auto; color:var(--ink); }
+  .mbrand__mark{ width:1.75rem; height:1.75rem; border-radius:8px; display:grid; place-items:center; flex:none; background:var(--ink); }
+  .mbrand__mark svg{ width:60%; height:60%; }
+  .mbrand span{ color:#8e8e93; font-weight:400; }
+  .mnav{ display:flex; gap:1.5rem; font-size:.8125rem; margin-left:1.5rem; }
+  .mnav a{ color:#c7c7cc; text-decoration:none; }
+
+  .hero{ padding:4rem 2rem 3.5rem; text-align:center; }
+
+  /* shared quiet-link style, used across all three instead of a filled button */
+  .qlink{ color:var(--accent-ink); text-decoration:none; font-size:1rem; letter-spacing:-.01em; }
+  .qlink:hover{ text-decoration:underline; text-underline-offset:3px; }
+  .qghost{
+    display:inline-block; color:var(--ink); text-decoration:none;
+    font-size:.9375rem; letter-spacing:-.008em;
+    padding:.6rem 1.25rem; border:1px solid var(--line); border-radius:980px;
+  }
+  .qghost:hover{ border-color:var(--accent-ink); color:var(--accent-ink); }
+
+  /* ---------- Variant 1: one-line hero ---------- */
+  .v1 .kicker{ font-size:.8125rem; color:var(--gray); margin-bottom:1.75rem; letter-spacing:-.006em; }
+  .v1 h1{ font-size:clamp(2rem,1.1rem+3.6vw,3.25rem); font-weight:600; letter-spacing:-.025em; line-height:1.12; max-width:20ch; margin-inline:auto; }
+  .v1 .second{ margin-top:1.25rem; color:var(--gray); font-size:1.0625rem; }
+  .v1 .actions{ margin-top:2rem; }
+
+  /* ---------- Variant 2: personal signature ---------- */
+  .v2 .kicker{ font-size:.8125rem; color:var(--accent-ink); font-weight:600; margin-bottom:1.5rem; }
+  .v2 h1{ font-size:clamp(1.75rem,1rem+3vw,2.625rem); font-weight:500; letter-spacing:-.02em; line-height:1.32; max-width:34ch; margin-inline:auto; color:var(--ink-2); }
+  .v2 h1 b{ color:var(--ink); font-weight:600; }
+  .v2 .actions{ margin-top:2.25rem; display:flex; gap:1rem; justify-content:center; align-items:center; flex-wrap:wrap; }
+
+  /* ---------- Variant 3: proof-anchored masthead ---------- */
+  .v3 .kicker{ font-size:.8125rem; color:var(--gray); margin-bottom:1rem; }
+  .v3 h1{ font-size:clamp(2.25rem,1.2rem+4vw,3.5rem); font-weight:600; letter-spacing:-.025em; line-height:1.08; max-width:18ch; margin-inline:auto; }
+  .v3 .second{ margin-top:1.1rem; color:var(--gray); font-size:1.0625rem; max-width:38ch; margin-inline:auto; }
+  .v3 .masthead{ margin-top:2rem; font-size:.9375rem; color:var(--gray); }
+  .v3 .masthead .qlink{ font-size:inherit; }
+  .v3 .dot{ margin:0 .6rem; opacity:.5; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Hero copy — quiet direction</h1>
+  <p>No gradient pill button, no badge chrome — flatter typography, closer to a personal page than a SaaS landing. Three different copy angles within that direction. Scroll to compare.</p>
+</div>
+
+<!-- ============ VARIANT 1 ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant 1 — One-line hero</b><span>The whole hero is a single declarative sentence, per "trust white space." No transformation pitch, no second CTA — one quiet link.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#151312" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#151312" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg></span>Fernando <span>Peccatiello</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="hero v1">
+      <div class="kicker">Fernando Peccatiello — Barcelona</div>
+      <h1>Growth marketing, built as software.</h1>
+      <p class="second">Nine tools. Shipped, not just proposed.</p>
+      <div class="actions"><a class="qlink" href="#">See the work →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIANT 2 ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant 2 — Personal signature</b><span>Still first person, but one flowing sentence instead of the "I turn X into Y" formula — reads like an introduction, not a pitch. Ghost button, not filled.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#151312" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#151312" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg></span>Fernando <span>Peccatiello</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="hero v2">
+      <div class="kicker">Growth Marketing × AI × Product Thinking</div>
+      <h1>I spend most of my time turning marketing problems into <b>things I can actually ship</b> — nine of them are live right now.</h1>
+      <div class="actions">
+        <a class="qghost" href="#">Explore the tools</a>
+        <a class="qlink" href="#">My approach →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIANT 3 ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant 3 — Proof-anchored masthead</b><span>Leads with the real number instead of an abstract claim. No buttons at all — a plain text masthead line, like a publication's nav, not a CTA row.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#151312" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#151312" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg></span>Fernando <span>Peccatiello</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="hero v3">
+      <div class="kicker">Growth Marketing × AI × Product Thinking</div>
+      <h1>Nine tools. Shipped, not slideware.</h1>
+      <p class="second">Each one started as a real bottleneck in a growth workflow — not a demo built to look good in a portfolio.</p>
+      <p class="masthead"><a class="qlink" href="#">Explore the tools</a><span class="dot">·</span><a class="qlink" href="#">Get in touch</a></p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,85 +1,69 @@
-# Fernando Peccatiello — Portfolio
+# Fernando Peccatiello — Growth & Demand Lead
 
-Single-page personal portfolio. One standalone `index.html`: embedded CSS, vanilla JS, no build step, no npm, no backend.
+Hiring portfolio built with Next.js App Router and React. Public copy is in English. Read CLIENT.md before changing brand, positioning or claims.
 
-## Editing
+## Run locally
 
-Everything editable lives in the first `<script>` block of `index.html`, between
-`EDITABLE DATA` and `END EDITABLE DATA`:
-
-| Constant | What it controls |
-| --- | --- |
-| `SITE` | Name, role, email, LinkedIn, headline, intro, capability markers, approach principles, about copy, skills, footer |
-| `FILTERS` | The filter buttons in Selected work |
-| `PROJECTS` | Project cards and modals — order in this array is the order on the page |
-
-Each project takes: `name`, `category`, `status` (`Live tool` / `Internal tool` /
-`Concept experiment`), `url`, `visual`, `description`, `problem`, `solution`,
-`demonstrates`, `tags`.
-
-`visual` maps to a key in the `VISUALS` object further down the file — each one is
-a hand-written inline SVG (`roi`, `analyzer`, `qa`, `kit`, `background`, `popup`).
-Add a new key there to give a new project its own illustration.
-
-## Design system
-
-- **Type** — San Francisco on Apple platforms via `-apple-system`, [Onest](https://fonts.google.com/specimen/Onest) everywhere else.
-- **Colour** — neutral greys (`#ffffff` / `#f5f5f7` / `#1d1d1f` / `#6e6e73`) with a single Pacific Blue accent (`#2A6F8A`, accent text `#215A72`), taken from Apple's hardware finish palette rather than their web link blue.
-- **Radii** — 8 / 14 / 20 / 28px plus pill.
-
-Status chips differentiate by fill weight, not by hue, so the page stays
-single-accent: *Live tool* is a solid accent fill, *Internal tool* a grey fill,
-*Concept experiment* an outlined chip.
-
-All text/background pairs are at or above WCAG AA (4.5:1) — lowest is 5.07:1.
-
-## SEO
-
-`index.html` carries a canonical URL, Open Graph / Twitter cards, and a JSON-LD
-`@graph` (`Person` + `WebSite` + `ProfilePage`). The `Person` node with its
-`sameAs` links to LinkedIn and GitHub is what carries ranking for name queries.
-
-`og.png` (1200×630) is generated from `og.svg`:
-
-```bash
-qlmanage -t -s 1200 -o . og.svg && mv og.svg.png og.png && sips -c 630 1200 og.png --out og.png
+```sh
+npm ci
+npm run dev
 ```
 
-`robots.txt` and `sitemap.xml` sit at the root.
+Open http://localhost:3000. If a development server is already running there, reuse it.
 
-### Domain
+## Production verification
 
-Live at `www.fernandopeccatiello.com` — Vercel 308-redirects the apex there,
-so www is the canonical URL used in `index.html`, `sitemap.xml`, and
-`robots.txt`.
-
-To repoint to a different domain, every absolute URL lives in those three
-files. Swap them in one command, then redeploy:
-
-```bash
-sed -i '' 's|https://www.fernandopeccatiello.com|https://YOURDOMAIN.com|g' index.html sitemap.xml robots.txt
+```sh
+npm run build:check
+npm run preview:check
 ```
 
-Then point the domain at Vercel (`vercel domains add YOURDOMAIN.com`), verify the
-property in Google Search Console, submit the sitemap, and add the domain to the
-Website field of the LinkedIn and GitHub profiles.
+In a second terminal:
 
-## Accessibility
-
-Skip link, semantic landmarks, visible `:focus-visible` rings, `aria-pressed`
-filters with a live region announcing the result count, native `<dialog>` for the
-project modal (Esc to close, focus returns to the trigger), and full
-`prefers-reduced-motion` support. Responsive down to 375px.
-
-## Local preview
-
-```bash
-npx serve .
+```sh
+npx playwright install chromium
+AUDIT_URL=http://localhost:3001 npm run check
+npm audit
 ```
 
-Or just open `index.html` in a browser.
+The check uses Playwright and Axe to verify visible content without JavaScript and with reduced motion, the five responsive sizes, contrast and common accessibility rules, skip-link focus, the case-study loop, permanent redirects, security headers and 404 status. It also checks the native hero illustration, phase progression, pause/resume and pausing outside the viewport. It does not submit forms or call external tool-generation APIs. Automated checks do not replace screen-reader or physical-device testing.
 
-## Deploy
+Verification builds use .next-check so they do not overwrite assets held by an existing server on port 3000. The normal npm run build / npm start workflow still uses .next for deployment. The checker covers five widths: 375, 390, 768, 1024 and 1440 px.
 
-Static site on Vercel — no framework, no build command. Push to `main` and Vercel
-redeploys.
+## Project structure
+
+- app/: home, case routes, 404, sitemap, robots and global styles.
+- components/: shared server-rendered UI; Reveal adds optional native browser animation after hydration. It never hides content. HeroSystem is a small React/SVG workflow illustration with play/pause, reduced-motion support and no image or animation-library dependency.
+- lib/tools.js: source of truth for nine tools, states, links and SVG previews.
+- lib/tool-summary.js: counts derived from the inventory.
+- lib/cases.js: case content, product-scope metrics, validation limits and case sequence.
+- lib/case-visuals.js: illustrative case diagrams, not production screenshots.
+- lib/site.js: canonical origin, contact/social links and versioned social-image path.
+- public/images/: actual interface screenshots used by the app.
+- og.svg and scripts/generate-og.mjs: social-card source and renderer.
+- scripts/check-portfolio.mjs: repeatable browser checks.
+- work/: implementation notes and handoff.
+
+## Content and accessibility
+
+The portfolio seeks Growth & Demand Lead interviews, not freelance projects. Keep live tools, concepts and internal workflows distinct. Case metrics describe product scope; business impact is not documented and must not be invented. Reactor is synthetic exploration, not evidence of human conversion lift.
+
+The app has one main landmark per page, a keyboard skip link, visible focus rings on both surface colors, descriptive image/SVG labels and progressive animation that respects prefers-reduced-motion. No JavaScript is required to read content or use ordinary links. There are no lead forms or time-limited offers; form UTMs/countdowns are not applicable.
+
+## Social preview
+
+```sh
+npm run og
+```
+
+This renders the 1200×630 source SVG to public/og-growth-demand-v2.png, public/og.png and root og.png. Metadata uses the versioned path to avoid the former image's long cache. If the image content changes again, bump the filename in lib/site.js, scripts/generate-og.mjs and next.config.mjs. Update the SVG inventory line when tools change. The unversioned path remains available for existing links.
+
+## Redirects and deployment configuration
+
+next.config.mjs is the single source for the four legacy .html redirects (308) and security headers, both locally and on Vercel. The CSP limits base URLs, objects, framing and form actions; it is not a nonce-based script policy. vercel.json selects the Next.js framework and does not duplicate routing rules.
+
+Routes: /, /work/reactor, /work/storefront-analyzer, /work/product-kit-generator, /robots.txt, /sitemap.xml and the custom 404.
+
+Root index.html, work/*.html and the HTML design concepts are legacy/reference sources outside public/ and app/. Next.js does not serve them. Keep them as references; do not deploy the repository as a static HTML directory or treat those files as the current UI.
+
+Vercel deployment is a separate, explicitly authorized action. No deployment is needed to run these checks. External LinkedIn/Claude anti-bot challenges and third-party tool backends cannot be validated by the local checker.

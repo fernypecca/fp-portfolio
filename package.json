@@ -1,0 +1,25 @@
+{
+  "name": "fp-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:check": "PORTFOLIO_DIST_DIR=.next-check next build",
+    "preview:check": "PORTFOLIO_DIST_DIR=.next-check next start -p 3001",
+    "start": "next start",
+    "check": "node scripts/check-portfolio.mjs && node scripts/check-hero.mjs",
+    "og": "node scripts/generate-og.mjs",
+    "check:hero": "node scripts/check-hero.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "playwright": "^1.62.1",
+    "sharp": "^0.35.5"
+  }
+}

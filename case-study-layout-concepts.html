@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case study body — layout fix</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#151312; --bg-alt:#1a1613; --surface:#262019; --fill:#332b23;
+    --ink:#f7f3ef; --ink-2:#cdc3ba; --gray:#a39a92; --gray-2:#8a8078;
+    --line:#45392e; --line-soft:#362d25;
+    --accent:#ff7a1a; --accent-ink:#ff9c56; --on-accent:#1a0f06;
+    --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
+    --ease: cubic-bezier(.28,.11,.32,1);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:#e5e5ea; font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+  h2,p{ margin:0; }
+
+  .intro{ max-width:760px; margin:0 auto; padding:3rem 1.5rem 1rem; text-align:center; }
+  .intro h1{ font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .5rem; color:#1d1d1f; font-weight:600; }
+  .intro p{ color:#6e6e73; font-size:.9375rem; line-height:1.5; }
+
+  .concept{ padding:2.75rem 1.5rem 3.5rem; }
+  .concept__label{ max-width:1180px; margin:0 auto 1.25rem; }
+  .concept__label b{ font-size:.8125rem; letter-spacing:.04em; text-transform:uppercase; color:#6e6e73; display:block; margin-bottom:.25rem; }
+  .concept__label span{ font-size:.8125rem; color:#86868b; }
+
+  .stage{ max-width:1180px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 20px 48px rgba(0,0,0,.16); background:var(--bg); color:var(--ink); }
+  .shell{ width:100%; margin-inline:auto; padding-inline:clamp(1.25rem,4vw,3rem); }
+
+  .mheader{ display:flex; align-items:center; gap:1rem; padding:1rem 2rem; border-bottom:1px solid var(--line-soft); }
+  .mbrand{ font-size:.9375rem; font-weight:600; margin-right:auto; color:var(--ink); }
+  .mbrand span{ color:#8e8e93; font-weight:400; }
+  .mnav{ display:flex; gap:1.5rem; font-size:.8125rem; }
+  .mnav a{ color:#c7c7cc; text-decoration:none; }
+
+  .eyebrow{ font-size:.8125rem; font-weight:600; color:var(--accent-ink); }
+  .t-h2{ font-size:clamp(1.375rem,1.1rem+1.2vw,2rem); font-weight:600; letter-spacing:-.022em; line-height:1.14; }
+
+  /* ============ VARIANT A: narrower document shell ============ */
+  .va .shell{ max-width:760px; }
+  .va .cs-section{ padding-block:clamp(2.5rem,5vw,3.5rem); }
+  .va .cs-section + .cs-section{ border-top:1px solid var(--line-soft); }
+  .va h2{ margin-top:.7rem; max-width:20ch; }
+  .va p{ color:var(--ink-2); line-height:1.6; margin-top:.85rem; max-width:56ch; }
+  .va p:first-of-type{ margin-top:1rem; }
+
+  /* ============ VARIANT B: wide shell, two-column sections ============ */
+  .vb .shell{ max-width:1040px; }
+  .vb .cs-section{ padding-block:clamp(2.5rem,5vw,3.5rem); }
+  .vb .cs-section + .cs-section{ border-top:1px solid var(--line-soft); }
+  .vb .cs-row{ display:grid; gap:2.5rem; align-items:start; }
+  @media (min-width:640px){ .vb .cs-row{ grid-template-columns:1fr 1fr; } }
+  .vb h2{ margin-top:.7rem; max-width:16ch; }
+  .vb .cs-row p{ color:var(--ink-2); line-height:1.6; }
+  .vb .cs-row p + p{ margin-top:.85rem; }
+  .vb .cs-aside{ background:var(--surface); border:1px solid var(--line-soft); border-radius:14px; padding:1.5rem; }
+  .vb .cs-aside b{ display:block; font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gray); margin-bottom:.9rem; }
+  .vb .cs-aside ul{ list-style:none; margin:0; padding:0; display:grid; gap:.75rem; }
+  .vb .cs-aside li{ display:flex; gap:.6rem; color:var(--ink-2); font-size:.9375rem; line-height:1.4; }
+  .vb .cs-aside li strong{ color:var(--ink); }
+  .vb .cs-quote{ font-size:1.0625rem; color:var(--ink); line-height:1.5; font-weight:500; }
+  .vb .cs-quote span{ display:block; margin-top:.75rem; font-size:.8125rem; color:var(--gray); font-weight:400; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Case study body — two fixes for the same problem</h1>
+  <p>Real Reactor copy, both directions. The problem: on a wide monitor the current pages let the shell stretch to 1440px, but each text-only section caps its reading width way under that — so half the page sits empty. Both variants below fix it, differently.</p>
+</div>
+
+<!-- ============ VARIANT A ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant A — Narrow the whole page</b><span>Case-study pages become a focused document: shell caps around 760px regardless of monitor width, so nothing ever floats in empty space. Sections get thin dividers instead. Closest to the quiet, editorial direction you picked for the homepage hero.</span></div>
+  <div class="stage va">
+    <header class="mheader">
+      <span class="mbrand">Fernando <span>Peccatiello</span></span>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <section class="cs-section">
+      <div class="shell">
+        <span class="eyebrow">The problem</span>
+        <h2 class="t-h2">You only know if copy works after it's already live.</h2>
+        <p>By the time likes and comments tell you something, the weaker version has already gone out.</p>
+        <p>You lose the first impression with the very people you wanted to reach. And you still don't know <em>why</em> one phrasing moved them and the other didn't.</p>
+      </div>
+    </section>
+    <section class="cs-section">
+      <div class="shell">
+        <span class="eyebrow">Who it's for</span>
+        <h2 class="t-h2">People who ship words to a real audience.</h2>
+        <p>Growth marketers. Founders writing their own LinkedIn. Content teams choosing between two headlines.</p>
+        <p>If you have a defined audience and the cost of guessing wrong is visible, Reactor fits before the publish button.</p>
+        <p>No signup. Paste two versions. The graph starts lighting up — you see value before any form.</p>
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- ============ VARIANT B ============ -->
+<section class="concept">
+  <div class="concept__label"><b>Variant B — Keep the width, balance each section</b><span>Shell stays wide like the homepage. Every text section pairs with something on the right — a pull-quote, a short list — so the width is doing work instead of sitting empty. More visual variety, closer to how the hero/gallery already read.</span></div>
+  <div class="stage vb">
+    <header class="mheader">
+      <span class="mbrand">Fernando <span>Peccatiello</span></span>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <section class="cs-section">
+      <div class="shell">
+        <span class="eyebrow">The problem</span>
+        <div class="cs-row">
+          <div>
+            <h2 class="t-h2">You only know if copy works after it's already live.</h2>
+            <p>By the time likes and comments tell you something, the weaker version has already gone out.</p>
+            <p>You lose the first impression with the very people you wanted to reach. And you still don't know <em>why</em> one phrasing moved them and the other didn't.</p>
+          </div>
+          <div class="cs-aside">
+            <p class="cs-quote">"You still don't know why one phrasing moved them and the other didn't."
+              <span>The gap Reactor exists to close</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cs-section">
+      <div class="shell">
+        <span class="eyebrow">Who it's for</span>
+        <div class="cs-row">
+          <div>
+            <h2 class="t-h2">People who ship words to a real audience.</h2>
+            <p>Growth marketers. Founders writing their own LinkedIn. Content teams choosing between two headlines.</p>
+            <p>If you have a defined audience and the cost of guessing wrong is visible, Reactor fits before the publish button.</p>
+          </div>
+          <div class="cs-aside">
+            <b>Fits before</b>
+            <ul>
+              <li><strong>The publish button</strong> — not after engagement already told you</li>
+              <li><strong>No signup</strong> — paste two versions, see value before any form</li>
+              <li><strong>A defined audience</strong> — where guessing wrong has a visible cost</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+</body>
+</html>

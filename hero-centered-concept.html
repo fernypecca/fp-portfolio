@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hero layout — centered vs. current</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:        #151312;
+    --bg-alt:    #1a1613;
+    --surface:   #262019;
+    --fill:      #332b23;
+    --ink:       #f7f3ef;
+    --ink-2:     #cdc3ba;
+    --gray:      #a39a92;
+    --line:      #45392e;
+    --line-soft: #362d25;
+    --accent:       #ff7a1a;
+    --accent-ink:   #ff9c56;
+    --accent-hover: #ff9046;
+    --on-accent:    #1a0f06;
+    --sans: -apple-system, BlinkMacSystemFont, 'Onest', 'Helvetica Neue', sans-serif;
+    --pill: 980px;
+    --ease: cubic-bezier(.28,.11,.32,1);
+    --shadow-sm: 0 0 0 1px rgba(255,255,255,.09), inset 0 1px 0 rgba(255,255,255,.04), 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.3);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:#e5e5ea; font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+
+  .intro{ max-width:640px; margin:0 auto; padding:3rem 1.5rem 1rem; text-align:center; }
+  .intro h1{ font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .5rem; color:#1d1d1f; }
+  .intro p{ color:#6e6e73; font-size:.9375rem; line-height:1.5; margin:0; }
+
+  .concept{ padding:3rem 1.5rem 4rem; }
+  .concept__label{ max-width:1040px; margin:0 auto 1.25rem; }
+  .concept__label b{ font-size:.8125rem; letter-spacing:.04em; text-transform:uppercase; color:#6e6e73; display:block; margin-bottom:.25rem; }
+  .concept__label span{ font-size:.8125rem; color:#86868b; }
+
+  .stage{ max-width:1040px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 20px 48px rgba(0,0,0,.16); background:var(--bg); color:var(--ink); }
+
+  .mheader{ display:flex; align-items:center; gap:1rem; padding:1rem 2rem; border-bottom:1px solid var(--line-soft); }
+  .mbrand{ display:inline-flex; align-items:center; gap:.6rem; font-size:.9375rem; font-weight:600; margin-right:auto; }
+  .mbrand__mark{ width:1.75rem; height:1.75rem; border-radius:8px; display:grid; place-items:center; flex:none; background:var(--ink); }
+  .mbrand__mark svg{ width:60%; height:60%; }
+  .mbrand span{ color:#8e8e93; font-weight:400; }
+  .mnav{ display:flex; gap:1.5rem; font-size:.8125rem; }
+  .mnav a{ color:#c7c7cc; text-decoration:none; }
+
+  .mbtn{ display:inline-flex; align-items:center; gap:.35rem; font-size:.9375rem; font-weight:600; padding:.68rem 1.3rem; border-radius:980px; text-decoration:none; letter-spacing:-.008em; }
+  .mbtn--primary{ background:linear-gradient(180deg,#ff9c56,var(--accent)); color:var(--on-accent); box-shadow:0 4px 16px -6px rgba(255,122,26,.45); }
+  .mbtn--secondary{ background:transparent; color:var(--accent-ink); font-weight:500; }
+
+  .markers{ list-style:none; margin:1.75rem 0 0; padding:1.1rem 0 0; border-top:1px solid var(--line); display:flex; gap:1.5rem; flex-wrap:wrap; font-size:.875rem; color:var(--ink-2); }
+  .markers li{ display:flex; align-items:center; gap:.5rem; }
+  .markers .tick{ color:var(--accent-ink); }
+
+  /* ---------- Variant 1: current, left-aligned ---------- */
+  .mhero-left{
+    position:relative; overflow:hidden; padding:3.25rem 2rem 3rem;
+    background: radial-gradient(60% 80% at 18% 0%, rgba(255,122,26,.14), transparent 60%), var(--bg-alt);
+  }
+  .mhero-left__grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:center; }
+  .meyebrow{ font-size:.8125rem; font-weight:600; letter-spacing:-.006em; margin-bottom:.85rem; color:var(--accent-ink); }
+  .mh1{ font-size:2.5rem; font-weight:600; letter-spacing:-.025em; line-height:1.06; max-width:15ch; margin:0; }
+  .msub{ font-size:1.0625rem; line-height:1.5; max-width:36ch; margin:1rem 0 0; color:var(--gray); }
+  .mactions{ display:flex; gap:.9rem; margin-top:1.6rem; flex-wrap:wrap; }
+
+  .stack{ position:relative; width:100%; max-width:19rem; margin-inline:auto; height:15rem; }
+  .hcard{ position:absolute; margin:0; background:var(--surface); border-radius:16px; padding:.7rem; box-shadow:var(--shadow-sm); width:14.5rem; }
+  .hcard__v{ border-radius:9px; overflow:hidden; background:var(--bg-alt); aspect-ratio:16/10; }
+  .hcard figcaption{ display:flex; align-items:center; gap:.4rem; padding:.5rem .25rem .05rem; font-size:.6875rem; color:var(--gray); }
+  .hcard figcaption b{ font-size:.75rem; font-weight:600; color:var(--ink); }
+  .hcard .pill{ margin-left:auto; font-size:.5625rem; padding:.15rem .45rem; border-radius:980px; background:var(--accent); color:var(--on-accent); white-space:nowrap; }
+  .hcard--1{ top:0; left:0; transform:rotate(-4deg); z-index:3; }
+  .hcard--2{ top:38%; left:2.25rem; transform:rotate(2.5deg); z-index:2; }
+  .hcard--3{ top:76%; left:.8rem; transform:rotate(-1.5deg); z-index:1; }
+
+  .mintro{ margin-top:2.25rem; max-width:40rem; background:var(--surface); border-radius:20px; padding:1.5rem 1.75rem; box-shadow:var(--shadow-sm); }
+  .mintro span{ display:block; margin-bottom:.5rem; font-size:.8125rem; color:var(--gray); }
+  .mintro p{ margin:0; color:var(--ink-2); font-size:.9375rem; line-height:1.5; }
+
+  /* ---------- Variant 2: centered ---------- */
+  .mhero-center{
+    position:relative; overflow:hidden; padding:4rem 2rem 3.5rem; text-align:center;
+    background: radial-gradient(65% 70% at 50% 0%, rgba(255,122,26,.16), transparent 62%), var(--bg-alt);
+  }
+  .mhero-center .meyebrow{ margin-bottom:1rem; }
+  .mhero-center .mh1{ max-width:17ch; margin-inline:auto; font-size:2.75rem; }
+  .mhero-center .msub{ max-width:38ch; margin-inline:auto; }
+  .mhero-center .mactions{ justify-content:center; }
+  .mhero-center .markers{ justify-content:center; max-width:34rem; margin-inline:auto; }
+
+  .stack-center{ position:relative; width:100%; max-width:34rem; margin:2.75rem auto 0; height:11.5rem; }
+  .stack-center .hcard{ width:13rem; }
+  .stack-center .hcard--1{ top:0; left:4%; transform:rotate(-5deg); z-index:1; }
+  .stack-center .hcard--2{ top:.75rem; left:50%; margin-left:-6.5rem; transform:rotate(1deg); z-index:3; }
+  .stack-center .hcard--3{ top:0; right:4%; left:auto; transform:rotate(5deg); z-index:1; }
+
+  .mhero-center .mintro{ margin-inline:auto; text-align:left; }
+
+  @media (max-width:720px){
+    .mhero-left__grid{ grid-template-columns:1fr; }
+    .stack{ margin-top:2rem; }
+    .mnav{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Hero: current (left) vs. centered</h1>
+  <p>Same content, two layouts — using the site's actual current dark palette. Scroll to compare.</p>
+</div>
+
+<section class="concept">
+  <div class="concept__label"><b>Current — left-aligned</b><span>Text column left, tool-card fan right, matches how it's live today.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#151312" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#151312" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg></span>Fernando <span>Peccatiello</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="mhero-left">
+      <div class="mhero-left__grid">
+        <div>
+          <div class="meyebrow">Growth Marketing × AI × Product Thinking</div>
+          <h1 class="mh1">I turn growth bottlenecks into useful tools.</h1>
+          <p class="msub">I build focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.</p>
+          <div class="mactions">
+            <a class="mbtn mbtn--primary" href="#">Explore the tools</a>
+            <a class="mbtn mbtn--secondary" href="#">My approach →</a>
+          </div>
+          <ul class="markers">
+            <li><span class="tick">✓</span>9 tools shipped</li>
+            <li><span class="tick">✓</span>AI-powered workflows</li>
+            <li><span class="tick">✓</span>Growth &amp; conversion systems</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <figure class="hcard hcard--1"><div class="hcard__v"></div><figcaption><b>Reactor</b><span class="pill">Live tool</span></figcaption></figure>
+          <figure class="hcard hcard--2"><div class="hcard__v"></div><figcaption><b>Competitor Teardowns</b><span class="pill">Live tool</span></figcaption></figure>
+          <figure class="hcard hcard--3"><div class="hcard__v"></div><figcaption><b>Landing QA Tool</b><span class="pill">Live tool</span></figcaption></figure>
+        </div>
+      </div>
+      <div class="mintro">
+        <span>Short intro</span>
+        <p>I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="concept">
+  <div class="concept__label"><b>New — centered</b><span>Headline, sub, CTAs and markers centered; the tool-card fan moves below, centered as a trio; the intro card stays a distinct block underneath.</span></div>
+  <div class="stage">
+    <header class="mheader">
+      <a class="mbrand" href="#"><span class="mbrand__mark"><svg viewBox="0 0 32 32" fill="none"><path d="M4 26V6h13M4 15h9" stroke="#151312" stroke-width="2.6" stroke-linecap="square"/><path d="M18 26V6c5 0 8 2.2 8 6.5S23 19 18 19" stroke="#151312" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="round"/></svg></span>Fernando <span>Peccatiello</span></a>
+      <nav class="mnav"><a href="#">Work</a><a href="#">Approach</a><a href="#">About</a></nav>
+    </header>
+    <div class="mhero-center">
+      <div class="meyebrow">Growth Marketing × AI × Product Thinking</div>
+      <h1 class="mh1">I turn growth bottlenecks into useful tools.</h1>
+      <p class="msub">I build focused AI-powered tools and experiments that help teams improve conversion, reduce manual work, and make better marketing decisions.</p>
+      <div class="mactions">
+        <a class="mbtn mbtn--primary" href="#">Explore the tools</a>
+        <a class="mbtn mbtn--secondary" href="#">My approach →</a>
+      </div>
+      <ul class="markers">
+        <li><span class="tick">✓</span>9 tools shipped</li>
+        <li><span class="tick">✓</span>AI-powered workflows</li>
+        <li><span class="tick">✓</span>Growth &amp; conversion systems</li>
+      </ul>
+      <div class="stack-center">
+        <figure class="hcard hcard--1"><div class="hcard__v"></div><figcaption><b>Reactor</b><span class="pill">Live tool</span></figcaption></figure>
+        <figure class="hcard hcard--2"><div class="hcard__v"></div><figcaption><b>Competitor Teardowns</b><span class="pill">Live tool</span></figcaption></figure>
+        <figure class="hcard hcard--3"><div class="hcard__v"></div><figcaption><b>Landing QA Tool</b><span class="pill">Live tool</span></figcaption></figure>
+      </div>
+      <div class="mintro">
+        <span>Short intro</span>
+        <p>I work at the intersection of growth marketing, product thinking, and AI. My approach is simple: start with a real operational or conversion problem, build the smallest useful solution, and make it clear enough for people to act on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
