@@ -26,13 +26,13 @@ Fer autorizó primero las correcciones y, posteriormente, el commit/push y publi
 
 ## Límites y próximos pasos
 
-- Producción sigue teniendo la versión anterior. Verificar dominio, redirects y headers efectivos en Vercel cuando Fer autorice publicar; no desplegar por iniciativa propia.
+- Producción ya sirve esta versión desde el 22 de octubre de 2026, tras autorización explícita de Fer. Las futuras publicaciones requieren una nueva instrucción del usuario.
 - LinkedIn/Claude pueden bloquear navegadores automatizados. No se corrigieron servicios externos ni se ejecutaron generaciones de pago o pruebas de backend de las nueve herramientas.
 - Impacto comercial, calibración humana y cifras profesionales requieren evidencia de Fer; ahora el portfolio no las presenta como resultados medidos.
 - No se hizo certificación con lector de pantalla, dispositivos físicos, Rich Results externo o métricas de campo. No declarar esas pruebas como realizadas.
 - Se detectó que :3000 es un proceso de producción que conserva el build anterior en memoria. Tras generar el build nuevo, se recuperaron sus cuatro assets faltantes desde las pestañas de auditoría; sus cuatro rutas vuelven a cargar sin errores y nunca se detuvo el proceso.
 - Para repetir sin tocar los assets del servidor original: npm ci; npx playwright install chromium; npm run build:check; npm run preview:check; en otra terminal AUDIT_URL=http://localhost:3001 npm run check. PORTFOLIO_DIST_DIR separa .next-check del .next normal.
-- La vista corregida queda en localhost:3001. localhost:3000 conserva la versión anterior hasta que Fer decida reiniciar ese proceso.
+- La preview corregida está en localhost:3001 y la versión pública en https://www.fernandopeccatiello.com. localhost:3000 conserva su proceso anterior sin reiniciar.
 
 ## Ajuste posterior del hero — 22 octubre 2026
 
@@ -41,7 +41,7 @@ Fer autorizó primero las correcciones y, posteriormente, el commit/push y publi
 +- Conectores animados, fase visual y control Play/Pause. Se pausa fuera del viewport, en pestaña oculta y con prefers-reduced-motion. SSR sin JS conserva diagrama y caption estáticos; listeners/intervals tienen cleanup.
 +- Limpiado el CSS exclusivo del hero anterior, preservando el estilo del badge .tool__chrome .mini. Retirada animación decorativa continua del punto del eyebrow.
 +- Nuevo npm run check:hero integrado en npm run check. Baseline anterior falló por las dos capturas; la nueva versión pasa composición, avance, pausa/reanudación, fuera de viewport, movimiento reducido y sin JS. Build aislado genera 8/8 rutas. Revisión independiente sin hallazgos severos.
-+- Preview actualizada en localhost:3001; :3000 conserva el proceso anterior. Sin commit ni deploy.
++- Durante la fase de desarrollo se entregó preview en localhost:3001 sin commit/deploy; la autorización posterior de publicación figura abajo. :3000 conserva su proceso anterior.
 
 Validación final del nuevo hero: 38 comprobaciones pasan (suite portfolio + hero), cero infracciones detectadas por Axe, build 8/8 y cinco anchos sin overflow. Capturas de hero: /tmp/fp-hero-react-oZBud0.
 
@@ -53,3 +53,11 @@ Validación final del nuevo hero: 38 comprobaciones pasan (suite portfolio + her
 +- La confirmación efectiva del release se comprueba con el estado Vercel del commit en main y la presencia de .hero-system en el dominio público; no basta un HTTP 200 de la versión antigua.
 
 Prepublicación: build aislado 8/8 y suite completa 38/38 pasan; npm audit sin vulnerabilidades. Proyecto Vercel actualizado de Other a Next.js, con build/install/output automáticos y sin variables de entorno de producción.
+
+## Release verificado en producción
+
++- Código publicado: commit 2aac0c695a886e2710586af3ef79b4898323f39b, push a origin/main.
++- Vercel: dpl_8GEhxNTzS1m2NAxik3LUyYxcgoeu, estado Ready/Production y check GitHub success. Build remoto generó 8/8 rutas.
++- Dominio confirmado: https://www.fernandopeccatiello.com (también alias sin www). Deployment de código: https://fp-portfolio-1r6boyk8o-fernypecca-1173s-projects.vercel.app.
++- Smoke test público: home y tres casos 200; hero SVG animado y pausa funcionales; sin screenshots ni inventario dentro del hero; móvil375 sin overflow; robots/sitemap/iconos/OG200; inexistente404; cuatro redirects .html308; canonical y headers de seguridad correctos; sin errores de consola ni requests fallidos.
++- Esta actualización de documentación no cambia el código funcional del release. Checkout sincronizado mediante commit/push; comprobar git status y check Vercel de main para el SHA documental más reciente.
