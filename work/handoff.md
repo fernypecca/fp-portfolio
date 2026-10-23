@@ -1,8 +1,12 @@
 # Portfolio — estado al 23 de octubre de 2026
 
-## Publicación de la corrección de microtextos — autorizada
+## Publicación de la corrección de microtextos — verificada
 
-Fer solicitó «ok publica» tras revisar la preview. Autorizados commit, push a origin/main y despliegue de producción de las nueve previews legibles y la escala de metadata. La validación local completa previa pasa 48/48 y el build genera 8/8; se repite el check de legibilidad antes del commit y se verificará la versión desplegada en el dominio público.
+- Fer solicitó «ok publica» tras revisar la preview. Código publicado mediante commit/push a origin/main: `da701be22b676226b7fdda83f7078d9cd0bfed81`.
+- Vercel `dpl_B1n4wdFXTRQk2w7KtkmfB9tNxDEs`, Ready/Production y check GitHub success. Deployment: https://fp-portfolio-eqzauq6sj-fernypecca-1173s-projects.vercel.app. Dominio confirmado: https://www.fernandopeccatiello.com.
+- Validación local: build8/8, suite48/48 y check de legibilidad repetido antes del commit. npm audit0. Suite completa sobre el dominio público:48/48, salida0, incluido texto de las nueve cards de320a1440px sin microtexto o clipping. Log: `/tmp/fp-readable-tools-production.log`.
+- Confirmación visual pública: nueve previews HTML, cero textos dentro de sus SVG y etiquetas mínimas de12px. Hero, ticker, cards, robots, sitemap, favicons y OG correctos; smoke sin errores de consola/network. No se probaron APIs de generación de las herramientas externas.
+- Este registro documental no cambia el código funcional del release. El check Vercel de origin/main identifica el despliegue del commit documental más reciente. Repositorio sincronizado; servidor original3000 y preview3001 conservados. No queda trabajo requerido para esta publicación.
 
 ## Corrección de microtextos en herramientas — 23 octubre
 
@@ -12,7 +16,7 @@ Fer solicitó «ok publica» tras revisar la preview. Autorizados commit, push a
 - Metadata HTML de Stats, metodología, perfil, contacto, footer y casos se unifica a un mínimo de 12 px; se conservan los SVG/screenshots independientes de los casos. El logo FP no se trata como texto de lectura.
 - Añadido `scripts/check-legibility.mjs` a `npm run check`: mínimo de 12 px renderizados en textos de las nueve cards, comprobación de clipping y overflow en 320/375/390/768/1024/1440. La comprobación falla contra la versión pública anterior y pasa contra la preview corregida. QA independiente: nueve previews visibles sin JS y con reduced motion, sin desbordes ni incidencias Axe en las ilustraciones.
 - Verificación final: build aislado 8/8 y suite completa 48/48, salida 0, incluido Axe en las cuatro páginas y cinco tamaños. Mínimo HTML confirmado de 12 px en Reactor; no quedan textos dentro del SVG de su preview. Log `/tmp/fp-legibility-final-verified.log`. Preview http://localhost:3001. Capturas temporales `/tmp/fp-tool-type-FwGpHv`.
-- Entrega local, sin commit/push/deploy de esta corrección. Producción conserva el release de ayer. El servidor original3000 no se detuvo. Próximo paso: revisión visual de Fer; si solicita publicación, repetir validación y publicar en main/live.
+- La entrega inicial fue local. Fer aprobó y solicitó después la publicación; el release verificado figura al principio del documento. El servidor original3000 no se detuvo.
 
 ## Publicación de los últimos ajustes — verificada
 
