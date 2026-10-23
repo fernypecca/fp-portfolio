@@ -8,10 +8,11 @@
     "build:check": "PORTFOLIO_DIST_DIR=.next-check next build",
     "preview:check": "PORTFOLIO_DIST_DIR=.next-check next start -p 3001",
     "start": "next start",
-    "check": "node scripts/check-portfolio.mjs && node scripts/check-hero.mjs && node scripts/check-ticker.mjs",
+    "check": "node scripts/check-portfolio.mjs && node scripts/check-hero.mjs && node scripts/check-ticker.mjs && node scripts/check-legibility.mjs",
     "og": "node scripts/generate-og.mjs",
     "check:hero": "node scripts/check-hero.mjs",
-    "check:ticker": "node scripts/check-ticker.mjs"
+    "check:ticker": "node scripts/check-ticker.mjs",
+    "check:legibility": "node scripts/check-legibility.mjs"
   },
   "dependencies": {
     "next": "16.4.2",

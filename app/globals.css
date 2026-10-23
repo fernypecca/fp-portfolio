@@ -81,6 +81,8 @@ img {
   text-transform: uppercase;
 }
 
+.mono:not(svg *) { font-size: 12px; }
+
 .mark {
   background: linear-gradient(
     180deg,
@@ -539,7 +541,7 @@ img {
   display: block;
   margin-top: 7px;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--mute);
@@ -556,7 +558,7 @@ img {
   align-items: center;
   gap: 10px;
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--mute);
@@ -621,7 +623,7 @@ img {
   margin-bottom: 18px;
   border-top: 1px solid var(--line);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mute);
@@ -676,7 +678,7 @@ img {
   --pv-soft: #efeee8;
   --pv-line: #dcdbd4;
   --pv-softline: #eae9e3;
-  --pv-txt: #77766f;
+  --pv-txt: #63625b;
   --pv-ink: #0a0a0a;
   background: #fff;
   border: 1px solid rgba(11, 11, 12, 0.17);
@@ -742,22 +744,23 @@ img {
 
 .tool__chrome .url {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.05em;
   color: var(--mute);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
 }
 
 .tool__chrome .mini {
   border: 1px solid var(--line);
   border-radius: 13px;
-  overflow: hidden;
+  flex-shrink: 0;
+  padding: 3px 7px;
   background: #f7f7f4;
   margin-left: auto;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -776,6 +779,7 @@ img {
 }
 
 .tool__stage {
+  container-type: inline-size;
   position: relative;
   flex: 1;
   min-height: 230px;
@@ -800,7 +804,7 @@ img {
   --pv-soft: #232325;
   --pv-line: #353537;
   --pv-softline: #28282a;
-  --pv-txt: #a5a49e;
+  --pv-txt: #b8b7af;
   --pv-ink: #faf9f4;
   border-color: #242426;
 }
@@ -817,98 +821,14 @@ img {
   background: radial-gradient(70% 70% at 80% 10%, rgba(228, 255, 0, 0.09), transparent 70%);
 }
 
-.tool__stage .pv {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: visible;
-}
-
-.tool__stage svg text {
-  font-family: var(--body);
-  fill: var(--pv-txt);
-  font-weight: 500;
-  letter-spacing: -0.005em;
-}
-
-.tool__stage svg .mono {
-  font-family: var(--mono);
-  letter-spacing: 0.08em;
-  font-size: 8px;
-  text-transform: uppercase;
-}
-
-.tool__stage svg .line {
-  stroke: var(--pv-line);
-  stroke-width: 1;
-  fill: none;
-}
-
-.tool__stage svg .line-soft {
-  stroke: var(--pv-softline);
-  stroke-width: 1;
-  fill: none;
-}
-
-.tool__stage svg .fill-card {
-  fill: var(--pv-card);
-}
-
-.tool__stage svg .fill-soft {
-  fill: var(--pv-soft);
-}
-
-.tool__stage svg .fill-ink {
-  fill: var(--pv-ink);
-}
-
-.tool__stage svg .fill-yellow {
-  fill: var(--yellow);
-}
-
-.tool__stage svg .stroke-yellow {
-  stroke: var(--yellow);
-  fill: none;
-}
-
-.tool__stage svg .ink-text {
-  fill: var(--pv-ink);
-}
-
-.tool__stage svg .soft-text {
-  fill: var(--pv-txt);
-}
-
-.tool__stage svg .chip-text {
-  fill: #0a0a0a;
-  font-weight: 600;
-}
-
-.tool__stage svg .anim {
-  transition: transform 0.55s var(--ease);
-}
-
-.tool:hover .pv .g1 {
-  transform: translateY(-3px);
-}
-
-.tool:hover .pv .g2 {
-  transform: translateY(-6px);
-}
-
-.tool:hover .pv .g3 {
-  transform: translateY(-9px);
-}
-
 .tool__caption {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  flex-wrap: wrap;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--mute);
@@ -943,7 +863,7 @@ img {
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid var(--line-strong);
@@ -963,7 +883,7 @@ img {
 .tool__num {
   margin-left: auto;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--mute);
 }
@@ -973,7 +893,7 @@ img {
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: #68675f;
@@ -1027,7 +947,7 @@ img {
 .tool__desc {
   margin-top: 11px;
   color: #62615b;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   max-width: 50ch;
 }
@@ -1042,7 +962,7 @@ img {
   margin-top: 16px;
   padding-top: 12px;
   border-top: 1px solid var(--line);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.55;
   color: #6a6962;
   max-width: 52ch;
@@ -1050,7 +970,7 @@ img {
 
 .tool__shows b {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
@@ -1067,7 +987,7 @@ img {
 
 .tool__tags span {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #63625b;
@@ -1075,7 +995,7 @@ img {
   background: #fbfaf7;
   padding: 5px 8px;
   border-radius: 999px;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .tool__foot {
@@ -1098,7 +1018,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14.5px;
+  font-size: 16px;
   font-weight: 500;
   border-bottom: 1px solid var(--line-strong);
   padding-bottom: 2px;
@@ -1119,7 +1039,7 @@ img {
 
 .tool__case {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1201,7 +1121,7 @@ img {
 
 .approach .step .n {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   color: var(--yellow);
 }
@@ -1234,7 +1154,7 @@ img {
 
 .approach-note p {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
   color: #8e8e93;
@@ -1340,7 +1260,7 @@ img {
 
 .profile-top p {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1367,7 +1287,7 @@ img {
 
 .prow dt {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1387,7 +1307,7 @@ img {
 
 .skill {
   font-family: var(--mono);
-  font-size: 8.5px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border: 1px solid var(--line);
@@ -1507,7 +1427,7 @@ img {
 
 .contact-links a {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   display: inline-flex;
@@ -1550,13 +1470,13 @@ img {
   display: grid;
   place-items: center;
   font-family: var(--display);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .footer p {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #85858a;
@@ -1569,7 +1489,7 @@ img {
 
 .footer-links a {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #c7c7cc;
@@ -1612,7 +1532,7 @@ img {
   align-items: center;
   gap: 10px;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1676,7 +1596,7 @@ img {
 
 .case-meta__row dt {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1694,7 +1614,7 @@ img {
   align-items: center;
   gap: 7px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
@@ -1742,7 +1662,7 @@ img {
 .shot-chrome .url {
   margin-left: 9px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--mute);
 }
@@ -1753,7 +1673,7 @@ img {
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   background: var(--yellow);
@@ -1788,7 +1708,7 @@ img {
   flex-wrap: wrap;
   padding: 11px 4px 0;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1824,7 +1744,7 @@ img {
 .case-stat span {
   display: block;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1951,7 +1871,7 @@ img {
 
 .step__num {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -2008,7 +1928,7 @@ img {
 
 .flow__step span {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #8f8e88;
@@ -2068,7 +1988,7 @@ img {
 }
 
 .gcard__body .mono {
-  font-size: 9.5px;
+  font-size: 12px;
   color: var(--mute);
 }
 
@@ -2146,7 +2066,7 @@ img {
 .metric span {
   display: block;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -2161,7 +2081,7 @@ img {
 }
 
 .proof__item .mono {
-  font-size: 9.5px;
+  font-size: 12px;
   color: var(--mute);
 }
 
@@ -2198,7 +2118,7 @@ img {
 
 .tags span {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #66655f;
@@ -2327,7 +2247,7 @@ img {
   gap: 24px;
   padding: 17px 28px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--paper);

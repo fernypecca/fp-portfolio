@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ToolPreview from "./ToolPreview";
 
 export default function ToolCard({ tool }) {
   const statusClass = tool.status.concept
@@ -21,8 +22,9 @@ export default function ToolCard({ tool }) {
         </div>
         <div
           className={`tool__stage${tool.dark ? " tool__stage--dark" : ""}`}
-          dangerouslySetInnerHTML={{ __html: tool.preview }}
-        />
+        >
+          <ToolPreview tool={tool} />
+        </div>
         <div className="tool__caption">
           <span>{tool.caption[0]}</span>
           <span>{tool.caption[1]}</span>

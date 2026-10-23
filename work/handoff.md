@@ -1,4 +1,18 @@
-# Portfolio — estado al 22 de octubre de 2026
+# Portfolio — estado al 23 de octubre de 2026
+
+## Publicación de la corrección de microtextos — autorizada
+
+Fer solicitó «ok publica» tras revisar la preview. Autorizados commit, push a origin/main y despliegue de producción de las nueve previews legibles y la escala de metadata. La validación local completa previa pasa 48/48 y el build genera 8/8; se repite el check de legibilidad antes del commit y se verificará la versión desplegada en el dominio público.
+
+## Corrección de microtextos en herramientas — 23 octubre
+
+- Fer señaló textos todavía diminutos en la card de Reactor. La versión publicada tenía labels HTML de 9–10 px y textos SVG que se reducían a 3–7 px según el ancho. La corrección del día anterior se había centrado en HeroSystem; estos diagramas eran independientes.
+- Las nueve previews usan ahora `components/ToolPreview.jsx` y `components/tool-previews.css`: componente de servidor con etiquetas HTML de al menos 12 px, cuerpo de 14 px y SVG/CSS decorativos sin texto. Las composiciones se redistribuyen por ancho de contenedor, sin reducir la tipografía. Se indica que son previews ilustrativas. No se añadieron dependencias, JS cliente o interacciones ficticias.
+- Eliminadas las cadenas SVG antiguas de `lib/tools.js` y sus helpers CSS sin consumidores. Los datos de inventario, links, estados y descripciones se conservan. `ToolCard.jsx` usa el nuevo componente; se amplían URL, estado, pills, tags, captions, Shows y CTA al caso. URL y captions pueden envolver líneas en móvil.
+- Metadata HTML de Stats, metodología, perfil, contacto, footer y casos se unifica a un mínimo de 12 px; se conservan los SVG/screenshots independientes de los casos. El logo FP no se trata como texto de lectura.
+- Añadido `scripts/check-legibility.mjs` a `npm run check`: mínimo de 12 px renderizados en textos de las nueve cards, comprobación de clipping y overflow en 320/375/390/768/1024/1440. La comprobación falla contra la versión pública anterior y pasa contra la preview corregida. QA independiente: nueve previews visibles sin JS y con reduced motion, sin desbordes ni incidencias Axe en las ilustraciones.
+- Verificación final: build aislado 8/8 y suite completa 48/48, salida 0, incluido Axe en las cuatro páginas y cinco tamaños. Mínimo HTML confirmado de 12 px en Reactor; no quedan textos dentro del SVG de su preview. Log `/tmp/fp-legibility-final-verified.log`. Preview http://localhost:3001. Capturas temporales `/tmp/fp-tool-type-FwGpHv`.
+- Entrega local, sin commit/push/deploy de esta corrección. Producción conserva el release de ayer. El servidor original3000 no se detuvo. Próximo paso: revisión visual de Fer; si solicita publicación, repetir validación y publicar en main/live.
 
 ## Publicación de los últimos ajustes — verificada
 

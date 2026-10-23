@@ -26,7 +26,7 @@ AUDIT_URL=http://localhost:3001 npm run check
 npm audit
 ```
 
-The check uses Playwright and Axe to verify visible content without JavaScript and with reduced motion, the five responsive sizes, contrast and common accessibility rules, skip-link focus, the case-study loop, permanent redirects, security headers and 404 status. It also checks the native hero illustration, phase progression, pause/resume and pausing outside the viewport. The disciplines strip is checked for movement, placement above the inventory, pause/resume, ultrawide coverage and manual scrolling with reduced motion or without JavaScript. It does not submit forms or call external tool-generation APIs. Automated checks do not replace screen-reader or physical-device testing.
+The check uses Playwright and Axe to verify visible content without JavaScript and with reduced motion, the five responsive sizes, contrast and common accessibility rules, skip-link focus, the case-study loop, permanent redirects, security headers and 404 status. It also checks the native hero illustration, phase progression, pause/resume and pausing outside the viewport. The disciplines strip is checked for movement, placement above the inventory, pause/resume, ultrawide coverage and manual scrolling with reduced motion or without JavaScript. Card legibility checks cover six widths from 320 to 1440 px, checking a 12 px minimum rendered label size, all nine previews and text clipping. This minimum is a project design guardrail, not an accessibility certification. It does not submit forms or call external tool-generation APIs. Automated checks do not replace screen-reader or physical-device testing.
 
 Verification builds use .next-check so they do not overwrite assets held by an existing server on port 3000. The normal npm run build / npm start workflow still uses .next for deployment. The checker covers five widths: 375, 390, 768, 1024 and 1440 px.
 
@@ -34,7 +34,8 @@ Verification builds use .next-check so they do not overwrite assets held by an e
 
 - app/: home, case routes, 404, sitemap, robots and global styles.
 - components/: shared server-rendered UI; Reveal adds optional native browser animation after hydration. It never hides content. HeroSystem is a small React/SVG workflow illustration with play/pause, reduced-motion support and no image or animation-library dependency.
-- lib/tools.js: source of truth for nine tools, states, links and SVG previews.
+- lib/tools.js: source of truth for nine tools, states and links.
+- components/ToolPreview.jsx and components/tool-previews.css: server-rendered illustrative previews with responsive HTML labels and decorative SVG/CSS graphics. Text stays readable instead of shrinking with an SVG viewBox.
 - lib/tool-summary.js: counts derived from the inventory.
 - lib/cases.js: case content, product-scope metrics, validation limits and case sequence.
 - lib/case-visuals.js: illustrative case diagrams, not production screenshots.
@@ -43,6 +44,7 @@ Verification builds use .next-check so they do not overwrite assets held by an e
 - og.svg and scripts/generate-og.mjs: social-card source and renderer.
 - scripts/check-portfolio.mjs: repeatable browser checks.
 - scripts/check-hero.mjs and scripts/check-ticker.mjs: animated component and static fallback checks.
+- scripts/check-legibility.mjs: minimum card label size and clipping checks.
 - work/: implementation notes and handoff.
 
 ## Content and accessibility
