@@ -6,7 +6,7 @@
 
 **Integridad: PASS.** El sistema sigue siendo reconocible y específico del trabajo de Fernando: paper/black/acid yellow, Archivo/Sora/IBM Plex Mono, artefactos reales y conceptos diferenciados. El recorrido ahora prioriza evaluar los casos y después abrir el producto. Inventario 9=4 live+2 concept+3 internal conservado. Los límites de las simulaciones y la ausencia de resultados comerciales medidos siguen explícitos.
 
-**GO para revisión/publicación desde la preview.** No se detectaron P0/P1 técnicos abiertos en el alcance probado. Estos cambios todavía no se han publicado.
+**GO, publicado y verificado.** No se detectaron P0/P1 técnicos abiertos en el alcance probado. Tras la revisión se neutralizó el contacto público y Fer autorizó la publicación; la suite completa pasa también en el dominio de producción.
 
 La valoración siguiente es orientativa, basada en inspección de código y Chromium; no equivale a una certificación WCAG ni a métricas de campo.
 
@@ -77,7 +77,7 @@ Se limita el tracking excesivamente negativo a−0,04 em, se modera el título d
 
 ## Qué funciona y se conserva
 
-- Propuesta de Growth & Demand Lead y CTA de contratación claros.
+- Posicionamiento de Growth & Demand Lead claro; el contacto final invita a comparar ideas y resolver preguntas sobre los proyectos.
 - Artefactos identificables; estados Live/Concept/Internal sin presentar conceptos como resultados.
 - Scope y límites separados de impacto comercial; Reactor identifica respuestas sintéticas.
 - Hero y ticker con pausa, reduced motion y estado estático útil.
@@ -104,6 +104,8 @@ Se limita el tracking excesivamente negativo a−0,04 em, se modera el título d
 
 ## Entrega
 
-Preview: http://localhost:3001/#work. Cambios locales sin commit, push ni deploy. El servidor de preview se mantiene para revisión; se detiene con Ctrl-C en su proceso. No se inició ni se detuvo ningún proceso en 3000.
+Publicado en https://www.fernandopeccatiello.com desde origin/main, código `8c9706b7a68093f95de4d89b4f0c4bfb4783bae6`. Vercel Ready/Production y check GitHub success. Suite en producción:54/54, salida0. Contacto, hero, perfil y cierre de casos usan tono profesional neutro; OG/Twitter apuntan a v3. Se purgó selectivamente la caché externa de Cloudflare para que las copias v2/og.png también sirvan la imagen neutra.
+
+Preview: http://localhost:3001/#work. El servidor de preview se mantiene para revisión; se detiene con Ctrl-C en su proceso. No se inició ni se detuvo ningún proceso en3000. Cierre del release y límites de caché de terceros en `work/handoff.md`.
 
 Log: `/tmp/fp-impeccable-final.log`. Detector: `/tmp/fp-impeccable-detect.json`. Capturas: `/tmp/fp-impeccable-qZiVcG`.

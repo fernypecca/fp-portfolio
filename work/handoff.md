@@ -1,8 +1,13 @@
 # Portfolio — estado al 27 de octubre de 2026
 
-## Publicación Impeccable y contacto neutro — autorizada
+## Publicación Impeccable y contacto neutro — verificada
 
-Fer solicitó «publica». Autorizados commit y push a main para publicar las mejoras Impeccable y el contacto profesional neutro, incluida la nueva imagen social v3 y las copias de compatibilidad. La suite local anterior pasa54/54 y build8/8; antes del commit se repiten el recorrido y el smoke de copy/metadatos/imágenes. La validación del dominio se registrará al cerrar el release.
+- Fer solicitó «publica». Código publicado en origin/main: `8c9706b7a68093f95de4d89b4f0c4bfb4783bae6`.
+- Vercel `dpl_EK7jvRrMsLdLnkF52UZwKMeWMR8Y`, Ready/Production y check GitHub success. Deployment: https://fp-portfolio-oy5f75s2c-fernypecca-1173s-projects.vercel.app. Dominio confirmado: https://www.fernandopeccatiello.com.
+- Build local8/8 y suite54/54; recorrido repetido antes del commit y npm audit0. Suite completa en el dominio público:54/54, salida0. Log `/tmp/fp-impeccable-live-check.log`.
+- Smoke público final: cuatro páginas sin llamadas explícitas de disponibilidad, títulos/metadatos profesionales y OG/Twitterv3. Captura nueva y PNG verificados; v3 coincide byte a byte con el archivo neutro local. Las copias v2/og.png también sirven el mismo hash tras purga.
+- La primera verificación detectó que Cloudflare conservaba v2 con la cabecera immutable anterior. La purga CDN de Vercel no afectó a esa caché externa. Se usó la sesión existente de Cloudflare para Custom Purge de las cuatro URL v2/og.png con/sin www. Después, el smoke completo pasa y las tres imágenes públicas comparten hash `5e0289e6ff40f5…`. No se modificaron DNS, seguridad o TTL. Las cachés de publicaciones antiguas de terceros quedan fuera de este control.
+- Este registro documental no cambia el código funcional. El check Vercel de origin/main identifica el deployment del commit documental más reciente. Preview3001 conservada; ningún proceso3000 alterado. No queda trabajo requerido para esta publicación.
 
 ## Contacto profesional: tono neutro
 
@@ -10,7 +15,7 @@ Fer solicitó «publica». Autorizados commit y push a main para publicar las me
 - Hero queda en “Growth & Demand Lead”, sin indicador de disponibilidad; se elimina la fila Open to del perfil. Los tres casos cierran con “Have a question about this project?”. CLIENT.md fija networking profesional como voz pública y evita CTAs de disponibilidad o contratación. README acompaña ese posicionamiento.
 - OG también contenía Open to roles: eliminado del SVG y de todas las copias PNG. Nueva URL `/og-growth-demand-v3.png` en metadata de cuatro páginas y header de caché; v2 y og.png se regeneran como compatibilidad con el mismo contenido neutro. Se actualizan generador y comprobación de metadata. No se garantiza actualizar cachés de publicaciones antiguas de terceros.
 - Validación final: build8/8; suite54/54 salida0; QA focal y escaneo de las cuatro UI/metadata sin llamadas explícitas de búsqueda de empleo. v3/v2/og.png responden200 y tienen el mismo hash. OG revisado visualmente. Log `/tmp/fp-neutral-copy-check.log`; captura `/tmp/fp-impeccable-qZiVcG/contact-neutral-final.png`.
-- Todo continúa local, junto con las mejoras Impeccable pendientes de publicación. Preview http://localhost:3001/#contact; sin commit/push/deploy. Próximo paso: revisión del texto y publicación cuando Fer la solicite.
+- La entrega inicial fue local. La publicación posterior autorizada y verificada figura al principio del documento. Preview http://localhost:3001/#contact conservada.
 
 ## Impeccable: auditoría y recorrido del portfolio
 
@@ -20,7 +25,7 @@ Fer solicitó «publica». Autorizados commit y push a main para publicar las me
 - CaseStudy destaca una decisión con copy existente. Heroes conceptuales comparten ToolPreview; las nueve galerías usan CaseDiagram/HTML12+ y geometría decorativa, desde datos estructurados en lib/case-visuals.js. Reactor conserva captura real. Se retiran cifras duplicadas del hero, data/CSS sin uso y minipill duplicada; Product scope aparece una sola vez tras sus límites, en tres filas en móvil. Tracking mínimo−0,04em y título de caso máximo6rem.
 - Verificación final: build aislado8/8; suite54/54 salida0 con Axe cuatro páginas/cinco tamaños (colección completa abierta), noJS/reduced, keyboard/focus, rutas/SEO/redirects, mínimo tipográfico, recorrido y diagramas de casos. QA independiente sin hallazgos accionables; taps sintetizados Chromium, no dispositivo físico. npm audit0; git diff --check limpio.
 - Detector Impeccable ejecutado una vez al terminar siete componentes JSX: salida0/JSON[]. No se inyectó overlay. Informe completo `work/impeccable-audit-2026-10-27.md`; log `/tmp/fp-impeccable-final.log`; detector `/tmp/fp-impeccable-detect.json`; capturas `/tmp/fp-impeccable-qZiVcG`.
-- Estado: cambios locales sin commit/push/deploy. Preview http://localhost:3001/#work, proceso `preview:check` de esta sesión (Ctrl-C para detener). No había servidor3000 al arrancar y no se inició/detuvo ninguno allí. Próximo paso: Fer revisa preview; publicar solo cuando lo solicite. Pendiente editorial: experiencia/contribuciones verificables; límites de dispositivos/lector de pantalla/CWV en informe.
+- La entrega inicial fue local; el release posterior se documenta arriba. Preview http://localhost:3001/#work, proceso `preview:check` de esta sesión (Ctrl-C para detener). No había servidor3000 al arrancar y no se inició/detuvo ninguno allí. Pendiente editorial: experiencia/contribuciones verificables; límites de dispositivos/lector de pantalla/CWV en informe.
 
 ## Publicación de la corrección de microtextos — verificada
 
