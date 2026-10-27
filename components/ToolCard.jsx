@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ToolPreview from "./ToolPreview";
 
-export default function ToolCard({ tool }) {
+export default function ToolCard({ tool, position = tool.num }) {
   const statusClass = tool.status.concept
     ? "status status--concept"
     : tool.status.internal
@@ -18,7 +18,6 @@ export default function ToolCard({ tool }) {
             <i />
           </span>
           <span className="url">{tool.url}</span>
-          <span className="mini">{tool.mini}</span>
         </div>
         <div
           className={`tool__stage${tool.dark ? " tool__stage--dark" : ""}`}
@@ -39,7 +38,7 @@ export default function ToolCard({ tool }) {
             </span>
           ))}
           <span className={statusClass}>{tool.status.text}</span>
-          <span className="tool__num">{tool.num}</span>
+          <span className="tool__num">{position}</span>
         </div>
         <h3>{tool.name}</h3>
         {tool.tagline ? <p className="tool__tagline">{tool.tagline}</p> : null}
@@ -54,6 +53,11 @@ export default function ToolCard({ tool }) {
         </div>
         <div className="tool__foot">
           <div className="tool__actions">
+            {tool.caseHref ? (
+              <Link className="tool__case btn" href={tool.caseHref}>
+                {tool.caseText} <span className="arrow" aria-hidden="true">↗</span>
+              </Link>
+            ) : null}
             <a
               className="tool__open"
               href={tool.openHref}
@@ -62,11 +66,6 @@ export default function ToolCard({ tool }) {
             >
               {tool.openText} <span className="arrow">↗</span>
             </a>
-            {tool.caseHref ? (
-              <Link className="tool__case" href={tool.caseHref}>
-                {tool.caseText} ↗
-              </Link>
-            ) : null}
           </div>
         </div>
       </div>

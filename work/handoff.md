@@ -1,4 +1,26 @@
-# Portfolio — estado al 23 de octubre de 2026
+# Portfolio — estado al 27 de octubre de 2026
+
+## Publicación Impeccable y contacto neutro — autorizada
+
+Fer solicitó «publica». Autorizados commit y push a main para publicar las mejoras Impeccable y el contacto profesional neutro, incluida la nueva imagen social v3 y las copias de compatibilidad. La suite local anterior pasa54/54 y build8/8; antes del commit se repiten el recorrido y el smoke de copy/metadatos/imágenes. La validación del dominio se registrará al cerrar el release.
+
+## Contacto profesional: tono neutro
+
+- Contacto home: “Let's compare notes.” y un párrafo sobre growth, demand generation y otras perspectivas. Se conserva “Let's talk” y el mailto neutral “Hello Fernando”.
+- Hero queda en “Growth & Demand Lead”, sin indicador de disponibilidad; se elimina la fila Open to del perfil. Los tres casos cierran con “Have a question about this project?”. CLIENT.md fija networking profesional como voz pública y evita CTAs de disponibilidad o contratación. README acompaña ese posicionamiento.
+- OG también contenía Open to roles: eliminado del SVG y de todas las copias PNG. Nueva URL `/og-growth-demand-v3.png` en metadata de cuatro páginas y header de caché; v2 y og.png se regeneran como compatibilidad con el mismo contenido neutro. Se actualizan generador y comprobación de metadata. No se garantiza actualizar cachés de publicaciones antiguas de terceros.
+- Validación final: build8/8; suite54/54 salida0; QA focal y escaneo de las cuatro UI/metadata sin llamadas explícitas de búsqueda de empleo. v3/v2/og.png responden200 y tienen el mismo hash. OG revisado visualmente. Log `/tmp/fp-neutral-copy-check.log`; captura `/tmp/fp-impeccable-qZiVcG/contact-neutral-final.png`.
+- Todo continúa local, junto con las mejoras Impeccable pendientes de publicación. Preview http://localhost:3001/#contact; sin commit/push/deploy. Próximo paso: revisión del texto y publicación cuando Fer la solicite.
+
+## Impeccable: auditoría y recorrido del portfolio
+
+- Fer pidió Impeccable para auditar y mejorar. Prioridad confirmada: claridad del recorrido, conservando identidad. Se leyeron SKILL, audit, polish y craft-floor; `impeccable context --target app/page.js` se ejecutó una vez. Falta PRODUCT/DESIGN; no bloquea refinamiento ni se reparó como efecto lateral.
+- MobileNav añade details/summary nativo con Work/Approach/About/Contact, cierre con Escape, fuera, link y resize a desktop. Sin JS conserva el disclosure nativo. Objetivos clave a44px.
+- ToolsGrid destaca tres casos; las otras seis herramientas quedan en disclosure nativo. Case CTA ahora principal; demo secundaria. Inventario9/4/2/3, estados, enlaces y contenido se conservan. About en390px pasa de aproximadamente12.078px a6.768px de desplazamiento (−44%); home cerrada8.988px.
+- CaseStudy destaca una decisión con copy existente. Heroes conceptuales comparten ToolPreview; las nueve galerías usan CaseDiagram/HTML12+ y geometría decorativa, desde datos estructurados en lib/case-visuals.js. Reactor conserva captura real. Se retiran cifras duplicadas del hero, data/CSS sin uso y minipill duplicada; Product scope aparece una sola vez tras sus límites, en tres filas en móvil. Tracking mínimo−0,04em y título de caso máximo6rem.
+- Verificación final: build aislado8/8; suite54/54 salida0 con Axe cuatro páginas/cinco tamaños (colección completa abierta), noJS/reduced, keyboard/focus, rutas/SEO/redirects, mínimo tipográfico, recorrido y diagramas de casos. QA independiente sin hallazgos accionables; taps sintetizados Chromium, no dispositivo físico. npm audit0; git diff --check limpio.
+- Detector Impeccable ejecutado una vez al terminar siete componentes JSX: salida0/JSON[]. No se inyectó overlay. Informe completo `work/impeccable-audit-2026-10-27.md`; log `/tmp/fp-impeccable-final.log`; detector `/tmp/fp-impeccable-detect.json`; capturas `/tmp/fp-impeccable-qZiVcG`.
+- Estado: cambios locales sin commit/push/deploy. Preview http://localhost:3001/#work, proceso `preview:check` de esta sesión (Ctrl-C para detener). No había servidor3000 al arrancar y no se inició/detuvo ninguno allí. Próximo paso: Fer revisa preview; publicar solo cuando lo solicite. Pendiente editorial: experiencia/contribuciones verificables; límites de dispositivos/lector de pantalla/CWV en informe.
 
 ## Publicación de la corrección de microtextos — verificada
 

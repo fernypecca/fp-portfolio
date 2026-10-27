@@ -1,6 +1,6 @@
 import "./tool-previews.css";
 
-function AudienceGraph() {
+export function AudienceGraph() {
   return (
     <svg viewBox="0 0 280 170" aria-hidden="true" focusable="false" className="tool-demo__graph">
       <path d="M20 58 54 26 88 66 65 125 112 97 143 44 176 91 205 25 239 70 260 127 224 148 164 142 108 154 35 145M54 26 112 97M88 66 143 44M143 44 205 25M176 91 239 70M65 125 35 145M112 97 176 91" fill="none" stroke="var(--pv-line)" />

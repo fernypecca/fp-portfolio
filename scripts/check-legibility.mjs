@@ -9,7 +9,9 @@ try {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(base, { waitUntil: "networkidle" });
     await page.evaluate(() => document.fonts.ready);
-    const result = await page.locator(".tool-grid").evaluate((grid) => {
+    const collection = page.locator(".tool-collection");
+    if (await collection.count()) await collection.locator("summary").click();
+    const result = await page.locator(".work").evaluate((grid) => {
       const small = [];
       const clipped = [];
       for (const card of grid.querySelectorAll(".tool")) {

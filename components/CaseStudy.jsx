@@ -5,11 +5,14 @@ import Link from "next/link";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import Reveal from "./Reveal";
-import { caseVisuals } from "@/lib/case-visuals";
 import { getNextCase } from "@/lib/cases";
+import { tools } from "@/lib/tools";
+import ToolPreview from "./ToolPreview";
+import CaseDiagram from "./CaseDiagram";
 
 export default function CaseStudy({ data }) {
-  const visuals = caseVisuals[data.slug];
+  const tool = tools.find((item) => item.caseHref === `/work/${data.slug}`);
+  const decision = data.slug === "reactor" ? data.steps[1].text : data.build.copy;
   const nextCase = getNextCase(data.slug);
   const number = String(data.order).padStart(2, "0");
   const total = String(data.total).padStart(2, "0");
@@ -67,6 +70,10 @@ export default function CaseStudy({ data }) {
                     </dd>
                   </div>
                 </dl>
+                <div className="case-decision">
+                  <p className="case-decision__label">Key decision</p>
+                  <p>{decision}</p>
+                </div>
               </Reveal>
             </div>
 
@@ -90,10 +97,7 @@ export default function CaseStudy({ data }) {
                       priority
                     />
                   ) : (
-                    <div
-                      className="case-shot__svg"
-                      dangerouslySetInnerHTML={{ __html: visuals.hero }}
-                    />
+                    <div className="case-preview case-preview--dark"><ToolPreview tool={tool} /></div>
                   )}
                 </div>
                 <figcaption className="shot-note">
@@ -103,14 +107,6 @@ export default function CaseStudy({ data }) {
               </figure>
             </Reveal>
 
-            <Reveal className="case-stats">
-              {data.stats.map((stat) => (
-                <div className="case-stat" key={stat.label}>
-                  <b>{stat.value}</b>
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </Reveal>
           </div>
         </section>
 
@@ -169,10 +165,7 @@ export default function CaseStudy({ data }) {
             <Reveal className="gallery">
               {data.gallery.map((item, index) => (
                 <article className="gcard" key={item.title}>
-                  <div
-                    className="gcard__media"
-                    dangerouslySetInnerHTML={{ __html: visuals.gallery[index] }}
-                  />
+                  <div className="gcard__media"><CaseDiagram slug={data.slug} index={index} /></div>
                   <div className="gcard__body">
                     <div className="mono">{item.label}</div>
                     <h3>{item.title}</h3>
@@ -260,7 +253,7 @@ export default function CaseStudy({ data }) {
               <div className="kicker">
                 <b>04</b> Next
               </div>
-              <h2>Want this kind of thinking on your team?</h2>
+              <h2>Have a question about this project?</h2>
               <div className="case-cta__row">
                 <a
                   className="btn btn--yellow"

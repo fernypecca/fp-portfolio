@@ -1,5 +1,6 @@
 import { contactHref } from "@/lib/site";
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 
 export default function Nav() {
   return (
@@ -19,6 +20,7 @@ export default function Nav() {
             <Link href="/#approach">Approach</Link>
             <Link href="/#about">About</Link>
           </nav>
+          <MobileNav />
           <a className="btn btn--sm" href={contactHref}>
             Let&apos;s talk <span className="arrow">↗</span>
           </a>

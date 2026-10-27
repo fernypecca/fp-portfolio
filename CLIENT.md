@@ -1,7 +1,8 @@
 # Fernando Peccatiello — portfolio
 
-- Objective: interviews for Growth & Demand Lead roles; this is a hiring portfolio, not a freelance service website.
-- Audience: hiring managers, growth leaders and recruiters. Public copy is in English.
+- Objective: showcase Growth & Demand Lead work and support relevant professional conversations; this is not a freelance service website.
+- Public voice: professional networking. Do not advertise job availability or use recruitment-specific CTAs such as "Open to roles" or "Hiring a Growth & Demand Lead?".
+- Audience: growth/product peers and people exploring the work. Public copy is in English.
 - Positioning: growth strategy and hands-on execution, illustrated by tools and product concepts.
 - Brand: existing paper/black/acid-yellow palette; Archivo, Sora and IBM Plex Mono. Preserve the established layout.
 - Contact and metadata: edit lib/site.js. No form or time-limited offer; no invented urgency, testimonials or commercial outcomes.

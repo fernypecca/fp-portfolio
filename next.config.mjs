@@ -27,7 +27,7 @@ const nextConfig = {
         ],
       },
       {
-        source: "/og-growth-demand-v2.png",
+        source: "/og-growth-demand-v3.png",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
       {

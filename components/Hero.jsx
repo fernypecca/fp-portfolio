@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="wrap">
         <div>
           <span className="eyebrow">
-            <span className="status-dot" /> Growth &amp; Demand Lead · Open to roles
+            Growth &amp; Demand Lead
           </span>
           <h1>
             I turn attention into <span className="mark">pipeline</span>.

@@ -189,10 +189,6 @@ export default function Home() {
                   <dt>Mode</dt>
                   <dd>Strategy and hands-on execution, in the same seat</dd>
                 </div>
-                <div className="prow">
-                  <dt>Open to</dt>
-                  <dd>Growth &amp; Demand Lead roles</dd>
-                </div>
               </dl>
               <div className="skills">
                 {skills.map((skill) => (
@@ -212,12 +208,11 @@ export default function Home() {
             </Reveal>
             <Reveal>
               <h2>
-                Hiring a <em>growth</em> &amp; demand lead?
+                Let&apos;s compare <em>notes.</em>
               </h2>
               <p>
-                I&apos;m looking for a role where strategy and hands-on execution sit in the same
-                seat. If you&apos;re hiring for one, I&apos;d like to hear about the problem
-                you&apos;re trying to move.
+                Growth, demand generation, or something you&apos;ve seen here — I&apos;m always
+                interested in another perspective.
               </p>
               <div className="contact-actions">
                 <a

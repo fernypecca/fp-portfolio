@@ -17,6 +17,7 @@ const scrollAll = (page) => page.evaluate(async () => {
   }
 });
 const hiddenHeadings = (page) => page.locator("h1,h2,h3").evaluateAll((headings) => headings.filter((heading) => {
+  if (heading.closest("details:not([open])")) return false;
   for (let node = heading; node; node = node.parentElement) {
     const style = getComputedStyle(node);
     if (style.opacity === "0" || style.visibility === "hidden" || style.display === "none") return true;
@@ -46,6 +47,7 @@ try {
     for (const route of routes) await check(`${width}x${height}: ${route}`, async () => {
       const response = await page.goto(base + route, { waitUntil: "networkidle" });
       assert.equal(response.status(), 200);
+      if (route === "/" && await page.locator(".tool-collection").count()) await page.locator(".tool-collection summary").click();
       await scrollAll(page);
       await page.waitForTimeout(1000);
       assert.deepEqual(await hiddenHeadings(page), []);
@@ -94,7 +96,7 @@ try {
       assert.ok(metadata.description);
       assert.equal(new URL(metadata.canonical).pathname, route);
       canonicalUrls.add(metadata.canonical);
-      assert.ok(metadata.image.endsWith("/og-growth-demand-v2.png"));
+      assert.ok(metadata.image.endsWith("/og-growth-demand-v3.png"));
       assert.equal(metadata.twitter, "summary_large_image");
       assert.deepEqual(metadata.types, route === "/" ? ["Person", "WebSite", "ProfilePage"] : ["SoftwareApplication", "BreadcrumbList"]);
     }
