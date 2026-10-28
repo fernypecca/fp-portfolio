@@ -5,6 +5,7 @@ export default function CaseDiagram({ slug, index }) {
   const state = caseVisuals[slug].gallery[index];
   return (
     <div className={`case-diagram case-diagram--${state.kind}`}>
+      <p className="case-diagram__sample">Illustrative preview · example values</p>
       <p className="case-diagram__label">{state.label}</p>
       {state.kind === "audience" ? <AudienceGraph /> : null}
       {state.kind === "variants" ? <div className="case-diagram__variants">{state.variants.map((text, i) => <div key={text}><span>Variant {i === 0 ? "A" : "B"}</span><p>{text}</p></div>)}</div> : null}

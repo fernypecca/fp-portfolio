@@ -55,7 +55,7 @@ function EarningsPreview() {
       <p>Annual earnings estimate</p>
     </div>
     <div className="tool-demo__sources"><span className="is-selected">Photography</span><span>Catering</span><span>Venues</span></div>
-    <p className="tool-demo__muted">52 provinces · 6 categories · No signup</p>
+    <p className="tool-demo__muted">52 locations · 6 categories · No signup</p>
   </>;
 }
 
@@ -77,9 +77,9 @@ function QAPreview() {
 
 function ProductKitPreview() {
   return <>
-    <p className="tool-demo__label">One product URL → channel-ready kit</p>
+    <p className="tool-demo__label">One product URL → draft kit</p>
     <div className="tool-demo__formats">{[["1:1", "Social"], ["4:5", "Catalog"], ["9:16", "Stories"]].map(([ratio,label],i) => <div key={ratio}><div className={`tool-demo__format tool-demo__format--${i}`} aria-hidden="true"><i /></div><strong>{ratio}</strong><span>{label}</span></div>)}</div>
-    <p className="tool-demo__muted">One input. Directions for every surface.</p>
+    <p className="tool-demo__muted">Three formats. Ready for review.</p>
   </>;
 }
 

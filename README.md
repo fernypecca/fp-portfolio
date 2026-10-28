@@ -66,6 +66,8 @@ npm run og
 
 This renders the 1200×630 source SVG to public/og-growth-demand-v3.png and the compatibility paths public/og-growth-demand-v2.png, public/og.png and root og.png. Metadata uses the versioned path to avoid the former image's long cache. If the image content changes again, bump the filename in lib/site.js, scripts/generate-og.mjs and next.config.mjs. Update the SVG inventory line when tools change. Compatibility copies use the current neutral professional copy.
 
+The production domain also uses Cloudflare. Its cache rule “Revalidate portfolio OG compatibility image” matches only `/og.png` on the apex and www hosts and sets Browser TTL to Respect origin TTL. This lets the `max-age=0, must-revalidate` header in next.config.mjs take effect despite the zone's four-hour browser-cache default. Versioned social images retain their one-year immutable cache. Verify the public response headers after changing either configuration.
+
 ## Redirects and deployment configuration
 
 next.config.mjs is the single source for the four legacy .html redirects (308) and security headers, both locally and on Vercel. The CSP limits base URLs, objects, framing and form actions; it is not a nonce-based script policy. vercel.json selects the Next.js framework and does not duplicate routing rules.

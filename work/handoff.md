@@ -1,4 +1,20 @@
-# Portfolio — estado al 27 de octubre de 2026
+# Portfolio — estado al 28 de octubre de 2026
+
+## Correcciones P2 autorizadas — verificación previa a publicación
+
+- Fer solicitó «ok publica las mejoras»: autorizados ajustes de la reauditoría, commit/push a main y producción. Se aplican los cinco P2; P3 de autoría/tradeoffs quedan pendientes de datos verificables.
+- Nueve diagramas con identificación ilustrativa visible14px; Storefront presenta sugerencias para comprobar; Product Kit borrador de tres formatos y revisión humana en home/caso/SEO; Earnings52locations. Sin nuevos resultados comerciales, dependencias o cambios de identidad/contacto.
+- Cloudflare: regla activa `Revalidate portfolio OG compatibility image` (603925cfd77e4aea803e970444a920a5), solo path `/og.png` en apex/www, Browser TTL Respect origin TTL. GET confirma max-age0/must-revalidate; v3 sigue anual/immutable. Sin cambios DNS/seguridad/globalTTL o purgas. README documenta la dependencia de esta regla.
+- Build aislado8/8 y suite final54/54, salida0; npm audit0; diff-check limpio. Logs `/tmp/fp-p2-release-build.log` y `/tmp/fp-p2-release-final-check.log`. Revisión independiente de código/QA sin bloqueos; sample tiene contraste5,57:1 en claro/9,77:1 en oscuro. Detector acotado sin hallazgos. Copy puntual de cuatro páginas comprobado tras el último build.
+- Preview3001 sesión27872 conservada; ningún proceso3000 detenido. Push y comprobación pública pendientes al escribir este punto; el resultado se añadirá tras verificar el deployment.
+
+## Reauditoría integral de producción — solo revisión
+
+- Fer pidió repetir auditoría punto por punto, incluidos copy y enlaces. Informe nuevo: `work/portfolio-reaudit-2026-10-27.md`. No se modificó producto, ni se hizo commit/push/deploy/purga.
+- GO técnico: sin P0/P1 confirmados. Cinco P2: identificación de cifras ilustrativas en galerías; títulos demasiado concluyentes en Storefront; promesa universal/ready-to-post de Product Kit; “52 provinces” incluye Ceuta/Melilla; `/og.png` público devuelve max-age14400 frente a max-age0 del repo. Imagen actual correcta y metadata v3 versionada. No se atribuye el override a una regla concreta sin evidencia.
+- Build aislado salida0,8/8; suite completa en dominio público54/54; npm audit0; sin errores de consola/network en cuatro páginas. Log `/tmp/fp-reaudit-live-suite.log`; capturas `/tmp/fp-reaudit-apNwXU`. Detector amplio app/components: una advertencia estética de borde en proof-context, no bug.
+- Ocho demos Vercel cargan. GitHub correcto. Claude challenge y LinkedIn anti-bot quedan parcialmente sin verificar; no hay enlaces caídos confirmados. No se probaron generaciones/APIs/envíos, lectores de pantalla o dispositivos físicos. Medidas LCP/CLS son de laboratorio sin throttling, no CWV de campo.
+- Preview3001 reiniciada tras build aislado, sesión19677. No se inició/detuvo ningún proceso3000. Próximo paso, solo si Fer lo solicita: corregir P2 y repetir checks; publicación requiere instrucción nueva.
 
 ## Publicación Impeccable y contacto neutro — verificada
 
