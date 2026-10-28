@@ -1,12 +1,14 @@
 # Portfolio — estado al 28 de octubre de 2026
 
-## Correcciones P2 autorizadas — verificación previa a publicación
+## Correcciones P2 — publicadas y verificadas
 
 - Fer solicitó «ok publica las mejoras»: autorizados ajustes de la reauditoría, commit/push a main y producción. Se aplican los cinco P2; P3 de autoría/tradeoffs quedan pendientes de datos verificables.
 - Nueve diagramas con identificación ilustrativa visible14px; Storefront presenta sugerencias para comprobar; Product Kit borrador de tres formatos y revisión humana en home/caso/SEO; Earnings52locations. Sin nuevos resultados comerciales, dependencias o cambios de identidad/contacto.
 - Cloudflare: regla activa `Revalidate portfolio OG compatibility image` (603925cfd77e4aea803e970444a920a5), solo path `/og.png` en apex/www, Browser TTL Respect origin TTL. GET confirma max-age0/must-revalidate; v3 sigue anual/immutable. Sin cambios DNS/seguridad/globalTTL o purgas. README documenta la dependencia de esta regla.
 - Build aislado8/8 y suite final54/54, salida0; npm audit0; diff-check limpio. Logs `/tmp/fp-p2-release-build.log` y `/tmp/fp-p2-release-final-check.log`. Revisión independiente de código/QA sin bloqueos; sample tiene contraste5,57:1 en claro/9,77:1 en oscuro. Detector acotado sin hallazgos. Copy puntual de cuatro páginas comprobado tras el último build.
-- Preview3001 sesión27872 conservada; ningún proceso3000 detenido. Push y comprobación pública pendientes al escribir este punto; el resultado se añadirá tras verificar el deployment.
+- Código publicado en origin/main: `e183d5c` (Clarify portfolio concept claims and illustrative previews). Vercel `dpl_5CXTyZtQftnjBamuqgybiVk5z4kS`, Ready/Production y check GitHub success. Deployment https://fp-portfolio-be5aat13v-fernypecca-1173s-projects.vercel.app; dominio https://www.fernandopeccatiello.com.
+- Suite completa repetida sobre dominio público54/54, salida0; log `/tmp/fp-p2-release-live-check.log`. Smoke confirma las9etiquetas, home52locations/9tools y copy actualizado de conceptos. `/og.png` público sigue max-age0; v3anual/immutable. Captura de galería publicada `/tmp/fp-p2-release-F9g4kI/published-gallery.png`.
+- Preview3001 sesión27872 conservada; ningún proceso3000 detenido. No queda trabajo requerido para esta publicación. Este registro documental no modifica el código funcional; el check de origin/main identifica el deployment del commit documental más reciente.
 
 ## Reauditoría integral de producción — solo revisión
 
